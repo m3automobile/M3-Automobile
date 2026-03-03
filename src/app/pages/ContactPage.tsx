@@ -13,8 +13,8 @@ export default function ContactPage() {
       <div className="relative z-10 container mx-auto px-4 py-16">
         {/* Hero */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-4">Contactez-nous</h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">Contactez-nous</h1>
+          <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
             Une question ? Un projet ? Notre équipe est à votre écoute
           </p>
         </div>
