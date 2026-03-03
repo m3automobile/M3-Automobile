@@ -134,11 +134,9 @@ export default function Layout() {
             <div>
               <h4 className="font-bold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>📍 3 rue de l'Abbé Breuil</li>
-                <li className="ml-5">L'Isle-Adam 95290</li>
+                <li>📍 L'Isle-Adam (95290)</li>
                 <li>📞 <a href="tel:0783269802" className="hover:text-white transition-colors">07 83 26 98 02</a></li>
                 <li>✉️ <a href="mailto:m3.automobil@gmail.com" className="hover:text-white transition-colors">m3.automobil@gmail.com</a></li>
-                <li>🕒 Lun - Sam : 9h - 19h</li>
               </ul>
             </div>
           </div>

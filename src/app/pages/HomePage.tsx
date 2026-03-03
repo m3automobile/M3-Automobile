@@ -197,7 +197,7 @@ export default function HomePage() {
               </Link>
             </div>
             <p className="text-sm md:text-base text-gray-400 mt-6">
-              📍 3 rue de l'Abbé Breuil, L'Isle-Adam 95290 | 🕒 Lun - Sam : 9h - 19h
+              📍 L'Isle-Adam (95290)
             </p>
           </section>
         </div>
