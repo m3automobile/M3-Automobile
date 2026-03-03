@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -140,57 +140,15 @@ export default function ContactPage() {
               <CardHeader>
                 <CardTitle className="text-2xl text-white flex items-center gap-3">
                   <MapPin className="size-6" />
-                  Notre adresse
+                  Notre localisation
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-xl font-bold text-white mb-2">
-                  3 rue de l'Abbé Breuil
-                </p>
                 <p className="text-xl font-bold text-white mb-4">
-                  95290 L'Isle-Adam
+                  L'Isle-Adam (95290)
                 </p>
                 <p className="text-gray-400 mb-4">
-                  Venez nous rendre visite pour découvrir notre stock ou discuter de votre projet
-                </p>
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=3+rue+de+l'Abbé+Breuil+95290+L'Isle-Adam"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <Button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20">
-                    <MapPin className="size-4 mr-2" />
-                    Voir sur Google Maps
-                  </Button>
-                </a>
-              </CardContent>
-            </Card>
-
-            <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl text-white flex items-center gap-3">
-                  <Clock className="size-6" />
-                  Horaires d'ouverture
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Lundi - Vendredi</span>
-                    <span className="text-white font-semibold">9h - 19h</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Samedi</span>
-                    <span className="text-white font-semibold">9h - 19h</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Dimanche</span>
-                    <span className="text-gray-400">Fermé</span>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-400 mt-4">
-                  💡 Sur rendez-vous en dehors de ces horaires
+                  Contactez-nous pour plus d'informations sur notre localisation
                 </p>
               </CardContent>
             </Card>
@@ -203,7 +161,7 @@ export default function ContactPage() {
             <div className="text-center">
               <MapPin className="size-16 text-gray-500 mx-auto mb-4" />
               <p className="text-gray-400 text-lg">Carte Google Maps</p>
-              <p className="text-gray-500 text-sm">3 rue de l'Abbé Breuil, 95290 L'Isle-Adam</p>
+              <p className="text-gray-500 text-sm">L'Isle-Adam (95290)</p>
             </div>
           </div>
         </div>
