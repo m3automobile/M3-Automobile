@@ -2,12 +2,14 @@ import { Outlet, Link, useLocation } from 'react-router';
 import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
-import logoRound from 'figma:asset/f0629100f8c13d63e9fe8a841630d78d4fa3452e.png';
-import logoHorizontal from 'figma:asset/ad1a7cc2539a2df89fc694c8cddfeed609c1852a.png';
 
 export default function Layout() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Logos M3 Automobile (placeholders SVG)
+  const logoRound = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='40' font-weight='bold' fill='%23fff' text-anchor='middle'%3EM3%3C/text%3E%3C/svg%3E";
+  const logoHorizontal = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 80'%3E%3Crect width='300' height='80' fill='%23000' rx='8'/%3E%3Ctext x='150' y='55' font-family='Arial' font-size='36' font-weight='bold' fill='%23fff' text-anchor='middle'%3EM3 AUTOMOBILE%3C/text%3E%3C/svg%3E";
 
   const navigation = [
     { name: 'Accueil', href: '/' },

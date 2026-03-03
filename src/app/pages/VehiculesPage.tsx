@@ -3,10 +3,12 @@ import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import logoCentrale from 'figma:asset/be38e3704950b6a0ea19bfdbadacd818a4aa7a2c.png';
-import logoLeboncoin from 'figma:asset/05e082ab057454a2bea382f713bfd381feb542b3.png';
 
 export default function VehiculesPage() {
+  // Logos des plateformes
+  const logoCentrale = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23e63312' rx='8'/%3E%3Ctext x='100' y='38' font-family='Arial' font-size='20' font-weight='bold' fill='%23fff' text-anchor='middle'%3ELA CENTRALE%3C/text%3E%3C/svg%3E";
+  const logoLeboncoin = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23ff6e14' rx='8'/%3E%3Ctext x='100' y='38' font-family='Arial' font-size='20' font-weight='bold' fill='%23fff' text-anchor='middle'%3Eleboncoin%3C/text%3E%3C/svg%3E";
+
   return (
     <div className="relative min-h-screen">
       <PremiumBackground />
