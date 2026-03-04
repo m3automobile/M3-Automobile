@@ -2,8 +2,8 @@ import { ExternalLink, Shield } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
-import logoCentrale from '../../assets/logo-lacentrale.svg';
-import logoLeboncoin from '../../assets/logo-leboncoin.svg';
+import logoLaCentrale from '../assets/logo-lacentrale.svg';
+import logoLeBoncoin from '../assets/logo-leboncoin.svg';
 
 export default function VehiculesPage() {
   return (
@@ -59,7 +59,7 @@ export default function VehiculesPage() {
                 <CardContent className="pt-12 pb-12 text-center">
                   <div className="bg-white rounded-lg p-6 mb-6 mx-auto w-fit flex items-center justify-center h-32">
                     <img
-                      src={logo-lacentrale.svg}
+                      src={logoLaCentrale}
                       alt="La Centrale"
                       className="max-h-20 w-auto object-contain"
                     />
@@ -86,7 +86,7 @@ export default function VehiculesPage() {
                 <CardContent className="pt-12 pb-12 text-center">
                   <div className="bg-white rounded-lg p-6 mb-6 mx-auto w-fit flex items-center justify-center h-32">
                     <img
-                      src={logo-leboncoin.svg}
+                      src={logoLeBoncoin}
                       alt="Leboncoin"
                       className="max-h-20 w-auto object-contain"
                     />
