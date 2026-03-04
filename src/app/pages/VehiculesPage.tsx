@@ -59,7 +59,7 @@ export default function VehiculesPage() {
                 <CardContent className="pt-12 pb-12 text-center">
                   <div className="bg-white rounded-lg p-6 mb-6 mx-auto w-fit flex items-center justify-center h-32">
                     <img
-                      src={logoCentrale}
+                      src={logo-lacentrale.svg}
                       alt="La Centrale"
                       className="max-h-20 w-auto object-contain"
                     />
@@ -86,7 +86,7 @@ export default function VehiculesPage() {
                 <CardContent className="pt-12 pb-12 text-center">
                   <div className="bg-white rounded-lg p-6 mb-6 mx-auto w-fit flex items-center justify-center h-32">
                     <img
-                      src={logoLeboncoin}
+                      src={logo-leboncoin.svg}
                       alt="Leboncoin"
                       className="max-h-20 w-auto object-contain"
                     />
