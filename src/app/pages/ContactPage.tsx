@@ -7,28 +7,28 @@ import PremiumBackground from '../components/PremiumBackground';
 
 export default function ContactPage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
       
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <div className="relative z-10 container mx-auto px-4 py-10 md:py-16">
         {/* Hero */}
-        <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">Contactez-nous</h1>
-          <p className="text-base md:text-xl text-gray-400 max-w-3xl mx-auto">
+        <div className="text-center mb-10 md:mb-16">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">Contactez-nous</h1>
+          <p className="text-sm md:text-base lg:text-xl text-gray-400 max-w-3xl mx-auto px-4">
             Une question ? Un projet ? Notre équipe est à votre écoute
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Formulaire */}
           <div>
             <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-2xl text-white">Envoyez-nous un message</CardTitle>
+                <CardTitle className="text-xl md:text-2xl text-white">Envoyez-nous un message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form className="space-y-5 md:space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="text-white font-semibold block mb-2">Prénom *</label>
                       <Input 
@@ -83,12 +83,12 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6 text-lg">
-                    <Send className="size-5 mr-2" />
+                  <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-5 md:py-6 text-base md:text-lg">
+                    <Send className="size-4 md:size-5 mr-2" />
                     Envoyer le message
                   </Button>
 
-                  <p className="text-sm text-gray-400 text-center">
+                  <p className="text-xs md:text-sm text-gray-400 text-center">
                     * Champs obligatoires - Nous vous répondons sous 24h
                   </p>
                 </form>
@@ -97,21 +97,21 @@ export default function ContactPage() {
           </div>
 
           {/* Coordonnées */}
-          <div className="space-y-6">
+          <div className="space-y-5 md:space-y-6">
             <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-2xl text-white flex items-center gap-3">
-                  <Phone className="size-6" />
+                <CardTitle className="text-xl md:text-2xl text-white flex items-center gap-2 md:gap-3">
+                  <Phone className="size-5 md:size-6" />
                   Par téléphone
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <a href="tel:0783269802" className="block">
-                  <p className="text-3xl font-bold text-white mb-2 hover:text-gray-300 transition-colors">
+                  <p className="text-2xl md:text-3xl font-bold text-white mb-2 hover:text-gray-300 transition-colors">
                     07 83 26 98 02
                   </p>
                 </a>
-                <p className="text-gray-400">
+                <p className="text-sm md:text-base text-gray-400">
                   Appelez-nous directement pour toute question ou prise de rendez-vous
                 </p>
               </CardContent>
@@ -119,18 +119,18 @@ export default function ContactPage() {
 
             <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-2xl text-white flex items-center gap-3">
-                  <Mail className="size-6" />
+                <CardTitle className="text-xl md:text-2xl text-white flex items-center gap-2 md:gap-3">
+                  <Mail className="size-5 md:size-6" />
                   Par email
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <a href="mailto:m3.automobil@gmail.com" className="block">
-                  <p className="text-xl font-bold text-white mb-2 hover:text-gray-300 transition-colors break-all">
+                  <p className="text-lg md:text-xl font-bold text-white mb-2 hover:text-gray-300 transition-colors break-all">
                     m3.automobil@gmail.com
                   </p>
                 </a>
-                <p className="text-gray-400">
+                <p className="text-sm md:text-base text-gray-400">
                   Écrivez-nous directement, nous vous répondons rapidement
                 </p>
               </CardContent>
@@ -138,16 +138,16 @@ export default function ContactPage() {
 
             <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-2xl text-white flex items-center gap-3">
-                  <MapPin className="size-6" />
+                <CardTitle className="text-xl md:text-2xl text-white flex items-center gap-2 md:gap-3">
+                  <MapPin className="size-5 md:size-6" />
                   Notre localisation
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-xl font-bold text-white mb-4">
+                <p className="text-lg md:text-xl font-bold text-white mb-4">
                   L'Isle-Adam (95290)
                 </p>
-                <p className="text-gray-400 mb-4">
+                <p className="text-sm md:text-base text-gray-400 mb-4">
                   Contactez-nous pour plus d'informations sur notre localisation
                 </p>
               </CardContent>
@@ -156,31 +156,31 @@ export default function ContactPage() {
         </div>
 
         {/* Map placeholder */}
-        <div className="mt-16 max-w-6xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden h-96 flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="size-16 text-gray-500 mx-auto mb-4" />
-              <p className="text-gray-400 text-lg">Carte Google Maps</p>
-              <p className="text-gray-500 text-sm">L'Isle-Adam (95290)</p>
+        <div className="mt-10 md:mt-16 max-w-6xl mx-auto">
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden h-64 md:h-96 flex items-center justify-center">
+            <div className="text-center px-4">
+              <MapPin className="size-12 md:size-16 text-gray-500 mx-auto mb-3 md:mb-4" />
+              <p className="text-gray-400 text-base md:text-lg">Carte Google Maps</p>
+              <p className="text-gray-500 text-xs md:text-sm">L'Isle-Adam (95290)</p>
             </div>
           </div>
         </div>
 
         {/* Info supplémentaire */}
-        <div className="mt-16 max-w-4xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 text-center">
-          <h3 className="text-2xl font-bold text-white mb-4">Informations Pratiques</h3>
-          <div className="grid md:grid-cols-3 gap-6">
+        <div className="mt-10 md:mt-16 max-w-4xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 text-center">
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Informations Pratiques</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
             <div>
-              <p className="text-gray-400 mb-2">🚗 Parking</p>
-              <p className="text-white font-semibold">Disponible sur place</p>
+              <p className="text-gray-400 mb-2 text-sm md:text-base">🚗 Parking</p>
+              <p className="text-white font-semibold text-sm md:text-base">Disponible sur place</p>
             </div>
             <div>
-              <p className="text-gray-400 mb-2">🚌 Transports</p>
-              <p className="text-white font-semibold">Gare à proximité</p>
+              <p className="text-gray-400 mb-2 text-sm md:text-base">🚌 Transports</p>
+              <p className="text-white font-semibold text-sm md:text-base">Gare à proximité</p>
             </div>
             <div>
-              <p className="text-gray-400 mb-2">♿ Accessibilité</p>
-              <p className="text-white font-semibold">PMR</p>
+              <p className="text-gray-400 mb-2 text-sm md:text-base">♿ Accessibilité</p>
+              <p className="text-white font-semibold text-sm md:text-base">PMR</p>
             </div>
           </div>
         </div>

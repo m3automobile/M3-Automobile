@@ -5,18 +5,18 @@ import PremiumBackground from '../components/PremiumBackground';
 
 export default function DepotVentePage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
       
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <div className="relative z-10 container mx-auto px-4 py-10 md:py-16">
         {/* Hero */}
-        <div className="text-center mb-16">
-          <div className="bg-white/10 backdrop-blur-sm rounded-full size-20 flex items-center justify-center mb-6 mx-auto border border-white/30">
-            <Handshake className="size-10 text-white" />
+        <div className="text-center mb-12 md:mb-16">
+          <div className="bg-white/10 backdrop-blur-sm rounded-full size-16 md:size-20 flex items-center justify-center mb-4 md:mb-6 mx-auto border border-white/30">
+            <Handshake className="size-8 md:size-10 text-white" />
           </div>
-          <h1 className="text-5xl font-bold text-white mb-4">Mandat de Vente Sérénité</h1>
-          <p className="text-lg text-gray-400 mb-2">Anciennement "Dépôt-Vente Virtuel"</p>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">Mandat de Vente Sérénité</h1>
+          <p className="text-sm md:text-base lg:text-lg text-gray-400 mb-2">Anciennement "Dépôt-Vente Virtuel"</p>
+          <p className="text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             Vendez votre véhicule en toute tranquillité : vous continuez à l'utiliser, nous gérons tout, et vous êtes protégé juridiquement
           </p>
         </div>

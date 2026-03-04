@@ -26,16 +26,16 @@ export default function Layout() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-x-hidden">
       {/* Header */}
       <header className="bg-black/50 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-700">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-3 md:px-4 py-3 md:py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-4">
-              <img src={logoRound} alt="M3 Automobile" className="h-16 w-16 object-contain" />
+            <Link to="/" className="flex items-center gap-2 md:gap-4">
+              <img src={logoRound} alt="M3 Automobile" className="h-12 w-12 md:h-16 md:w-16 object-contain" />
               <div>
-                <h1 className="text-3xl font-bold text-white">M3 Automobile</h1>
-                <p className="text-xs text-gray-300 mt-1">VENTE - RECHERCHE - DÉPÔT/VENTE</p>
+                <h1 className="text-xl md:text-3xl font-bold text-white">M3 Automobile</h1>
+                <p className="text-[10px] md:text-xs text-gray-300 mt-0.5 md:mt-1">VENTE - RECHERCHE - DÉPÔT/VENTE</p>
               </div>
             </Link>
 
@@ -67,10 +67,10 @@ export default function Layout() {
 
             {/* Mobile menu button */}
             <button
-              className="lg:hidden text-white p-2"
+              className="lg:hidden text-white p-2 -mr-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="size-8" /> : <Menu className="size-8" />}
+              {mobileMenuOpen ? <X className="size-7 md:size-8" /> : <Menu className="size-7 md:size-8" />}
             </button>
           </div>
 
@@ -82,7 +82,7 @@ export default function Layout() {
                   key={item.name}
                   to={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-lg transition-colors ${
+                  className={`px-4 py-3 rounded-lg transition-colors text-sm md:text-base ${
                     isActive(item.href)
                       ? 'bg-white/10 text-white font-semibold'
                       : 'text-gray-300 hover:bg-white/5 hover:text-white'
@@ -92,8 +92,8 @@ export default function Layout() {
                 </Link>
               ))}
               <a href="tel:0783269802" className="mt-2">
-                <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6">
-                  <Phone className="size-5 mr-2" />
+                <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-5 md:py-6">
+                  <Phone className="size-4 md:size-5 mr-2" />
                   07 83 26 98 02
                 </Button>
               </a>
@@ -103,14 +103,14 @@ export default function Layout() {
       </header>
 
       {/* Main Content */}
-      <main>
+      <main className="overflow-x-hidden">
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="bg-black/50 backdrop-blur-md text-white py-12 mt-20 border-t border-gray-800">
+      <footer className="bg-black/50 backdrop-blur-md text-white py-8 md:py-12 mt-12 md:mt-20 border-t border-gray-800">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
             <div>
               <div className="mb-4">
                 <img src={logoHorizontal} alt="M3 Automobile" className="h-20 object-contain" />
@@ -134,9 +134,9 @@ export default function Layout() {
             <div>
               <h4 className="font-bold mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>📍 L'Isle-Adam (95290)</li>
-                <li>📞 <a href="tel:0783269802" className="hover:text-white transition-colors">07 83 26 98 02</a></li>
-                <li>✉️ <a href="mailto:m3.automobil@gmail.com" className="hover:text-white transition-colors">m3.automobil@gmail.com</a></li>
+                <li>L'Isle-Adam (95290)</li>
+                <li><a href="tel:0783269802" className="hover:text-white transition-colors">07 83 26 98 02</a></li>
+                <li><a href="mailto:m3.automobil@gmail.com" className="hover:text-white transition-colors">m3.automobil@gmail.com</a></li>
               </ul>
             </div>
           </div>

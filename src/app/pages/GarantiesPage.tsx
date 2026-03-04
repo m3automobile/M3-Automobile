@@ -7,13 +7,13 @@ import PremiumBackground from '../components/PremiumBackground';
 
 export default function GarantiesPage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
       
       {/* Contenu de la page */}
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <div className="relative z-10 container mx-auto px-4 py-10 md:py-16">
         {/* Hero avec image de fond */}
-        <div className="relative mb-20 rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+        <div className="relative mb-12 md:mb-20 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/5">
           {/* Image de fond */}
           <div className="absolute inset-0 z-0">
             <ImageWithFallback 
@@ -26,36 +26,36 @@ export default function GarantiesPage() {
           </div>
           
           {/* Contenu Hero */}
-          <div className="relative z-10 text-center py-24 px-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-full size-20 flex items-center justify-center mb-6 mx-auto border border-white/30 shadow-2xl">
-              <Shield className="size-10 text-white" />
+          <div className="relative z-10 text-center py-16 md:py-24 px-4 md:px-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-full size-16 md:size-20 flex items-center justify-center mb-4 md:mb-6 mx-auto border border-white/30 shadow-2xl">
+              <Shield className="size-8 md:size-10 text-white" />
             </div>
-            <h1 className="text-5xl font-bold text-white mb-4">Nos Garanties Mécaniques</h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">Nos Garanties Mécaniques</h1>
+            <p className="text-sm md:text-base lg:text-xl text-gray-300 max-w-3xl mx-auto">
               Roulez l'esprit libre grâce à nos garanties complètes sur tous nos véhicules
             </p>
           </div>
         </div>
 
         {/* Packs de garantie */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-3">Garantie Mécanique Incluse</h2>
-            <p className="text-lg text-gray-400">6 mois de couverture offerte sur tous nos véhicules</p>
+        <section className="mb-12 md:mb-20">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-3">Garantie Mécanique Incluse</h2>
+            <p className="text-base md:text-lg text-gray-400">6 mois de couverture offerte sur tous nos véhicules</p>
           </div>
 
           {/* Garantie Incluse - Mise en avant */}
-          <div className="max-w-4xl mx-auto mb-16">
+          <div className="max-w-4xl mx-auto mb-12 md:mb-16">
             <Card className="border border-white/10 relative overflow-hidden bg-gradient-to-br from-gray-900 to-black shadow-2xl shadow-black/50">
-              <div className="absolute top-4 right-4">
-                <Badge className="bg-white text-gray-900 shadow-lg text-base px-4 py-2 font-bold">✓ INCLUS</Badge>
+              <div className="absolute top-3 md:top-4 right-3 md:right-4">
+                <Badge className="bg-white text-gray-900 shadow-lg text-sm md:text-base px-3 md:px-4 py-1.5 md:py-2 font-bold">✓ INCLUS</Badge>
               </div>
-              <CardHeader className="bg-white/5 pb-8 border-b border-white/10">
-                <CardTitle className="text-3xl text-white flex items-center gap-3">
-                  <Shield className="size-8 text-white" />
+              <CardHeader className="bg-white/5 pb-6 md:pb-8 border-b border-white/10">
+                <CardTitle className="text-xl md:text-2xl lg:text-3xl text-white flex items-center gap-2 md:gap-3">
+                  <Shield className="size-6 md:size-8 text-white" />
                   Garantie Sérénité 6 Mois
                 </CardTitle>
-                <CardDescription className="text-gray-400 text-lg mt-2">
+                <CardDescription className="text-gray-400 text-sm md:text-base lg:text-lg mt-2">
                   Protection complète des organes mécaniques essentiels - Offerte sur tous les véhicules achetés depuis notre stock ou via notre service de recherche personnalisée
                 </CardDescription>
               </CardHeader>
