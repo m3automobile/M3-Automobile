@@ -3,7 +3,7 @@ import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
 import logoRound from '../assets/logo-m3-round.png';
-import logoHorizontal from '../assets/logo-m3-horizontal.png';
+import logoHorizontal from '../../assets/logo-m3-horizontal.png';
 
 export default function Layout() {
   const location = useLocation();
