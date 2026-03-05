@@ -2,7 +2,6 @@ import { Outlet, Link, useLocation } from 'react-router';
 import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
-import LogoRound from './LogoRound';
 import LogoHorizontal from './LogoHorizontal';
 
 export default function Layout() {

@@ -1,4 +1,4 @@
-import logoHorizontal from "figma:asset/ad1a7cc2539a2df89fc694c8cddfeed609c1852a.png";
+import logoHorizontal from './logo-m3-horizontal.png';
 
 interface LogoHorizontalProps {
   className?: string;
