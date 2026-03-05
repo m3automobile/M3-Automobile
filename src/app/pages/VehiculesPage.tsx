@@ -2,8 +2,8 @@ import { ExternalLink, Shield } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
-import Logoleboncoin from './Logoleboncoin';
-import Logolacentrale from './Logolacentrale';
+import Logoleboncoin from './Logoleboncoin.png';
+import Logolacentrale from './Logolacentrale.png';
 
 export default function VehiculesPage() {
   return (
