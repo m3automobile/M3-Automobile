@@ -1,7 +1,0 @@
-# M3 Automobile - Robots.txt
-User-agent: *
-Allow: /
-Disallow: /supabase/
-
-# Sitemap
-Sitemap: https://m3-automobile.fr/sitemap.xml
