@@ -2,7 +2,7 @@ import { Outlet, Link, useLocation } from 'react-router';
 import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
-import LogoHorizontal from './LogoHorizontal';
+import LogoHorizontal from './LogoHorizontal.png';
 
 export default function Layout() {
   const location = useLocation();
