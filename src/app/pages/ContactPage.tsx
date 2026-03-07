@@ -154,20 +154,3 @@ export default function ContactPage() {
             </Card>
           </div>
         </div>
-
-        {/* Map placeholder */}
-        <div className="mt-10 md:mt-16 max-w-6xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden h-64 md:h-96 flex items-center justify-center">
-            <div className="text-center px-4">
-              <MapPin className="size-12 md:size-16 text-gray-500 mx-auto mb-3 md:mb-4" />
-              <p className="text-gray-400 text-base md:text-lg">Carte Google Maps</p>
-              <p className="text-gray-500 text-xs md:text-sm">L'Isle-Adam (95290)</p>
-            </div>
-          </div>
-        </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
