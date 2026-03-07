@@ -153,7 +153,7 @@ export default function VehiculesPage() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12 md:mt-16 px-0 md:px-4">
+        <div className="text-center mt-12 md:mt-16 px-6 md:px-4">
           <p className="text-lg md:text-xl text-gray-300 mb-4 md:mb-6">
             Vous ne trouvez pas ce que vous cherchez ?
           </p>
