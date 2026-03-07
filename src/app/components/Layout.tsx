@@ -2,7 +2,7 @@ import { Outlet, Link, useLocation } from 'react-router';
 import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
-import LogoHorizontal from './LogoHorizontal';
+import LogoHorizontal from './LogoHorizontal.png';
 
 export default function Layout() {
   const location = useLocation();
@@ -40,7 +40,7 @@ export default function Layout() {
 
             {/* Logo - Center on mobile, left on desktop */}
             <Link to="/" className="flex items-center gap-2 md:gap-3 order-2 lg:order-1 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0">
-              <LogoHorizontal className="h-12 md:h-16 object-contain" />
+              <img src={LogoHorizontal} />
             </Link>
 
             {/* Desktop Navigation */}
@@ -112,7 +112,7 @@ export default function Layout() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
             <div>
               <div className="mb-4">
-                <LogoHorizontal className="h-20 object-contain" />
+                <img src={LogoHorizontal} />
               </div>
               <p className="text-gray-400">Votre partenaire de confiance pour l'achat de véhicules d'occasion avec garantie.</p>
             </div>
