@@ -165,23 +165,6 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-
-        {/* Info supplémentaire */}
-        <div className="mt-10 md:mt-16 max-w-4xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 text-center">
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Informations Pratiques</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-            <div>
-              <p className="text-gray-400 mb-2 text-sm md:text-base">🚗 Parking</p>
-              <p className="text-white font-semibold text-sm md:text-base">Disponible sur place</p>
-            </div>
-            <div>
-              <p className="text-gray-400 mb-2 text-sm md:text-base">🚌 Transports</p>
-              <p className="text-white font-semibold text-sm md:text-base">Gare à proximité</p>
-            </div>
-            <div>
-              <p className="text-gray-400 mb-2 text-sm md:text-base">♿ Accessibilité</p>
-              <p className="text-white font-semibold text-sm md:text-base">PMR</p>
-            </div>
           </div>
         </div>
       </div>
