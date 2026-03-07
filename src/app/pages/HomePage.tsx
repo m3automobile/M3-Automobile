@@ -9,16 +9,6 @@ export default function HomePage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
-      
-      <div className="relative z-10">
-        {/* Bannière "En construction" */}
-        <div className="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-gray-900 py-3 md:py-4 border-b-2 border-amber-600 shadow-lg">
-          <div className="container mx-auto px-4 flex items-center justify-center gap-2 md:gap-3">
-            <p className="text-sm md:text-base lg:text-lg font-bold text-center">
-              🚧 Site en cours de construction - Certaines fonctionnalités sont en développement 🚧
-            </p>
-          </div>
-        </div>
 
         {/* Hero Section */}
         <section className="relative h-[350px] md:h-[500px] lg:h-[600px] overflow-hidden">
