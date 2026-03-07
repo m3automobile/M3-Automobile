@@ -125,11 +125,11 @@ export default function GarantiesPage() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-white">Extension de Durée</h4>
-                  <p className="text-gray-400">Prolongez votre garantie jusqu'à 12 mois</p>
+                  <p className="text-gray-400">Prolongez votre garantie jusqu'à 12 ou 24 mois</p>
                 </div>
               </div>
               <p className="text-gray-300 text-lg mb-4">
-                Avec l'extension de durée, bénéficiez de <strong className="text-white">6 mois supplémentaires</strong> de garantie sur les mêmes organes mécaniques essentiels, soit une couverture totale d'<strong className="text-white">1 an</strong>.
+                Avec l'extension de durée, bénéficiez de <strong className="text-white">6 mois supplémentaires</strong> de garantie sur les mêmes organes mécaniques essentiels, soit une couverture totale d'<strong className="text-white">1 ou 2 ans</strong>.
               </p>
               <div className="bg-white/10 rounded-lg p-4 inline-block border border-white/5">
                 <p className="text-white font-semibold">Extension disponible sur demande</p>
