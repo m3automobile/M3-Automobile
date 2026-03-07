@@ -77,7 +77,7 @@ export default function VehiculesPage() {
             </a>
 
             <a 
-              href="https://www.leboncoin.fr" 
+              href="https://www.leboncoin.fr/ad/voitures/3155772110" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group"
