@@ -3,7 +3,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
 import logoCentrale from '../../assets/logo-lacentrale.svg';
-import logoLeboncoin from './logoleboncoin.png';
+import logoLeboncoin from './Logoleboncoin.png';
 
 export default function VehiculesPage() {
   return (
