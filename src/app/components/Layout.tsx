@@ -28,7 +28,7 @@ export default function Layout() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-x-hidden">
       {/* Header */}
       <header className="bg-black/50 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-700">
-        <div className="container mx-auto px-3 md:px-6 py-2 md:py-3">
+        <div className="container mx-auto px-3 md:px-6 py-4 md:py-3">
           <div className="flex items-center justify-between lg:justify-between">
             {/* Mobile menu button - Left side on mobile */}
             <button
