@@ -3,6 +3,13 @@ import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
 import LogoHorizontal from './LogoHorizontal.png';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet"
 
 export default function Layout() {
   const location = useLocation();
@@ -28,78 +35,87 @@ export default function Layout() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-x-hidden">
       {/* Header */}
       <header className="bg-black/50 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-700">
-        <div className="container mx-auto px-3 md:px-6 py-4 md:py-3">
-          <div className="flex items-center justify-between lg:justify-between">
-            {/* Mobile menu button - Left side on mobile */}
-            <button
-              className="lg:hidden text-white p-1 -ml-1 order-1"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X className="size-6 md:size-7" /> : <Menu className="size-6 md:size-7" />}
-            </button>
+  <div className="container mx-auto px-3 md:px-6 py-4 md:py-3">
+    <div className="flex items-center justify-between">
+      
+      {/* SPACER GAUCHE (pour équilibrer le bouton à droite) */}
+      <div className="lg:hidden w-8 order-1"></div>
 
-            {/* Logo - Center on mobile, left on desktop */}
-            <Link to="/" className="flex items-center gap-2 md:gap-3 order-2 lg:order-1 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0">
-              <img src={LogoHorizontal} className="h-10 md:h-14 lg:h-16 object-contain" alt="M3 Automobile" />
-            </Link>
+      {/* Logo - CENTRÉ */}
+      <Link to="/" className="flex flex-col items-center gap-1 order-2 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0">
+        <img src={LogoHorizontal} className="h-14 md:h-14 lg:h-16 object-contain" alt="M3 Automobile" />
+        <p className="text-[10px] text-gray-400 italic hidden md:block">Le bon sens automobile.</p>
+      </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1 order-3 lg:order-2">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`px-4 py-2 rounded-lg transition-colors ${
-                    isActive(item.href)
-                      ? 'bg-white/10 text-white font-semibold'
-                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
+      {/* Desktop Navigation */}
+      <nav className="hidden lg:flex items-center gap-1 order-3">
+        {navigation.map((item) => (
+          <Link
+            key={item.name}
+            to={item.href}
+            className={`px-4 py-2 rounded-lg transition-colors ${
+              isActive(item.href)
+                ? 'bg-white/10 text-white font-semibold'
+                : 'text-gray-300 hover:bg-white/5 hover:text-white'
+            }`}
+          >
+            {item.name}
+          </Link>
+        ))}
+      </nav>
 
-            <div className="hidden lg:flex gap-3 order-4 lg:order-3">
-              <a href="tel:0783269802">
-                <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-4 py-2 text-sm shadow-lg">
-                  <Phone className="size-4 mr-2" />
-                  07 83 26 98 02
-                </Button>
-              </a>
-            </div>
+      {/* Bouton téléphone Desktop */}
+      <div className="hidden lg:flex gap-3 order-4">
+        <a href="tel:0783269802">
+          <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-4 py-2 text-sm shadow-lg">
+            <Phone className="size-4 mr-2" />
+            07 83 26 98 02
+          </Button>
+        </a>
+      </div>
 
-            {/* Spacer for mobile to balance layout */}
-            <div className="lg:hidden w-8 order-3"></div>
-          </div>
-
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <nav className="lg:hidden mt-4 pb-4 flex flex-col gap-2">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-lg transition-colors text-sm md:text-base ${
-                    isActive(item.href)
-                      ? 'bg-white/10 text-white font-semibold'
-                      : 'text-gray-300 hover:bg-white/5 hover:text-white'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <a href="tel:0783269802" className="mt-2">
-                <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-5 md:py-6">
-                  <Phone className="size-4 md:size-5 mr-2" />
-                  07 83 26 98 02
-                </Button>
-              </a>
-            </nav>
-          )}
-        </div>
-      </header>
+      {/* BOUTON MENU - À DROITE sur mobile */}
+      <Sheet>
+        <SheetTrigger asChild>
+          <button
+            className="lg:hidden text-white p-1 -mr-1 order-3"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="size-7 md:size-8" /> : <Menu className="size-7 md:size-8" />}
+          </button>
+        </SheetTrigger>
+        
+        <SheetContent side="right" className="w-[300px] bg-gray-900 border-gray-700">
+          <SheetHeader>
+            <SheetTitle className="text-white text-left">Menu</SheetTitle>
+          </SheetHeader>
+          <nav className="flex flex-col gap-2 mt-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`px-4 py-3 rounded-lg transition-colors text-base ${
+                  isActive(item.href)
+                    ? 'bg-white/10 text-white font-semibold'
+                    : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <a href="tel:0783269802" className="mt-4">
+              <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6">
+                <Phone className="size-5 mr-2" />
+                07 83 26 98 02
+              </Button>
+            </a>
+          </nav>
+        </SheetContent>
+      </Sheet>
+    </div>
+  </div>
+</header>
 
       {/* Main Content */}
       <main className="overflow-x-hidden">
