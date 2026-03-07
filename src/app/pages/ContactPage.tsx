@@ -154,3 +154,7 @@ export default function ContactPage() {
             </Card>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
