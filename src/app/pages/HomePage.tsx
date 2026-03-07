@@ -29,7 +29,7 @@ export default function HomePage() {
             }}
           />
           <div className="relative container mx-auto px-4 h-full flex flex-col items-center justify-center text-center text-white">
-            <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6 text-white">Bienvenue chez M3 Automobile</h2>
+            <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6 text-white">Votre Expert Automobile</h2>
             <p className="text-sm md:text-lg lg:text-2xl max-w-3xl text-gray-200 mb-5 md:mb-8 px-4">
               Achat, vente et recherche personnalisée de véhicules d'occasion avec garantie incluse
             </p>

@@ -4,8 +4,85 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import PremiumBackground from '../components/PremiumBackground';
+import { useState } from 'react';
+import { projectId, publicAnonKey } from '/utils/supabase/info';
 
 export default function RecherchePersonnalisee() {
+  const [formData, setFormData] = useState({
+    marqueModele: '',
+    anneeMin: '',
+    kilometrageMax: '',
+    budgetMin: '',
+    budgetMax: '',
+    criteres: '',
+    nom: '',
+    telephone: '',
+    email: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch(
+        `https://${projectId}.supabase.co/functions/v1/make-server-cc861502/recherche-personnalisee`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${publicAnonKey}`
+          },
+          body: JSON.stringify(formData)
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h par email ou téléphone.'
+        });
+        // Réinitialiser le formulaire
+        setFormData({
+          marqueModele: '',
+          anneeMin: '',
+          kilometrageMax: '',
+          budgetMin: '',
+          budgetMax: '',
+          criteres: '',
+          nom: '',
+          telephone: '',
+          email: ''
+        });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Une erreur est survenue. Veuillez réessayer.'
+        });
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi de la demande:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Impossible d\'envoyer votre demande. Veuillez vérifier votre connexion et réessayer.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
@@ -30,12 +107,15 @@ export default function RecherchePersonnalisee() {
                 <CardTitle className="text-2xl text-white">Décrivez votre recherche</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div>
                     <label className="text-white font-semibold block mb-2">Marque & Modèle *</label>
                     <Input 
                       placeholder="Ex: Peugeot 3008, BMW Série 3..." 
                       className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                      name="marqueModele"
+                      value={formData.marqueModele}
+                      onChange={handleChange}
                     />
                   </div>
 
@@ -46,6 +126,9 @@ export default function RecherchePersonnalisee() {
                         type="number" 
                         placeholder="2018" 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                        name="anneeMin"
+                        value={formData.anneeMin}
+                        onChange={handleChange}
                       />
                     </div>
                     <div>
@@ -54,6 +137,9 @@ export default function RecherchePersonnalisee() {
                         type="number" 
                         placeholder="100 000 km" 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                        name="kilometrageMax"
+                        value={formData.kilometrageMax}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -65,6 +151,9 @@ export default function RecherchePersonnalisee() {
                         type="number" 
                         placeholder="10 000 €" 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                        name="budgetMin"
+                        value={formData.budgetMin}
+                        onChange={handleChange}
                       />
                     </div>
                     <div>
@@ -73,6 +162,9 @@ export default function RecherchePersonnalisee() {
                         type="number" 
                         placeholder="25 000 €" 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                        name="budgetMax"
+                        value={formData.budgetMax}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -82,6 +174,9 @@ export default function RecherchePersonnalisee() {
                     <Textarea 
                       placeholder="Ex: Boîte automatique, GPS, attelage, cuir, diesel..." 
                       className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 min-h-[100px] backdrop-blur-sm"
+                      name="criteres"
+                      value={formData.criteres}
+                      onChange={handleChange}
                     />
                   </div>
 
@@ -91,23 +186,38 @@ export default function RecherchePersonnalisee() {
                       <Input 
                         placeholder="Nom & Prénom *" 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                        name="nom"
+                        value={formData.nom}
+                        onChange={handleChange}
                       />
                       <Input 
                         type="tel" 
                         placeholder="Téléphone *" 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                        name="telephone"
+                        value={formData.telephone}
+                        onChange={handleChange}
                       />
                       <Input 
                         type="email" 
                         placeholder="Email *" 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
 
-                  <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6 text-lg">
+                  <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6 text-lg" disabled={isSubmitting}>
                     Envoyer ma demande
                   </Button>
+
+                  {submitStatus && (
+                    <p className={`text-sm ${submitStatus.type === 'success' ? 'text-green-500' : 'text-red-500'} text-center`}>
+                      {submitStatus.message}
+                    </p>
+                  )}
 
                   <p className="text-sm text-gray-400 text-center">
                     * Champs obligatoires - Nous vous recontactons sous 24h
