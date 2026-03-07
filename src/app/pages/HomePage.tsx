@@ -29,12 +29,12 @@ export default function HomePage() {
             }}
           />
           <div className="relative container mx-auto px-4 h-full flex flex-col items-center justify-center text-center text-white">
-            <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6 text-white">Votre Expert Automobile</h2>
+            <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6 text-white">Bienvenue chez M3 Automobile</h2>
             <p className="text-sm md:text-lg lg:text-2xl max-w-3xl text-gray-200 mb-5 md:mb-8 px-4">
               Achat, vente et recherche personnalisée de véhicules d'occasion avec garantie incluse
             </p>
-            <div className="flex gap-2 md:gap-4 flex-wrap justify-center px-4">
-              <Badge className="bg-white/90 text-gray-900 px-2 py-1.5 md:px-4 md:py-2 lg:px-6 lg:py-3 text-xs md:text-sm lg:text-lg">
+            <div className="flex gap-3 md:gap-4 flex-wrap justify-center px-4">
+  <Badge className="bg-white/90 text-gray-900 px-3 py-2.5 md:px-4 md:py-2 lg:px-6 lg:py-3 text-sm md:text-base lg:text-lg">
                 <Shield className="size-3 md:size-4 lg:size-5 mr-1 md:mr-2" />
                 <span className="whitespace-nowrap">Garantie 6 mois</span>
               </Badge>
