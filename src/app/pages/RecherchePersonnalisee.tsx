@@ -271,7 +271,7 @@ export default function RecherchePersonnalisee() {
               <CardContent className="space-y-4">
                 {[
                   "Gain de temps : Zéro visite inutile",
-                  "Acceès au réseau pro : Véhicules non accessibles au grand public",
+                  "Accès au réseau pro : Véhicules non accessibles au grand public",
                   "Expertise technique : Pas de mauvaises surprises",
                   "Négociation : Nous obtenons le meilleur prix",
                   "Tranquillité : Garantie 6 mois avec extension possible sur organe et durée"
