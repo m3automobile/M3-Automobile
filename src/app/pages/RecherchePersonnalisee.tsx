@@ -1,11 +1,12 @@
-import { Search, CheckCircle2, Phone, Mail, Clock } from 'lucide-react';
+import { Search, CheckCircle2, Phone, Mail, Clock, ArrowRight, Car, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
+import { Badge } from '../components/ui/badge'; // <-- CETTE LIGNE ÉTAIT MANQUANTE
 import PremiumBackground from '../components/PremiumBackground';
 import { useState } from 'react';
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { projectId, publicAnonKey } from '/utils/supabase/info'
 
 export default function RecherchePersonnalisee() {
   const [formData, setFormData] = useState({
@@ -52,19 +53,11 @@ export default function RecherchePersonnalisee() {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: 'Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h par email ou téléphone.'
+          message: 'Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h.'
         });
-        // Réinitialiser le formulaire
         setFormData({
-          marqueModele: '',
-          anneeMin: '',
-          kilometrageMax: '',
-          budgetMin: '',
-          budgetMax: '',
-          criteres: '',
-          nom: '',
-          telephone: '',
-          email: ''
+          marqueModele: '', anneeMin: '', kilometrageMax: '', budgetMin: '', budgetMax: '',
+          criteres: '', nom: '', telephone: '', email: ''
         });
       } else {
         setSubmitStatus({
@@ -73,10 +66,9 @@ export default function RecherchePersonnalisee() {
         });
       }
     } catch (error) {
-      console.error('Erreur lors de l\'envoi de la demande:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Impossible d\'envoyer votre demande. Veuillez vérifier votre connexion et réessayer.'
+        message: 'Impossible d\'envoyer votre demande. Vérifiez votre connexion.'
       });
     } finally {
       setIsSubmitting(false);
@@ -87,150 +79,136 @@ export default function RecherchePersonnalisee() {
     <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
       
-      <div className="relative z-10 container mx-auto px-4 py-10 md:py-16">
-        {/* Hero */}
-        <div className="text-center mb-10 md:mb-16">
-          <div className="bg-white/10 backdrop-blur-sm rounded-full size-16 md:size-20 flex items-center justify-center mb-4 md:mb-6 mx-auto border border-white/30">
-            <Search className="size-8 md:size-10 text-white" />
+      <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">
+        {/* Header Section */}
+        <div className="text-center mb-16 md:mb-24">
+          <div className="inline-flex items-center justify-center p-3 mb-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl animate-pulse">
+            <Search className="size-8 md:size-12 text-white" />
           </div>
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">Recherche Personnalisée</h1>
-          <p className="text-sm md:text-base lg:text-xl text-gray-400 max-w-3xl mx-auto px-4">
-            Vous cherchez un véhicule précis ? Nous le trouvons pour vous sur l'ensemble du marché français
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
+            Recherche Sur Mesure
+          </h1>
+          <p className="text-base md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Votre prochain véhicule est peut-être déjà chez un confrère ou dans notre réseau privé. <br className="hidden md:block" /> Confiez-nous la mission de le trouver.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto mb-12 md:mb-16">
-          {/* Formulaire */}
-          <div>
-            <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl text-white">Décrivez votre recherche</CardTitle>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-7xl mx-auto mb-20">
+          {/* Formulaire stylisé */}
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent blur-xl opacity-50 rounded-3xl"></div>
+            <Card className="relative border border-white/20 bg-black/40 backdrop-blur-2xl rounded-3xl overflow-hidden shadow-2xl">
+              <CardHeader className="bg-white/5 border-b border-white/10 p-8">
+                <CardTitle className="text-2xl md:text-3xl text-white flex items-center gap-3">
+                  <Car className="size-6 text-white/70" />
+                  Votre Projet Automobile
+                </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-8">
                 <form className="space-y-6" onSubmit={handleSubmit}>
-                  <div>
-                    <label className="text-white font-semibold block mb-2">Marque & Modèle *</label>
+                  <div className="space-y-2">
+                    <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1">Marque & Modèle *</label>
                     <Input 
-                      placeholder="Ex: Peugeot 3008, BMW Série 3..." 
-                      className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
+                      placeholder="Ex: Audi A3, Tesla Model 3..." 
+                      className="h-14 bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-white/40 focus:bg-white/10 transition-all rounded-xl"
                       name="marqueModele"
                       value={formData.marqueModele}
                       onChange={handleChange}
+                      required
                     />
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-white font-semibold block mb-2">Année min</label>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs">Année minimum</label>
                       <Input 
-                        type="number" 
-                        placeholder="2018" 
-                        className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
-                        name="anneeMin"
-                        value={formData.anneeMin}
-                        onChange={handleChange}
+                        type="number" placeholder="2020" 
+                        className="h-12 bg-white/5 border-white/10 text-white focus:border-white/40 rounded-xl"
+                        name="anneeMin" value={formData.anneeMin} onChange={handleChange}
                       />
                     </div>
-                    <div>
-                      <label className="text-white font-semibold block mb-2">Kilométrage max</label>
+                    <div className="space-y-2">
+                      <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs">KM Maximum</label>
                       <Input 
-                        type="number" 
-                        placeholder="100 000 km" 
-                        className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
-                        name="kilometrageMax"
-                        value={formData.kilometrageMax}
-                        onChange={handleChange}
+                        type="number" placeholder="80 000" 
+                        className="h-12 bg-white/5 border-white/10 text-white focus:border-white/40 rounded-xl"
+                        name="kilometrageMax" value={formData.kilometrageMax} onChange={handleChange}
                       />
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-white font-semibold block mb-2">Budget min</label>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs">Budget Min (€)</label>
                       <Input 
-                        type="number" 
-                        placeholder="10 000 €" 
-                        className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
-                        name="budgetMin"
-                        value={formData.budgetMin}
-                        onChange={handleChange}
+                        type="number" placeholder="15 000" 
+                        className="h-12 bg-white/5 border-white/10 text-white focus:border-white/40 rounded-xl"
+                        name="budgetMin" value={formData.budgetMin} onChange={handleChange}
                       />
                     </div>
-                    <div>
-                      <label className="text-white font-semibold block mb-2">Budget max</label>
+                    <div className="space-y-2">
+                      <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs">Budget Max (€)</label>
                       <Input 
-                        type="number" 
-                        placeholder="25 000 €" 
-                        className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
-                        name="budgetMax"
-                        value={formData.budgetMax}
-                        onChange={handleChange}
+                        type="number" placeholder="30 000" 
+                        className="h-12 bg-white/5 border-white/10 text-white focus:border-white/40 rounded-xl"
+                        name="budgetMax" value={formData.budgetMax} onChange={handleChange}
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label className="text-white font-semibold block mb-2">Critères spécifiques</label>
+                  <div className="space-y-2">
+                    <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs">Options & Critères</label>
                     <Textarea 
-                      placeholder="Ex: Boîte automatique, GPS, attelage, cuir, diesel..." 
-                      className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 min-h-[100px] backdrop-blur-sm"
-                      name="criteres"
-                      value={formData.criteres}
-                      onChange={handleChange}
+                      placeholder="Toit ouvrant, cuir, attelage, boîte auto..." 
+                      className="bg-white/5 border-white/10 text-white min-h-[120px] focus:border-white/40 rounded-xl resize-none p-4"
+                      name="criteres" value={formData.criteres} onChange={handleChange}
                     />
                   </div>
 
-                  <div className="border-t border-white/10 pt-6">
-                    <label className="text-white font-semibold block mb-2">Vos coordonnées</label>
-                    <div className="space-y-4">
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/10 space-y-4">
+                    <h4 className="text-white font-bold mb-4 flex items-center gap-2">
+                      <Sparkles className="size-4" /> Vos Coordonnées
+                    </h4>
+                    <Input 
+                      placeholder="Nom Complet *" 
+                      className="bg-transparent border-white/10 text-white focus:border-white/40 rounded-lg"
+                      name="nom" value={formData.nom} onChange={handleChange} required
+                    />
+                    <div className="grid md:grid-cols-2 gap-4">
                       <Input 
-                        placeholder="Nom & Prénom *" 
-                        className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
-                        name="nom"
-                        value={formData.nom}
-                        onChange={handleChange}
+                        type="tel" placeholder="Téléphone *" 
+                        className="bg-transparent border-white/10 text-white focus:border-white/40 rounded-lg"
+                        name="telephone" value={formData.telephone} onChange={handleChange} required
                       />
                       <Input 
-                        type="tel" 
-                        placeholder="Téléphone *" 
-                        className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
-                        name="telephone"
-                        value={formData.telephone}
-                        onChange={handleChange}
-                      />
-                      <Input 
-                        type="email" 
-                        placeholder="Email *" 
-                        className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 backdrop-blur-sm"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
+                        type="email" placeholder="Email *" 
+                        className="bg-transparent border-white/10 text-white focus:border-white/40 rounded-lg"
+                        name="email" value={formData.email} onChange={handleChange} required
                       />
                     </div>
                   </div>
 
-                  <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6 text-lg" disabled={isSubmitting}>
-                    Envoyer ma demande
+                  <Button 
+                    className="w-full bg-white text-black hover:bg-white/90 py-8 text-xl font-black uppercase tracking-tighter rounded-2xl transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 shadow-xl"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Envoi en cours...' : 'Lancer la recherche →'}
                   </Button>
 
                   {submitStatus && (
-                    <p className={`text-sm ${submitStatus.type === 'success' ? 'text-green-500' : 'text-red-500'} text-center`}>
+                    <div className={`p-4 rounded-xl text-center font-bold animate-in fade-in slide-in-from-top-4 ${submitStatus.type === 'success' ? 'bg-green-500/20 text-green-400 border border-green-500/50' : 'bg-red-500/20 text-red-400 border border-red-500/50'}`}>
                       {submitStatus.message}
-                    </p>
+                    </div>
                   )}
-
-                  <p className="text-sm text-gray-400 text-center">
-                    * Champs obligatoires - Nous vous recontactons sous 24h
-                  </p>
                 </form>
               </CardContent>
             </Card>
           </div>
 
-          {/* Comment ça marche */}
-          <div className="space-y-8">
+          {/* Steps Section */}
+          <div className="space-y-12">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-6">Comment ça marche ?</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-10 tracking-tight">Le processus <br/><span className="text-white/40 italic font-serif">M3 Automobile</span></h2>
               
               <div className="space-y-6">
                 <div className="flex gap-4">
@@ -283,60 +261,43 @@ export default function RecherchePersonnalisee() {
               </div>
             </div>
 
-            {/* Avantages */}
-            <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
+            {/* Pourquoi nous faire confiance ? */}
+            <Card className="border border-white/20 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl rounded-3xl p-4 overflow-hidden">
               <CardHeader>
-                <CardTitle className="text-2xl text-white">Nos avantages</CardTitle>
+                <CardTitle className="text-2xl text-white flex items-center gap-2">
+                  <Badge className="bg-white text-black">TOP SERVICE</Badge> Pourquoi nous ?
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-gray-300">
-                    <CheckCircle2 className="size-5 text-white mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-white">Gain de temps</strong> : Nous faisons les recherches à votre place</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-300">
-                    <CheckCircle2 className="size-5 text-white mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-white">Accès au réseau pro</strong> : Véhicules non accessibles au grand public</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-300">
-                    <CheckCircle2 className="size-5 text-white mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-white">Expertise</strong> : Vérification complète avant achat</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-300">
-                    <CheckCircle2 className="size-5 text-white mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-white">Garantie incluse</strong> : 6 mois sur tous nos véhicules</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-gray-300">
-                    <CheckCircle2 className="size-5 text-white mt-0.5 flex-shrink-0" />
-                    <span><strong className="text-white">Service clé en main</strong> : De la recherche à la livraison</span>
-                  </li>
-                </ul>
+              <CardContent className="space-y-4">
+                {[
+                  "Gain de temps : Zéro visite inutile",
+                  "Acceès au réseau pro : Véhicules non accessibles au grand public",
+                  "Expertise technique : Pas de mauvaises surprises",
+                  "Négociation : Nous obtenons le meilleur prix",
+                  "Tranquillité : Garantie 6 mois avec extension possible sur organe et durée"
+                ].map((benefit, i) => (
+                  <div key={i} className="flex items-center gap-3 text-gray-200">
+                    <CheckCircle2 className="size-5 text-white flex-shrink-0" />
+                    <span className="text-lg font-medium">{benefit}</span>
+                  </div>
+                ))}
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Contact direct */}
-        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-12 border border-white/10 max-w-4xl mx-auto text-center">
-          <Clock className="size-12 text-white mx-auto mb-4" />
-          <h3 className="text-3xl font-bold text-white mb-4">Besoin d'un conseil immédiat ?</h3>
-          <p className="text-xl text-gray-300 mb-8">
-            Appelez-nous directement pour discuter de votre projet
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <a href="tel:0783269802">
-              <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-6 text-lg">
-                <Phone className="size-5 mr-2" />
-                07 83 26 98 02
-              </Button>
-            </a>
-            <a href="mailto:m3.automobil@gmail.com">
-              <Button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold px-8 py-6 text-lg border border-white/20">
-                <Mail className="size-5 mr-2" />
-                m3.automobil@gmail.com
-              </Button>
-            </a>
-          </div>
+        {/* Contact direct - FOOTER CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+           <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 flex flex-col items-center text-center group hover:bg-white/10 transition-all">
+              <Phone className="size-8 text-white mb-4 group-hover:scale-110 transition-transform" />
+              <h4 className="text-white font-bold mb-2">Discutons de vive voix</h4>
+              <a href="tel:0783269802" className="text-2xl font-black text-white hover:underline uppercase tracking-tighter">07 83 26 98 02</a>
+           </div>
+           <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 flex flex-col items-center text-center group hover:bg-white/10 transition-all">
+              <Mail className="size-8 text-white mb-4 group-hover:scale-110 transition-transform" />
+              <h4 className="text-white font-bold mb-2">Par Email</h4>
+              <a href="mailto:m3.automobil@gmail.com" className="text-lg font-medium text-white/70 hover:text-white break-all">m3.automobil@gmail.com</a>
+           </div>
         </div>
       </div>
     </div>
