@@ -190,10 +190,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        <p className="text-sm md:text-base text-gray-400 mt-12 flex items-center justify-center">
-          <MapPin className="size-4 mr-2" /> L'Isle-Adam (95290)
-        </p>
-
       </div>
     </div>
   );
