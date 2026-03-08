@@ -1,4 +1,4 @@
-import { Shield, CheckCircle2, MapPin, Gauge, Wrench, Clock, FileText, Phone } from 'lucide-react';
+import { Shield, CheckCircle2, MapPin, Gauge, Wrench, Clock, FileText, Phone, Sparkles, ArrowRight, Mail } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -10,298 +10,228 @@ export default function GarantiesPage() {
     <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
       
-      {/* Contenu de la page */}
-      <div className="relative z-10 container mx-auto px-4 py-10 md:py-16">
-        {/* Hero avec image de fond */}
-        <div className="relative mb-12 md:mb-20 rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/5">
-          {/* Image de fond */}
-          <div className="absolute inset-0 z-0">
-            <ImageWithFallback 
-              src="https://images.unsplash.com/photo-1768929571671-4e58e2d9e72f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBlbmdpbmUlMjBtZWNoYW5pY2FsJTIwcGFydHN8ZW58MXx8fHwxNzcyNTcwMDc4fDA&ixlib=rb-4.1.0&q=80&w=1080"
-              alt="Moteur de voiture"
-              className="w-full h-full object-cover"
-            />
-            {/* Overlay gradient noir pour garder le design sobre */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90"></div>
+      <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">
+        
+        {/* Header Section */}
+        <div className="text-center mb-16 md:mb-24">
+          <div className="inline-flex items-center justify-center p-3 mb-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl">
+            <Shield className="size-8 md:size-12 text-white" />
           </div>
-          
-          {/* Contenu Hero */}
-          <div className="relative z-10 text-center py-16 md:py-24 px-4 md:px-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-full size-16 md:size-20 flex items-center justify-center mb-4 md:mb-6 mx-auto border border-white/30 shadow-2xl">
-              <Shield className="size-8 md:size-10 text-white" />
-            </div>
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">Nos Garanties Mécaniques</h1>
-            <p className="text-sm md:text-base lg:text-xl text-gray-300 max-w-3xl mx-auto">
-              Roulez l'esprit libre grâce à nos garanties complètes sur tous nos véhicules
-            </p>
-          </div>
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
+            Garantie <span className="text-white/70 italic font-light font-serif">Sérénité</span>
+          </h1>
+          <p className="text-base md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Roulez l'esprit libre. Tous nos véhicules incluent une protection mécanique rigoureuse pour une sécurité totale.
+          </p>
         </div>
 
-        {/* Packs de garantie */}
-        <section className="mb-12 md:mb-20">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-3">Garantie Mécanique Incluse</h2>
-            <p className="text-base md:text-lg text-gray-400">6 mois de couverture offerte sur tous nos véhicules</p>
-          </div>
-
-          {/* Garantie Incluse - Mise en avant */}
-          <div className="max-w-4xl mx-auto mb-12 md:mb-16">
-            <Card className="border border-white/10 relative overflow-hidden bg-gradient-to-br from-gray-900 to-black shadow-2xl shadow-black/50">
-              <div className="absolute top-3 md:top-4 right-3 md:right-4">
-                <Badge className="bg-white text-gray-900 shadow-lg text-sm md:text-base px-3 md:px-4 py-1.5 md:py-2 font-bold">✓ INCLUS</Badge>
+        {/* Garantie Incluse - Pack Principal */}
+        <section className="max-w-6xl mx-auto mb-16 md:mb-20">
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-white/20 to-transparent blur-xl opacity-30 rounded-3xl"></div>
+            <Card className="relative border border-white/20 bg-black/40 backdrop-blur-2xl rounded-3xl overflow-hidden shadow-2xl">
+              <div className="absolute top-6 right-6 z-20">
+                <Badge className="bg-white text-black text-sm md:text-lg px-4 py-2 font-black uppercase tracking-tighter shadow-xl">
+                  ✓ Inclus de série
+                </Badge>
               </div>
-              <CardHeader className="bg-white/5 pb-6 md:pb-8 border-b border-white/10">
-                <CardTitle className="text-xl md:text-2xl lg:text-3xl text-white flex items-center gap-2 md:gap-3">
-                  <Shield className="size-6 md:size-8 text-white" />
-                  Garantie Sérénité 6 Mois
-                </CardTitle>
-                <CardDescription className="text-gray-400 text-sm md:text-base lg:text-lg mt-2">
-                  Protection complète des organes mécaniques essentiels - Offerte sur tous les véhicules achetés depuis notre stock ou via notre service de recherche personnalisée
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-8">
-                <div className="space-y-6">
-                  <div className="grid md:grid-cols-3 gap-6 mb-6">
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/10 text-center hover:bg-white/10 transition-colors">
-                      <Clock className="size-8 text-white mx-auto mb-2" />
-                      <p className="font-bold text-white text-xl">6 mois</p>
-                      <p className="text-sm text-gray-400">Dès la livraison</p>
+              
+              <div className="grid lg:grid-cols-2">
+                <div className="relative h-64 lg:h-auto">
+                  <ImageWithFallback 
+                    src="https://images.unsplash.com/photo-1768929571671-4e58e2d9e72f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBlbmdpbmUlMjBtZWNoYW5pY2FsJTIwcGFydHN8ZW58MXx8fHwxNzcyNTcwMDc4fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="Moteur de voiture"
+                    className="w-full h-full object-cover opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent lg:bg-gradient-to-l"></div>
+                </div>
+
+                <div className="p-8 md:p-12 flex flex-col justify-center">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 flex items-center gap-3 text-white uppercase tracking-tighter">
+                    Pack Sécurité 6 Mois
+                  </h2>
+                  <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                    Cette garantie couvre les organes mécaniques majeurs. Elle est automatiquement activée le jour de la livraison de votre véhicule.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 text-white">
+                    <div className="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
+                      <Clock className="size-6 text-white/50 mx-auto mb-2" />
+                      <p className="font-bold">6 Mois</p>
                     </div>
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/10 text-center hover:bg-white/10 transition-colors">
-                      <Gauge className="size-8 text-white mx-auto mb-2" />
-                      <p className="font-bold text-white text-xl">Illimité</p>
-                      <p className="text-sm text-gray-400">Kilométrage</p>
+                    <div className="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
+                      <Gauge className="size-6 text-white/50 mx-auto mb-2" />
+                      <p className="font-bold">Illimité</p>
                     </div>
-                    <div className="bg-white/5 rounded-lg p-4 border border-white/10 text-center hover:bg-white/10 transition-colors">
-                      <MapPin className="size-8 text-white mx-auto mb-2" />
-                      <p className="font-bold text-white text-xl">Toute la France</p>
-                      <p className="text-sm text-gray-400">Réparation partout</p>
+                    <div className="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
+                      <MapPin className="size-6 text-white/50 mx-auto mb-2" />
+                      <p className="font-bold">France</p>
                     </div>
                   </div>
 
-                  <div className="border-t border-white/10 pt-6">
-                    <h4 className="font-bold text-white text-xl mb-4 flex items-center gap-2">
-                      <CheckCircle2 className="size-6 text-white" />
-                      Organes Couverts par la Garantie Incluse
-                    </h4>
-                    <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-4">
+                    <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-4">Organes prioritaires :</h4>
+                    <div className="grid gap-3">
                       {[
-                        'Moteur : Bloc moteur, distribution, moteur électrique hybride',
-                        'Boîte de vitesses : Manuelle et automatique',
-                        'Boîte de transfert (si véhicule 4x4)',
-                        'Ponts et pont réducteur',
-                        'Circuit de suralimentation : Turbo, vanne EGR'
-                      ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-2 text-gray-300 bg-white/5 rounded-lg p-3 border border-white/5">
-                          <CheckCircle2 className="size-5 text-white mt-0.5 flex-shrink-0" />
-                          <span className="font-medium">{item}</span>
-                        </li>
+                        'Moteur (Bloc, distribution, turbo)',
+                        'Boîte de vitesses (Manuelle & Auto)',
+                        'Ponts et transmission',
+                        'Moteur électrique (Hybride)'
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-3 text-gray-300 bg-white/5 p-3 rounded-xl border border-white/5">
+                          <CheckCircle2 className="size-5 text-white" />
+                          <span className="font-medium text-sm md:text-base">{item}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
-
-                  <div className="bg-gradient-to-r from-white/10 to-transparent border-l-4 border-white rounded-r-lg p-6 mt-6">
-                    <p className="text-white text-lg font-bold mb-2">💡 Valable partout en France</p>
-                    <p className="text-gray-300">
-                      Pas besoin de revenir chez nous en cas de panne ! Faites réparer votre véhicule chez n'importe quel garagiste en France. Zéro avance de frais après validation de la prise en charge.
-                    </p>
-                  </div>
                 </div>
-              </CardContent>
+              </div>
             </Card>
           </div>
+        </section>
 
-          {/* Extensions Possibles */}
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Envie de plus de protection ?</h3>
-              <p className="text-gray-400">Étendez votre couverture avec nos options supplémentaires</p>
+        {/* NOUVELLE SECTION : VALABLE PARTOUT EN FRANCE */}
+        <section className="max-w-6xl mx-auto mb-20 md:mb-32">
+          <div className="relative group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 md:p-12 shadow-2xl">
+            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+               <MapPin className="size-48 text-white" />
             </div>
-
-            <div className="bg-white/5 rounded-xl p-8 border border-white/10 mb-8 backdrop-blur-sm">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-white/10 rounded-full size-12 flex items-center justify-center border border-white/20">
-                  <Clock className="size-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold text-white">Extension de Durée</h4>
-                  <p className="text-gray-400">Prolongez votre garantie jusqu'à 12 ou 24 mois</p>
-                </div>
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+              <div className="bg-white text-black p-6 rounded-2xl shadow-2xl flex-shrink-0 animate-bounce">
+                <MapPin className="size-10 md:size-14" />
               </div>
-              <p className="text-gray-300 text-lg mb-4">
-                Avec l'extension de durée, bénéficiez de <strong className="text-white">6 mois supplémentaires</strong> de garantie sur les mêmes organes mécaniques essentiels, soit une couverture totale d'<strong className="text-white">1 ou 2 ans</strong>.
-              </p>
-              <div className="bg-white/10 rounded-lg p-4 inline-block border border-white/5">
-                <p className="text-white font-semibold">Extension disponible sur demande</p>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <h4 className="text-xl font-bold text-white text-center mb-6">Options d'Extension de Couverture</h4>
-              
-              {/* Extension Option 1 avec image */}
-              <Card className="border border-white/10 bg-gray-900/50 hover:bg-gray-900 hover:border-white/20 transition-all overflow-hidden group">
-                <div className="md:flex">
-                  {/* Image à gauche */}
-                  <div className="md:w-1/3 relative h-48 md:h-auto overflow-hidden">
-                    <ImageWithFallback 
-                      src="https://images.unsplash.com/photo-1555140713-973b9f36cd1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXIlMjBtZWNoYW5pYyUyMHdhcnJhbnR5JTIwcHJvdGVjdGlvbnxlbnwxfHx8fDE3NzI1NzAwNzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                      alt="Circuit électrique"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-900/90"></div>
-                  </div>
-                  
-                  {/* Contenu à droite */}
-                  <div className="md:w-2/3">
-                    <CardHeader className="bg-white/5 border-b border-white/10 pb-4">
-                      <CardTitle className="text-lg text-white flex items-center gap-2">
-                        <span className="bg-white/20 rounded-full size-8 flex items-center justify-center text-sm font-bold border border-white/10">+</span>
-                        Option 1 : Circuit Électrique & Alimentation Moteur
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="pt-6">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <p className="font-semibold text-white mb-3 text-sm uppercase tracking-wide opacity-70">Circuit électrique moteur :</p>
-                          <ul className="space-y-2">
-                            {['Alternateur', 'Démarreur', 'Électronique moteur'].map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-gray-300">
-                                <CheckCircle2 className="size-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-white mb-3 text-sm uppercase tracking-wide opacity-70">Circuit d'alimentation moteur :</p>
-                          <ul className="space-y-2">
-                            {['Pompe à injection', 'Pompe d\'alimentation', 'Injecteurs', 'Calculateurs'].map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-gray-300">
-                                <CheckCircle2 className="size-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Extension Option 2 avec image */}
-              <Card className="border border-white/10 bg-gray-900/50 hover:bg-gray-900 hover:border-white/20 transition-all overflow-hidden group">
-                <div className="md:flex md:flex-row-reverse">
-                  {/* Image à droite */}
-                  <div className="md:w-1/3 relative h-48 md:h-auto overflow-hidden">
-                    <ImageWithFallback 
-                      src="https://images.unsplash.com/photo-1770656505713-b0fd2f5751e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtZWNoYW5pYyUyMHdvcmtpbmd8ZW58MXx8fHwxNzcyNTU3MTAwfDA&ixlib=rb-4.1.0&q=80&w=1080"
-                      alt="Mécanicien professionnel"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-gray-900/90"></div>
-                  </div>
-                  
-                  {/* Contenu à gauche */}
-                  <div className="md:w-2/3">
-                    <CardHeader className="bg-white/5 border-b border-white/10 pb-4">
-                      <CardTitle className="text-lg text-white flex items-center gap-2">
-                        <span className="bg-white/20 rounded-full size-8 flex items-center justify-center text-sm font-bold border border-white/10">++</span>
-                        Option 2 : Embrayage, Variateur & Refroidissement
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="pt-6">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <p className="font-semibold text-white mb-3 text-sm uppercase tracking-wide opacity-70">Embrayage & Transmission :</p>
-                          <ul className="space-y-2">
-                            {['Embrayage complet', 'Variateur (CVT)', 'Compresseurs'].map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-gray-300">
-                                <CheckCircle2 className="size-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="font-semibold text-white mb-3 text-sm uppercase tracking-wide opacity-70">Circuit de refroidissement :</p>
-                          <ul className="space-y-2">
-                            {['Pompe à eau', 'Radiateurs', 'Motoventilateurs', 'Calorstat (thermostat)'].map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-gray-300">
-                                <CheckCircle2 className="size-4 text-gray-500 mt-0.5 flex-shrink-0" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </div>
-                </div>
-              </Card>
-            </div>
-
-            <div className="mt-10 bg-gradient-to-br from-gray-900 to-black rounded-xl p-8 border border-white/10 text-center shadow-2xl">
-              <h4 className="text-2xl font-bold text-white mb-3">Garantie Sur Mesure</h4>
-              <p className="text-gray-300 text-lg mb-4">
-                <strong className="text-white">Composez votre garantie idéale !</strong> Dites-nous ce que vous souhaitez :
-              </p>
-              
-              <div className="grid md:grid-cols-2 gap-4 mb-6 text-left">
-                <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                  <p className="text-white font-semibold mb-2">✓ Choisissez votre durée :</p>
-                  <ul className="text-gray-400 space-y-1 text-sm">
-                    <li>• Rester sur 6 mois inclus</li>
-                    <li>• Passer à 12 mois de couverture</li>
-                  </ul>
-                </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl md:text-4xl font-black text-white mb-4 uppercase tracking-tighter italic">
+                  Valable partout en France
+                </h3>
+                <p className="text-lg md:text-2xl text-gray-300 leading-relaxed font-light">
+                  Pas besoin de revenir chez nous en cas de panne ! 
+                  <span className="text-white font-bold"> Faites réparer votre véhicule chez n'importe quel garagiste en France.</span> 
                 
-                <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                  <p className="text-white font-semibold mb-2">✓ Choisissez votre couverture :</p>
-                  <ul className="text-gray-400 space-y-1 text-sm">
-                    <li>• Garder les organes essentiels uniquement</li>
-                    <li>• Ajouter une ou plusieurs extensions</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="bg-white/5 rounded-lg p-4 mb-6 border border-white/5">
-                <p className="text-gray-300 text-base">
-                  <strong className="text-white">Exemples :</strong> 12 mois avec organes de base seulement • 6 mois + Option Circuit Électrique • 12 mois + toutes les options • ou toute autre combinaison !
                 </p>
               </div>
-
-              <div className="bg-gradient-to-r from-white/10 to-transparent border-l-4 border-white rounded-r-lg p-5 mb-6 text-left">
-                <p className="text-white font-bold mb-2">📧 Demande de devis par email uniquement</p>
-                <p className="text-gray-300 text-sm">
-                  Indiquez-nous l'<strong className="text-white">immatriculation de votre véhicule</strong>, la durée et les options souhaitées. Nous vous rappelons rapidement avec votre devis personnalisé.
-                </p>
-              </div>
-
-              <a href="mailto:m3.automobil@gmail.com?subject=Demande de devis garantie sur mesure&body=Bonjour,%0D%0A%0D%0AJe souhaite obtenir un devis pour une garantie sur mesure.%0D%0A%0D%0AImmatriculation du véhicule : %0D%0ADurée souhaitée : %0D%0AOptions souhaitées : %0D%0A%0D%0AMerci de me recontacter.%0D%0A%0D%0ACordialement">
-                <Button className="bg-white hover:bg-gray-200 text-gray-950 font-bold px-8 py-6 text-lg w-full md:w-auto shadow-lg hover:shadow-white/20 transition-all">
-                  <FileText className="size-5 mr-2" />
-                  Demander un devis par email
-                </Button>
-              </a>
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-12 border border-white/10 max-w-4xl mx-auto text-center shadow-xl">
-          <h3 className="text-3xl font-bold text-white mb-4">Des questions sur nos garanties ?</h3>
-          <p className="text-xl text-gray-300 mb-8">
-            Notre équipe est à votre disposition pour vous conseiller
-          </p>
-          <a href="tel:0783269802">
-            <Button className="bg-white hover:bg-gray-200 text-gray-950 font-bold px-8 py-6 text-lg shadow-lg hover:shadow-white/20 transition-all">
-              <Phone className="size-5 mr-2" />
-              Appelez-nous : 07 83 26 98 02
-            </Button>
-          </a>
+        {/* Extensions d'options */}
+        <section className="max-w-6xl mx-auto mb-20 md:mb-32">
+          <div className="text-center mb-16 text-white">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Plus de <span className="text-white/40 italic font-serif">Protection ?</span></h2>
+            <p className="text-gray-400 text-lg">Choisissez des options spécifiques selon vos besoins et votre usage.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Option 1 */}
+            <Card className="group border border-white/10 bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden hover:border-white/30 transition-all">
+               <div className="h-48 overflow-hidden">
+                <ImageWithFallback 
+                  src="https://images.unsplash.com/photo-1555140713-973b9f36cd1e"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-50"
+                  alt="Électronique"
+                />
+               </div>
+               <div className="p-8">
+                 <div className="flex items-center gap-3 mb-6">
+                   <div className="bg-white/10 p-3 rounded-xl text-white">
+                      <Sparkles className="size-6" />
+                   </div>
+                   <h3 className="text-xl font-bold text-white uppercase tracking-tighter">Circuit Électrique</h3>
+                 </div>
+                 <ul className="space-y-3 mb-8">
+                   {['Alternateur & Démarreur', 'Calculateurs électronique', 'Faisceaux moteur', 'Injecteurs & Pompes'].map((item, i) => (
+                     <li key={i} className="flex items-center gap-3 text-gray-400 text-sm">
+                       <CheckCircle2 className="size-4 text-white/50" />
+                       {item}
+                     </li>
+                   ))}
+                 </ul>
+                 <Badge className="bg-white/10 text-white border-white/20">Option disponible</Badge>
+               </div>
+            </Card>
+
+            {/* Option 2 */}
+            <Card className="group border border-white/10 bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden hover:border-white/30 transition-all">
+               <div className="h-48 overflow-hidden">
+                <ImageWithFallback 
+                  src="https://images.unsplash.com/photo-1770656505713-b0fd2f5751e6"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-50"
+                  alt="Mécanique"
+                />
+               </div>
+               <div className="p-8">
+                 <div className="flex items-center gap-3 mb-6">
+                   <div className="bg-white/10 p-3 rounded-xl text-white">
+                      <Wrench className="size-6" />
+                   </div>
+                   <h3 className="text-xl font-bold text-white uppercase tracking-tighter">Confort & Refroidissement</h3>
+                 </div>
+                 <ul className="space-y-3 mb-8">
+                   {['Embrayage complet', 'Variateur (CVT)', 'Pompe à eau & Radiateur', 'Compresseur de Clim'].map((item, i) => (
+                     <li key={i} className="flex items-center gap-3 text-gray-400 text-sm">
+                       <CheckCircle2 className="size-4 text-white/50" />
+                       {item}
+                     </li>
+                   ))}
+                 </ul>
+                 <Badge className="bg-white/10 text-white border-white/20">Option disponible</Badge>
+               </div>
+            </Card>
+          </div>
+        </section>
+
+        {/* Devis Section */}
+        <section className="max-w-4xl mx-auto mb-20">
+          <Card className="border border-white/20 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl rounded-3xl p-8 md:p-12 text-center shadow-2xl">
+            <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-tighter italic">Extension de Durée</h3>
+            <p className="text-gray-400 text-base md:text-xl mb-10 leading-relaxed">
+              Vous souhaitez passer à <strong className="text-white">12 ou 24 mois</strong> de tranquillité ? <br/> Nous composons ensemble votre pack sur mesure.
+            </p>
+            
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left mb-10">
+               <p className="text-white font-bold mb-4 flex items-center gap-2">
+                 <FileText className="size-5" /> Informations requises pour le devis :
+               </p>
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-400">
+                  <div className="flex items-center gap-2">
+                    <ArrowRight className="size-4 text-white" /> Immatriculation du véhicule
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <ArrowRight className="size-4 text-white" /> Kilométrage actuel
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <ArrowRight className="size-4 text-white" /> Durée souhaitée (12/24 mois)
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <ArrowRight className="size-4 text-white" /> Options choisies
+                  </div>
+               </div>
+            </div>
+
+            <a href="mailto:m3.automobil@gmail.com?subject=Demande de devis extension garantie">
+              <Button className="w-full md:w-auto bg-white text-black hover:bg-white/90 py-8 px-12 text-xl font-black uppercase tracking-tighter rounded-2xl transition-all shadow-xl">
+                Demander mon devis par email
+              </Button>
+            </a>
+          </Card>
+        </section>
+
+        {/* Footer Contact */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-20">
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 flex flex-col items-center text-center group hover:bg-white/10 transition-all">
+            <Phone className="size-8 text-white mb-4 group-hover:scale-110 transition-transform" />
+            <h4 className="text-white font-bold mb-2 uppercase tracking-widest text-xs opacity-100">Discutons de vive voix</h4>
+            <a href="tel:0783269802" className="text-2xl font-black text-white hover:underline uppercase tracking-tighter">07 83 26 98 02</a>
+          </div>
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 flex flex-col items-center text-center group hover:bg-white/10 transition-all">
+            <Mail className="size-8 text-white mb-4 group-hover:scale-110 transition-transform" />
+            <h4 className="text-white font-bold mb-2 uppercase tracking-widest text-xs opacity-100">Par Email</h4>
+            <a href="mailto:m3.automobil@gmail.com" className="text-lg font-medium text-white/70 hover:text-white break-all text-white">m3.automobil@gmail.com</a>
+          </div>
         </div>
+
       </div>
     </div>
   );
