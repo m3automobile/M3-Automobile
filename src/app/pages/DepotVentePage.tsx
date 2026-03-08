@@ -191,10 +191,6 @@ export default function DepotVentePage() {
           </div>
         </div>
 
-        <p className="text-sm md:text-base text-gray-500 mt-12 flex items-center justify-center">
-          <MapPin className="size-4 mr-2 text-white" /> L'Isle-Adam (95290)
-        </p>
-
       </div>
     </div>
   );
