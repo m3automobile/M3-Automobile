@@ -28,7 +28,7 @@ export default function HomePage() {
           <div className="flex gap-3 md:gap-6 flex-wrap justify-center px-4">
             <Badge className="bg-white/90 text-gray-900 px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-lg font-semibold border-none hover:bg-white transition-colors">
               <Shield className="size-4 md:size-6 mr-2" />
-              <span className="whitespace-nowrap">Garantie 6 mois</span>
+              <span className="whitespace-nowrap">Garantie 3 mois (extension possible)</span>
             </Badge>
             <Badge className="bg-white/90 text-gray-900 px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg font-semibold border-none hover:bg-white transition-colors">
               <Search className="size-4 md:size-6 mr-2" />
@@ -70,7 +70,7 @@ export default function HomePage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="size-5 text-white/70 mt-0.5 flex-shrink-0" />
-                      <span>Garantie mécanique 6 mois incluse</span>
+                      <span>Garantie mécanique 3 mois incluse</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="size-5 text-white/70 mt-0.5 flex-shrink-0" />

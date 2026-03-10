@@ -17,7 +17,7 @@ export default function VehiculesPage() {
         <div className="text-center mb-12 md:mb-20">
           <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 tracking-tight">Nos Véhicules</h1>
           <p className="text-base md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto px-4 leading-relaxed">
-            Découvrez notre sélection de véhicules d'occasion rigoureusement contrôlés et garantis 6 mois minimum.
+            Découvrez notre sélection de véhicules d'occasion rigoureusement contrôlés et garantis 3 mois minimum.
           </p>
         </div>
 
@@ -28,7 +28,7 @@ export default function VehiculesPage() {
               <Shield className="size-12 md:size-16 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">Garantie 6 mois incluse</h2>
+              <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">Garantie 3 mois incluse</h2>
               <p className="text-lg md:text-xl text-gray-400">Une tranquillité d'esprit totale sur tous nos modèles.</p>
             </div>
           </div>

@@ -40,7 +40,7 @@ export default function DepotVentePage() {
                       Notre Garantie : Votre Atout Majeur
                     </h2>
                     <p className="text-lg md:text-2xl text-gray-300 leading-relaxed">
-                      <strong className="text-white">Nous incluons une garantie mécanique de 6 mois</strong> lors de la transaction. L'acheteur est rassuré, vous vendez plus vite et au meilleur prix.
+                      <strong className="text-white">Nous incluons une garantie mécanique de 3 mois</strong> lors de la transaction. L'acheteur est rassuré, vous vendez plus vite et au meilleur prix.
                     </p>
                   </div>
                 </div>

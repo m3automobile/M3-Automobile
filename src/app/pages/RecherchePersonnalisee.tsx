@@ -274,7 +274,7 @@ export default function RecherchePersonnalisee() {
                   "Accès au réseau pro : Véhicules non accessibles au grand public",
                   "Expertise technique : Pas de mauvaises surprises",
                   "Négociation : Nous obtenons le meilleur prix",
-                  "Tranquillité : Garantie 6 mois avec extension possible sur organe et durée"
+                  "Tranquillité : Garantie 3 mois avec extension possible sur organe et durée"
                 ].map((benefit, i) => (
                   <div key={i} className="flex items-center gap-3 text-gray-200">
                     <CheckCircle2 className="size-5 text-white flex-shrink-0" />

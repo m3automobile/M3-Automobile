@@ -48,7 +48,7 @@ export default function GarantiesPage() {
 
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 flex items-center gap-3 text-white uppercase tracking-tighter">
-                    Pack Sécurité 6 Mois
+                    Pack Sécurité 3 Mois
                   </h2>
                   <p className="text-gray-300 text-lg mb-8 leading-relaxed">
                     Cette garantie couvre les organes mécaniques majeurs. Elle est automatiquement activée le jour de la livraison de votre véhicule.
@@ -57,7 +57,7 @@ export default function GarantiesPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 text-white">
                     <div className="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
                       <Clock className="size-6 text-white/50 mx-auto mb-2" />
-                      <p className="font-bold">6 Mois</p>
+                      <p className="font-bold">3 Mois</p>
                     </div>
                     <div className="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
                       <Gauge className="size-6 text-white/50 mx-auto mb-2" />
