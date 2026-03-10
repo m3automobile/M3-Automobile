@@ -187,7 +187,7 @@ export default function GarantiesPage() {
           <Card className="border border-white/20 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl rounded-3xl p-8 md:p-12 text-center shadow-2xl">
             <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-tighter italic">Extension de Durée</h3>
             <p className="text-gray-400 text-base md:text-xl mb-10 leading-relaxed">
-              Vous souhaitez passer à <strong className="text-white">12 ou 24 mois</strong> de tranquillité ? <br/> Nous composons ensemble votre pack sur mesure.
+              Vous souhaitez passer à <strong className="text-white">6, 12 ou 24 mois</strong> de tranquillité ? <br/> Nous composons ensemble votre pack sur mesure.
             </p>
             
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left mb-10">
@@ -202,7 +202,7 @@ export default function GarantiesPage() {
                     <ArrowRight className="size-4 text-white" /> Kilométrage actuel
                   </div>
                   <div className="flex items-center gap-2">
-                    <ArrowRight className="size-4 text-white" /> Durée souhaitée (12/24 mois)
+                    <ArrowRight className="size-4 text-white" /> Durée souhaitée (6,12 ou 24 mois)
                   </div>
                   <div className="flex items-center gap-2">
                     <ArrowRight className="size-4 text-white" /> Options choisies
