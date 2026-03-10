@@ -12,7 +12,7 @@ export default function MentionsLegales() {
           <div className="inline-flex items-center justify-center p-3 mb-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl">
             <Shield className="size-8 md:size-12 text-white" />
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight uppercase">
+          <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight uppercase text-white">
             Mentions <span className="text-white/70 italic font-light font-serif">Légales</span>
           </h1>
           <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
@@ -27,7 +27,7 @@ export default function MentionsLegales() {
               <div className="bg-white/10 p-3 rounded-xl">
                 <Landmark className="size-6 text-white" />
               </div>
-              <h2 className="text-2xl font-bold uppercase tracking-tighter">Éditeur du site</h2>
+              <h2 className="text-2xl font-bold uppercase tracking-tighter text-white">Éditeur du site</h2>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8 text-gray-300">
@@ -41,7 +41,7 @@ export default function MentionsLegales() {
                   <p>SASU (Société par actions simplifiée à associé unique)</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 uppercase font-white mb-1">Siège Social</p>
+                  <p className="text-sm text-gray-500 uppercase font-black mb-1">Siège Social</p>
                   <p>L'Isle-Adam (95290)</p>
                   <p className="text-xs italic text-gray-500">(3 rue de l'abbé breuil, L'isle Adam 95290)</p>
                 </div>
@@ -71,15 +71,15 @@ export default function MentionsLegales() {
                 <div className="bg-white/10 p-3 rounded-xl">
                   <Phone className="size-6 text-white" />
                 </div>
-                <h2 className="text-xl font-bold uppercase tracking-tighter">Nous contacter</h2>
+                <h2 className="text-xl font-bold uppercase tracking-tighter text-white">Nous contacter</h2>
               </div>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-center gap-3">
-                  <Phone className="size-4 opacity-50" />
+                  <Phone className="size-4 opacity-50 text-white" />
                   <span>07 83 26 98 02</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Mail className="size-4 opacity-50" />
+                  <Mail className="size-4 opacity-50 text-white" />
                   <span className="break-all">m3.automobil@gmail.com</span>
                 </li>
               </ul>
@@ -90,7 +90,7 @@ export default function MentionsLegales() {
                 <div className="bg-white/10 p-3 rounded-xl">
                   <Globe className="size-6 text-white" />
                 </div>
-                <h2 className="text-xl font-bold uppercase tracking-tighter">Hébergement</h2>
+                <h2 className="text-xl font-bold uppercase tracking-tighter text-white">Hébergement</h2>
               </div>
               <div className="text-gray-300 space-y-2">
                 <p className="font-bold text-white uppercase tracking-widest text-sm">Netlify Inc.</p>
@@ -107,7 +107,7 @@ export default function MentionsLegales() {
               <div className="bg-white/10 p-3 rounded-xl">
                 <Info className="size-6 text-white" />
               </div>
-              <h2 className="text-xl font-bold uppercase tracking-tighter">Propriété Intellectuelle</h2>
+              <h2 className="text-xl font-bold uppercase tracking-tighter text-white">Propriété Intellectuelle</h2>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle.
@@ -122,12 +122,12 @@ export default function MentionsLegales() {
               <div className="bg-white/10 p-3 rounded-xl">
                 <FileText className="size-6 text-white" />
               </div>
-              <h2 className="text-xl font-bold uppercase tracking-tighter">Données Personnelles</h2>
+              <h2 className="text-xl font-bold uppercase tracking-tighter text-white">Données Personnelles</h2>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Conformément à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), 
               vous disposez d'un droit d'accès, de rectification et d'opposition aux données personnelles vous concernant. 
-              Pour exercer ce droit, vous pouvez nous contacter par email : <strong>m3.automobil@gmail.com</strong>.
+              Pour exercer ce droit, vous pouvez nous contacter par email : <strong className="text-white">m3.automobil@gmail.com</strong>.
             </p>
           </Card>
         </div>
