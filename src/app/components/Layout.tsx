@@ -158,7 +158,12 @@ export default function Layout() {
 
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
             <p>&copy; 2026 M3 Automobile - SIRET : 100 150 168 00019</p>
-            <p className="text-sm mt-2">Tous droits réservés. Roulez l'esprit libre.</p>
+            <div className="flex flex-wrap justify-center gap-4 mt-2 text-sm">
+              <p>Tous droits réservés. Roulez l'esprit libre.</p>
+              <Link to="/mentions-legales" className="hover:text-white underline underline-offset-4 transition-colors">
+                Mentions Légales
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
