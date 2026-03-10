@@ -43,7 +43,7 @@ export default function MentionsLegales() {
                 <div>
                   <p className="text-sm text-gray-500 uppercase font-black mb-1">Siège Social</p>
                   <p>L'Isle-Adam (95290)</p>
-                  <p className="text-xs italic text-gray-500">(Adresse complète à compléter)</p>
+                  <p className="text-xs italic text-gray-500">(3 rue de l'abbé breuil, L'isle Adam 95290)</p>
                 </div>
               </div>
               
@@ -54,11 +54,11 @@ export default function MentionsLegales() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 uppercase font-black mb-1">Directeur de la publication</p>
-                  <p>M. Jobb [NOM À COMPLÉTER]</p>
+                  <p>M. Jobb Mam III</p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 uppercase font-black mb-1">Capital Social</p>
-                  <p>[MONTANT] €</p>
+                  <p>500 €</p>
                 </div>
               </div>
             </div>
