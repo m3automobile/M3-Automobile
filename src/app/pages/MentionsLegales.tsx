@@ -41,7 +41,7 @@ export default function MentionsLegales() {
                   <p>SASU (Société par actions simplifiée à associé unique)</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 uppercase font-black mb-1">Siège Social</p>
+                  <p className="text-sm text-gray-500 uppercase font-white mb-1">Siège Social</p>
                   <p>L'Isle-Adam (95290)</p>
                   <p className="text-xs italic text-gray-500">(3 rue de l'abbé breuil, L'isle Adam 95290)</p>
                 </div>
