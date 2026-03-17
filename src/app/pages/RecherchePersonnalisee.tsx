@@ -37,6 +37,21 @@ export default function RecherchePersonnalisee() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Validation explicite des champs obligatoires
+    const champsObligatoires = ['marque', 'modele', 'motorisation', 'nom', 'telephone', 'email'];
+    const champsVides = champsObligatoires.filter(champ => !formData[champ as keyof typeof formData]?.trim());
+    
+    if (champsVides.length > 0) {
+      setSubmitStatus({
+        type: 'error',
+        message: `Champs obligatoires manquants : ${champsVides.join(', ')}`
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    console.log('Données envoyées:', formData);
+
     try {
       const response = await fetch(
         `https://${projectId}.supabase.co/functions/v1/make-server-cc861502/recherche-personnalisee`,
