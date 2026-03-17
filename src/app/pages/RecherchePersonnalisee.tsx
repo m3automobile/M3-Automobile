@@ -3,14 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
-import { Badge } from '../components/ui/badge'; // <-- CETTE LIGNE ÉTAIT MANQUANTE
+import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
 import { useState } from 'react';
 import { projectId, publicAnonKey } from '/utils/supabase/info'
 
 export default function RecherchePersonnalisee() {
   const [formData, setFormData] = useState({
-    marqueModele: '',
+    marque: '',
+    modele: '',
+    motorisation: '',
     anneeMin: '',
     kilometrageMax: '',
     budgetMin: '',
@@ -23,7 +25,7 @@ export default function RecherchePersonnalisee() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -56,7 +58,7 @@ export default function RecherchePersonnalisee() {
           message: 'Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h.'
         });
         setFormData({
-          marqueModele: '', anneeMin: '', kilometrageMax: '', budgetMin: '', budgetMax: '',
+          marque: '', modele: '', motorisation: '', anneeMin: '', kilometrageMax: '', budgetMin: '', budgetMax: '',
           criteres: '', nom: '', telephone: '', email: ''
         });
       } else {
@@ -106,16 +108,48 @@ export default function RecherchePersonnalisee() {
               </CardHeader>
               <CardContent className="p-8">
                 <form className="space-y-6" onSubmit={handleSubmit}>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1">Marque(s) *</label>
+                      <Input 
+                        placeholder="Ex: Audi, BMW, Mercedes..." 
+                        className="h-14 bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-white/40 focus:bg-white/10 transition-all rounded-xl"
+                        name="marque"
+                        value={formData.marque}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1">Modèle(s) *</label>
+                      <Input 
+                        placeholder="Ex: A3, Série 3, Classe A..." 
+                        className="h-14 bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-white/40 focus:bg-white/10 transition-all rounded-xl"
+                        name="modele"
+                        value={formData.modele}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
-                    <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1">Marque & Modèle *</label>
-                    <Input 
-                      placeholder="Ex: Audi A3, Tesla Model 3..." 
-                      className="h-14 bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-white/40 focus:bg-white/10 transition-all rounded-xl"
-                      name="marqueModele"
-                      value={formData.marqueModele}
+                    <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1">Motorisation *</label>
+                    <select
+                      name="motorisation"
+                      value={formData.motorisation}
                       onChange={handleChange}
                       required
-                    />
+                      className="w-full h-14 bg-white/5 border border-white/10 text-white rounded-xl px-4 focus:border-white/40 focus:bg-white/10 transition-all outline-none appearance-none cursor-pointer"
+                      style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '20px' }}
+                    >
+                      <option value="" disabled className="bg-black text-gray-400">Sélectionnez une motorisation</option>
+                      <option value="essence" className="bg-black text-white">Essence</option>
+                      <option value="diesel" className="bg-black text-white">Diesel</option>
+                      <option value="hybride" className="bg-black text-white">Hybride</option>
+                      <option value="electrique" className="bg-black text-white">Électrique</option>
+                      <option value="gpl" className="bg-black text-white">GPL</option>
+                    </select>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
