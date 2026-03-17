@@ -37,26 +37,39 @@ export default function RecherchePersonnalisee() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Récupérer les valeurs directement depuis le formulaire pour être sûr
+    // Récupérer les valeurs directement depuis les éléments DOM
     const form = e.currentTarget as HTMLFormElement;
-    const formDataFromDOM = new FormData(form);
     
-    // Construire l'objet de données avec les valeurs actuelles du DOM
-    const dataToSend = {
-      marque: formDataFromDOM.get('marque')?.toString() || formData.marque,
-      modele: formDataFromDOM.get('modele')?.toString() || formData.modele,
-      motorisation: formDataFromDOM.get('motorisation')?.toString() || formData.motorisation,
-      anneeMin: formDataFromDOM.get('anneeMin')?.toString() || formData.anneeMin,
-      kilometrageMax: formDataFromDOM.get('kilometrageMax')?.toString() || formData.kilometrageMax,
-      budgetMin: formDataFromDOM.get('budgetMin')?.toString() || formData.budgetMin,
-      budgetMax: formDataFromDOM.get('budgetMax')?.toString() || formData.budgetMax,
-      criteres: formDataFromDOM.get('criteres')?.toString() || formData.criteres,
-      nom: formDataFromDOM.get('nom')?.toString() || formData.nom,
-      telephone: formDataFromDOM.get('telephone')?.toString() || formData.telephone,
-      email: formDataFromDOM.get('email')?.toString() || formData.email
+    const getValue = (name: string): string => {
+      const el = form.querySelector(`[name="${name}"]`) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+      return el?.value?.trim() || '';
     };
     
-    console.log('Données récupérées du DOM:', dataToSend);
+    const dataToSend = {
+      marque: getValue('marque'),
+      modele: getValue('modele'),
+      motorisation: getValue('motorisation'),
+      anneeMin: getValue('anneeMin'),
+      kilometrageMax: getValue('kilometrageMax'),
+      budgetMin: getValue('budgetMin'),
+      budgetMax: getValue('budgetMax'),
+      criteres: getValue('criteres'),
+      nom: getValue('nom'),
+      telephone: getValue('telephone'),
+      email: getValue('email')
+    };
+    
+    console.log('=== DONNÉES RÉCUPÉRÉES ===');
+    console.log(dataToSend);
+    console.log('=== VÉRIFICATION CHAMPS OBLIGATOIRES ===');
+    console.log({
+      marque: dataToSend.marque ? '✓' : '✗ MANQUANT',
+      modele: dataToSend.modele ? '✓' : '✗ MANQUANT',
+      motorisation: dataToSend.motorisation ? '✓' : '✗ MANQUANT',
+      nom: dataToSend.nom ? '✓' : '✗ MANQUANT',
+      telephone: dataToSend.telephone ? '✓' : '✗ MANQUANT',
+      email: dataToSend.email ? '✓' : '✗ MANQUANT'
+    });
 
     try {
       const response = await fetch(
@@ -68,6 +81,35 @@ export default function RecherchePersonnalisee() {
             'Authorization': `Bearer ${publicAnonKey}`
           },
           body: JSON.stringify(dataToSend)
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h.'
+        });
+        setFormData({
+          marque: '', modele: '', motorisation: '', anneeMin: '', kilometrageMax: '', budgetMin: '', budgetMax: '',
+          criteres: '', nom: '', telephone: '', email: ''
+        });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Une erreur est survenue. Veuillez réessayer.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Impossible d\'envoyer votre demande. Vérifiez votre connexion.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
         }
       );
 
