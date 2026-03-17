@@ -37,19 +37,8 @@ export default function RecherchePersonnalisee() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Validation explicite des champs obligatoires
-    const champsObligatoires = ['marque', 'modele', 'motorisation', 'nom', 'telephone', 'email'];
-    const champsVides = champsObligatoires.filter(champ => !formData[champ as keyof typeof formData]?.trim());
-    
-    if (champsVides.length > 0) {
-      setSubmitStatus({
-        type: 'error',
-        message: `Champs obligatoires manquants : ${champsVides.join(', ')}`
-      });
-      setIsSubmitting(false);
-      return;
-    }
-
+    // Les champs obligatoires sont déjà gérés par l'attribut HTML 'required'
+    // On envoie directement les données au serveur
     console.log('Données envoyées:', formData);
 
     try {
