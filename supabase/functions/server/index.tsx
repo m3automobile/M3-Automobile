@@ -29,10 +29,11 @@ app.post("/make-server-cc861502/recherche-personnalisee", async (c) => {
   try {
     const body = await c.req.json();
     
-    // Validation des champs obligatoires
-    if (!body.nom || !body.telephone || !body.email || !body.marqueModele) {
+    // Validation des champs obligatoires (accepte ancien format marqueModele ou nouveau format marque+modele)
+    const hasMarqueModele = body.marqueModele || (body.marque && body.modele);
+    if (!body.nom || !body.telephone || !body.email || !hasMarqueModele) {
       return c.json(
-        { error: "Tous les champs obligatoires doivent être remplis" },
+        { error: "Tous les champs obligatoires doivent être remplis (nom, téléphone, email, marque et modèle)" },
         400
       );
     }
@@ -49,7 +50,10 @@ app.post("/make-server-cc861502/recherche-personnalisee", async (c) => {
       nom: body.nom,
       telephone: body.telephone,
       email: body.email,
-      marqueModele: body.marqueModele,
+      marqueModele: body.marqueModele || `${body.marque} ${body.modele}`,
+      marque: body.marque || '',
+      modele: body.modele || '',
+      motorisation: body.motorisation || '',
       anneeMin: body.anneeMin,
       kilometrageMax: body.kilometrageMax,
       budgetMin: body.budgetMin,
@@ -70,7 +74,8 @@ app.post("/make-server-cc861502/recherche-personnalisee", async (c) => {
         const emailBody = {
           from: "M3 Automobile <onboarding@resend.dev>",
           to: ["m3.automobil@gmail.com"],
-          subject: `Nouvelle demande de recherche personnalisée - ${body.marqueModele}`,
+          subject: `Nouvelle demande - ${body.marqueModele || body.marque + ' ' + body.modele}`,
+          reply_to: body.email,
           html: `
             <h2>Nouvelle demande de recherche personnalisée</h2>
             <p><strong>Date:</strong> ${new Date().toLocaleString('fr-FR')}</p>
@@ -84,7 +89,10 @@ app.post("/make-server-cc861502/recherche-personnalisee", async (c) => {
             
             <h3>Critères de recherche</h3>
             <ul>
-              <li><strong>Marque & Modèle:</strong> ${body.marqueModele}</li>
+              ${body.marque ? `<li><strong>Marque:</strong> ${body.marque}</li>` : ''}
+              ${body.modele ? `<li><strong>Modèle:</strong> ${body.modele}</li>` : ''}
+              ${body.marqueModele ? `<li><strong>Marque & Modèle:</strong> ${body.marqueModele}</li>` : ''}
+              ${body.motorisation ? `<li><strong>Motorisation:</strong> ${body.motorisation}</li>` : ''}
               ${body.anneeMin ? `<li><strong>Année minimum:</strong> ${body.anneeMin}</li>` : ''}
               ${body.kilometrageMax ? `<li><strong>Kilométrage maximum:</strong> ${body.kilometrageMax} km</li>` : ''}
               ${body.budgetMin ? `<li><strong>Budget minimum:</strong> ${body.budgetMin} €</li>` : ''}
