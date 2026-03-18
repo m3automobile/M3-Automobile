@@ -15,7 +15,6 @@ export default function RecherchePersonnalisee() {
     motorisation: '',
     anneeMin: '',
     kilometrageMax: '',
-    budgetMin: '',
     budgetMax: '',
     criteres: '',
     nom: '',
@@ -39,13 +38,7 @@ export default function RecherchePersonnalisee() {
 
     // Les champs obligatoires sont déjà gérés par l'attribut HTML 'required'
     // On envoie directement les données au serveur
-    
-    // Ajouter marqueModele pour compatibilité serveur
-    const dataToSend = {
-      ...formData,
-      marqueModele: `${formData.marque} ${formData.modele}`.trim()
-    };
-    console.log('Données envoyées:', dataToSend);
+    console.log('Données envoyées:', formData);
 
     try {
       const response = await fetch(
@@ -56,7 +49,7 @@ export default function RecherchePersonnalisee() {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${publicAnonKey}`
           },
-          body: JSON.stringify(dataToSend)
+          body: JSON.stringify(formData)
         }
       );
 
@@ -68,7 +61,7 @@ export default function RecherchePersonnalisee() {
           message: 'Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h.'
         });
         setFormData({
-          marque: '', modele: '', motorisation: '', anneeMin: '', kilometrageMax: '', budgetMin: '', budgetMax: '',
+          marque: '', modele: '', motorisation: '', anneeMin: '', kilometrageMax: '', budgetMax: '',
           criteres: '', nom: '', telephone: '', email: ''
         });
       } else {
@@ -156,9 +149,11 @@ export default function RecherchePersonnalisee() {
                       <option value="" disabled className="bg-black text-gray-400">Sélectionnez une motorisation</option>
                       <option value="essence" className="bg-black text-white">Essence</option>
                       <option value="diesel" className="bg-black text-white">Diesel</option>
+                      <option value="essence-diesel" className="bg-black text-white">Essence ou Diesel</option>
                       <option value="hybride" className="bg-black text-white">Hybride</option>
                       <option value="electrique" className="bg-black text-white">Électrique</option>
                       <option value="gpl" className="bg-black text-white">GPL</option>
+                      <option value="peu-importe" className="bg-black text-white">Peu importe</option>
                     </select>
                   </div>
 
@@ -181,23 +176,13 @@ export default function RecherchePersonnalisee() {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs">Budget Min (€)</label>
-                      <Input 
-                        type="number" placeholder="15 000" 
-                        className="h-12 bg-white/5 border-white/10 text-white focus:border-white/40 rounded-xl"
-                        name="budgetMin" value={formData.budgetMin} onChange={handleChange}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs">Budget Max (€)</label>
-                      <Input 
-                        type="number" placeholder="30 000" 
-                        className="h-12 bg-white/5 border-white/10 text-white focus:border-white/40 rounded-xl"
-                        name="budgetMax" value={formData.budgetMax} onChange={handleChange}
-                      />
-                    </div>
+                  <div className="space-y-2">
+                    <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs">Budget Maximum (€)</label>
+                    <Input 
+                      type="number" placeholder="30 000" 
+                      className="h-12 bg-white/5 border-white/10 text-white focus:border-white/40 rounded-xl"
+                      name="budgetMax" value={formData.budgetMax} onChange={handleChange}
+                    />
                   </div>
 
                   <div className="space-y-2">
