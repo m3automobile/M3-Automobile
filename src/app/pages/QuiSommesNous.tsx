@@ -452,11 +452,11 @@ export default function QuiSommesNous() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact">
               <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-3">
-                Me contacter
+                Nous contacter
               </Button>
             </Link>
             <a href="tel:0783269802">
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-3">
+              <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-3">
                 <Phone className="size-4 mr-2" />
                 07 83 26 98 02
               </Button>
