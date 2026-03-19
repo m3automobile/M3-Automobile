@@ -54,7 +54,7 @@ export default function QuiSommesNous() {
     {
       number: "04",
       title: "La livraison",
-      description: "Véhicule préparé, nettoyé, avec tous les documents. Et surtout, un suivi après-vente digne d'une structure professionnelle."
+      description: "Véhicule préparé, nettoyé, avec tous les documents. Et surtout, un vrai suivi et service après-vente ."
     }
   ];
 
@@ -432,9 +432,7 @@ export default function QuiSommesNous() {
             <img src="/photo-profil.jpg" alt="Jobb" className="w-full h-full object-cover" />
           </div>
           <p className="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-6">
-            "C'était Jobb, créateur et fondateur de M3 Automobile. 
-            Expert automobile et en cybersécurité, je mets aujourd'hui mon expertise 
-            au service de votre projet automobile."
+            "C'était Jobb, créateur et fondateur de M3 Automobile et expert automobile et en cybersécurité."
           </p>
           <p className="text-lg text-white font-semibold">
             Hâte de faire votre connaissance et de vous accompagner dans votre recherche.
