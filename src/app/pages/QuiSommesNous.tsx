@@ -44,7 +44,7 @@ export default function QuiSommesNous() {
     {
       number: "02",
       title: "L'investigation",
-      description: "Nous recherchons votre véhicule sur tout le marché français et vérifions chaque historique comme une enquête numérique."
+      description: "Nous recherchons votre véhicule sur tout le marché français, allemand, belge ect et vérifions chaque historique comme une enquête numérique."
     },
     {
       number: "03",
@@ -206,7 +206,7 @@ export default function QuiSommesNous() {
 
               <p>
                 <strong>La structure M3 Automobile est jeune, mais le savoir-faire ne l'est pas. </strong> 
-                C'est le fruit de années d'expérience en achat-vente, de formation continue en mécanique, 
+                C'est le fruit d'années d'expérience en achat-vente, de formation continue en mécanique, 
                 et d'une expertise reconnue en cybersécurité. Quand vous travaillez avec nous, vous ne faites 
                 pas appel à un vendeur, mais à un investigateur technique passionné.
               </p>
@@ -316,7 +316,7 @@ export default function QuiSommesNous() {
                       </div>
                       <p className="text-gray-300 text-sm leading-relaxed">
                         Connaissance approfondie des moteurs (les bons et les mauvais), 
-                        expérience en achat-vente pour mon entourage depuis plusieurs années, 
+                        expérience en achat-vente depuis plusieurs années, 
                         expertise dans la vérification mécanique et l'analyse des véhicules. 
                         Un savoir-faire qui précède la création de M3 Automobile.
                       </p>
@@ -374,7 +374,7 @@ export default function QuiSommesNous() {
                     </div>
                     <div className="flex justify-between items-center py-2 border-b border-white/10">
                       <span className="text-gray-300">Détection des fraudes</span>
-                      <span className="text-gray-500">Pas de vérification</span>
+                      <span className="text-gray-500">Pas toujours de vérification</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b border-white/10">
                       <span className="text-gray-300">Conseil personnalisé</span>
