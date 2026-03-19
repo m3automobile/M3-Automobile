@@ -1,4 +1,4 @@
-import { Shield, CheckCircle2, MapPin, Gauge, Wrench, Car, Search, Handshake, ExternalLink, Phone, Mail, Construction, User, Lock } from 'lucide-react';
+import { Shield, CheckCircle2, MapPin, Gauge, Wrench, Car, Search, Handshake, ExternalLink, Phone, Mail, Construction, User, Lock, Users, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -52,13 +52,18 @@ export default function HomePage() {
       {/* Container principal */}
       <div className="container mx-auto px-4 py-12 md:py-24 relative z-10">
         
-        {/* Qui sommes-nous - Version courte */}
+        {/* Qui sommes-nous - Version enrichie */}
         <section className="mb-20 md:mb-32">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Photo */}
-              <div className="relative order-2 md:order-1">
-                <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Qui se cache derrière M3 Automobile ?</h2>
+              <div className="w-20 h-1 bg-white/50 mx-auto rounded-full"></div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+              {/* Photo + équipe */}
+              <div className="relative">
+                <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden mb-6">
                   <img 
                     src="/photo-profil.jpg" 
                     alt="Fondateur M3 Automobile - Ingénieur Cybersécurité" 
@@ -71,37 +76,68 @@ export default function HomePage() {
                     <p className="text-xs text-gray-600">Création</p>
                   </div>
                 </div>
+                
+                {/* Section mini équipe */}
+                <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Users className="size-5 text-white" />
+                    <span className="text-white font-semibold">Une équipe en expansion</span>
+                  </div>
+                  <p className="text-gray-400 text-sm">
+                    M3 Automobile, c'est moi à la tête des opérations, accompagné de mécaniciens certifiés 
+                    et d'experts en carrosserie. Une structure légère mais compétente, en pleine croissance 
+                    pour mieux vous servir.
+                  </p>
+                </div>
               </div>
 
-              {/* Texte présentation */}
-              <div className="order-1 md:order-2">
+              {/* Texte présentation enrichi */}
+              <div>
                 <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-4">
                   <Lock className="size-4" />
                   Ingénieur Cybersécurité & Expert Automobile
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  Un expert en cybersécurité passionné par l'automobile
-                </h2>
+                
                 <p className="text-gray-300 leading-relaxed mb-4">
                   M3 Automobile est né d'une double passion : la cybersécurité et l'automobile. 
-                  Ingénieur en cybersécurité de formation, j'ai décidé de mettre mon expertise en 
-                  détection de fraudes au service de l'achat de véhicules d'occasion.
+                  Ingénieur en cybersécurité de formation, j'ai passé des années à traquer les fraudes 
+                  numériques et à sécuriser des systèmes d'information complexes pour des entreprises 
+                  comme TV5 Monde et Crouzet.
                 </p>
+                
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  Mais au-delà des écrans, une autre passion m'anime depuis toujours : <strong>l'automobile</strong>. 
+                  Mon entourage me sollicitait déjà pour trouver des véhicules d'occasion, vérifier des annonces, 
+                  éviter les arnaques. Grâce à mon œil d'expert en investigation numérique et mes connaissances 
+                  mécaniques, j'ai réussi à dénicher des perles rares à des prix défiant toute concurrence.
+                </p>
+                
+                <div className="bg-white/5 border-l-4 border-white/50 p-4 mb-6">
+                  <p className="text-gray-300 italic">
+                    "La cybersécurité m'a appris à détecter les mensonges : un kilométrage trafiqué laisse 
+                    des traces, un historique falsifié contient des incohérences. Cette expertise, combinée 
+                    à ma passion pour la mécanique, fait de M3 Automobile une agence unique."
+                  </p>
+                </div>
+                
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Mon entourage me sollicitait déjà pour trouver des voitures, vérifier les annonces 
-                  et éviter les arnaques. Aujourd'hui, j'applique les méthodes d'investigation 
-                  numérique à chaque véhicule : analyse des historiques, vérification des kilométrages, 
-                  expertise mécanique. Une approche unique en son genre.
+                  <strong>La boîte est jeune (créée en 2025), mais le savoir-faire ne l'est pas.</strong> 
+                  Des années d'expérience en achat-vente pour mon entourage, une expertise technique 
+                  pointue, et une méthode de travail rigoureuse héritée du monde de la cybersécurité. 
+                  Aujourd'hui, nous sommes une petite équipe basée à L'Isle-Adam, opérant sur toute 
+                  l'Île-de-France, avec un réseau de mécaniciens et carrossiers de confiance.
                 </p>
+
                 <div className="flex flex-wrap gap-4">
                   <Link to="/qui-sommes-nous">
                     <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
-                      Découvrir mon histoire
+                      Découvrir notre histoire
+                      <ArrowRight className="size-4 ml-2" />
                     </Button>
                   </Link>
                   <Link to="/contact">
                     <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                      Me contacter
+                      Nous contacter
                     </Button>
                   </Link>
                 </div>

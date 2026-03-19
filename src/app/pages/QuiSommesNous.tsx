@@ -1,4 +1,4 @@
-import { User, Award, Heart, Shield, MapPin, Phone, Mail, Calendar, Wrench, CheckCircle2, Target, Users, Search, Lock } from 'lucide-react';
+import { User, Award, Heart, Shield, MapPin, Phone, Mail, Calendar, Wrench, CheckCircle2, Target, Users, Search, Lock, Clock, Star, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
@@ -9,22 +9,22 @@ export default function QuiSommesNous() {
     {
       icon: Shield,
       title: "Sécurité avant tout",
-      description: "Grâce à mon expertise en cybersécurité, je détecte les arnaques et les véhicules aux historiques douteux."
+      description: "Grâce à mon expertise en cybersécurité, je détecte les arnaques et les véhicules aux historiques douteux avant qu'ils n'atteignent nos clients."
     },
     {
       icon: Search,
       title: "Investigation complète",
-      description: "Chaque véhicule est analysé comme une enquête : historique, kilométrage, état mécanique. Rien n'échappe."
+      description: "Chaque véhicule est analysé comme une enquête : historique, kilométrage, état mécanique. Rien n'échappe à notre vigilance."
     },
     {
       icon: Award,
-      title: "Expertise technique",
-      description: "Passionné de mécanique depuis toujours, je connais les moteurs à privilégier et ceux à éviter."
+      title: "Exigence technique",
+      description: "Passionné de mécanique depuis toujours, nous connaissons les moteurs à privilégier et ceux à éviter absolument."
     },
     {
       icon: Heart,
       title: "Relation humaine",
-      description: "Un service personnalisé basé sur la confiance. Vous avez mon téléphone, même après l'achat."
+      description: "Un service personnalisé basé sur la confiance. Notre équipe reste accessible, même après votre achat."
     }
   ];
 
@@ -39,23 +39,48 @@ export default function QuiSommesNous() {
     {
       number: "01",
       title: "L'audit",
-      description: "On discute de votre projet, vos besoins, votre budget. Comme une analyse de sécurité, on évalue tous les risques."
+      description: "On discute de votre projet, vos besoins, votre budget. Comme une analyse de sécurité, on évalue tous les risques et vos critères."
     },
     {
       number: "02",
       title: "L'investigation",
-      description: "Je recherche votre véhicule sur tout le marché français et vérifie chaque historique comme une enquête numérique."
+      description: "Nous recherchons votre véhicule sur tout le marché français et vérifions chaque historique comme une enquête numérique."
     },
     {
       number: "03",
       title: "La vérification",
-      description: "Contrôle mécanique complet, vérification du kilométrage, analyse des pièces. La technique avant l'achat."
+      description: "Contrôle mécanique complet par nos partenaires, vérification du kilométrage, analyse des pièces. La technique avant l'achat."
     },
     {
       number: "04",
       title: "La livraison",
-      description: "Véhicule préparé, nettoyé, avec tous les documents. Et un suivi après-vente digne d'un ingénieur."
+      description: "Véhicule préparé, nettoyé, avec tous les documents. Et surtout, un suivi après-vente digne d'une structure professionnelle."
     }
+  ];
+
+  const team = [
+    {
+      role: "Fondateur & Expert",
+      description: "Ingénieur en cybersécurité, passionné d'automobile",
+      image: "/photo-profil.jpg"
+    },
+    {
+      role: "Mécanicien Certifié",
+      description: "Expert technique, contrôle et préparation des véhicules",
+      image: null
+    },
+    {
+      role: "Carrossier Partenaire",
+      description: "Vérification état carrosserie et réparations",
+      image: null
+    }
+  ];
+
+  const stats = [
+    { number: "2025", label: "Année de création", icon: Calendar },
+    { number: "100%", label: "Véhicules audités", icon: Shield },
+    { number: "0", label: "Arnaques tolérées", icon: Lock },
+    { number: "∞", label: "Passion automobile", icon: Heart }
   ];
 
   return (
@@ -66,86 +91,169 @@ export default function QuiSommesNous() {
       <section className="relative py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-6">
+              <Users className="size-4" />
+              Une équipe jeune, un savoir-faire confirmé
+            </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Qui se cache derrière M3 Automobile ?
+              Qui sommes-nous ?
             </h1>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-              Un ingénieur en cybersécurité passionné par l'automobile, qui a décidé de mettre son expertise 
-              au service de la confiance dans l'achat de véhicules d'occasion.
+              M3 Automobile, c'est l'histoire d'une passion qui devient métier. 
+              Une structure jeune mais animée par des expertises solides et complémentaires.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Présentation */}
+      {/* Photo centrale + équipe */}
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="relative inline-block">
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-white/20 overflow-hidden mx-auto shadow-2xl">
+                <img 
+                  src="/photo-profil.jpg" 
+                  alt="Fondateur M3 Automobile" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white text-gray-900 rounded-xl px-6 py-3 shadow-xl whitespace-nowrap">
+                <p className="font-bold">Fondateur & Expert Automobile</p>
+              </div>
+            </div>
+            
+            <div className="mt-16">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Et une équipe en pleine expansion
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+                M3 Automobile, c'est moi à la direction, accompagné de mécaniciens certifiés et de 
+                carrossiers experts. Une structure légère mais compétente, en croissance constante 
+                pour mieux vous servir partout en Île-de-France.
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              {stats.map((stat, index) => (
+                <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <stat.icon className="size-8 text-white mx-auto mb-3" />
+                  <p className="text-3xl font-bold text-white">{stat.number}</p>
+                  <p className="text-gray-400 text-sm">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* L'histoire complète */}
+      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+              Notre histoire
+            </h2>
+            
+            <div className="space-y-6 text-gray-300 leading-relaxed">
+              <p className="text-lg">
+                Tout a commencé il y a plusieurs années, bien avant la création officielle de M3 Automobile en 2025. 
+                À l'époque, j'étais déjà cet ingénieur en informatique passionné par l'automobile, celui que 
+                l'on appelait dans son entourage pour trouver la bonne occasion, éviter l'arnaque, négocier 
+                le meilleur prix.
+              </p>
+              
+              <div className="bg-white/5 border-l-4 border-blue-500 p-6 my-8">
+                <p className="text-lg italic">
+                  "J'ai toujours réussi à obtenir des prix hors marché, à dénicher des perles rares que d'autres 
+                  n'avaient pas vues. Ce don pour la recherche et l'analyse, hérité de mon métier de cybersécurité, 
+                  appliqué à l'automobile."
+                </p>
+              </div>
+
+              <p>
+                Pendant des années, j'ai exercé cette activité en parallèle de ma carrière dans la cybersécurité 
+                – d'abord à Campus Cyber, puis chez Crouzet, et aujourd'hui chez TV5 Monde. Chaque mission de 
+                sécurisation de systèmes d'information m'apprenait davantage sur la détection de fraudes, 
+                l'analyse de comportements suspects, la recherche de preuves.
+              </p>
+
+              <p>
+                <strong>Ces compétences, je les ai transférées à l'automobile.</strong> Un kilométrage trafiqué 
+                laisse des traces numériques. Un historique falsifié contient des incohérences. Une annonce 
+                frauduleuse suit des patterns reconnaissables. Mon œil d'expert en investigation numérique 
+                devenait un atout précieux pour détecter les arnaques automobiles.
+              </p>
+
+              <p>
+                En parallèle, ma passion pour la mécanique ne cessait de croître. J'ai appris à connaître 
+                les moteurs fiables et ceux à éviter, les pannes courantes, les points de vigilance sur 
+                chaque modèle. Des années d'échanges avec des mécaniciens, de lecture de documentation technique, 
+                d'obsession pour la mécanique automobile.
+              </p>
+
+              <div className="bg-white/10 rounded-xl p-6 my-8">
+                <h3 className="text-xl font-bold text-white mb-4">Pourquoi M3 Automobile en 2025 ?</h3>
+                <p>
+                  Parce que le marché de l'occasion en France a besoin d'acteurs différents. Parce que les 
+                  grandes enseignes vendent du volume, pas de la confiance. Parce que les particuliers méritent 
+                  un interlocuteur qui comprend aussi bien les rouages d'un moteur que les mécanismes d'une arnaque en ligne.
+                </p>
+              </div>
+
+              <p>
+                <strong>La structure M3 Automobile est jeune, mais le savoir-faire ne l'est pas.</strong> 
+                C'est le fruit de années d'expérience en achat-vente, de formation continue en mécanique, 
+                et d'une expertise reconnue en cybersécurité. Quand vous travaillez avec nous, vous ne faites 
+                pas appel à un vendeur, mais à un investigateur technique passionné.
+              </p>
+
+              <p>
+                Aujourd'hui, nous sommes en expansion. À côté de moi, se sont greffés des mécaniciens 
+                certifiés avec qui j'ai tissé des liens de confiance, des carrossiers experts pour l'état 
+                des carrosseries, et un réseau de partenaires à travers l'Île-de-France. Nous restons une 
+                structure à taille humaine, mais une structure professionnelle avec des process rigoureux 
+                hérités du monde de l'informatique.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Notre équipe */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Photo */}
-              <div className="order-2 md:order-1">
-                <div className="relative">
-                  <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden">
-                    <img 
-                      src="/photo-profil.jpg" 
-                      alt="Fondateur M3 Automobile" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Badge */}
-                  <div className="absolute -bottom-4 -right-4 bg-white text-gray-900 rounded-xl p-4 shadow-xl">
-                    <div className="text-center">
-                      <p className="text-3xl font-bold">2025</p>
-                      <p className="text-xs text-gray-600">Création</p>
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Notre équipe</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Une structure légère mais compétente, en croissance constante
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {team.map((member, index) => (
+                <Card key={index} className="bg-white/5 border-white/10 text-white">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden border-2 border-white/20">
+                      {member.image ? (
+                        <img src={member.image} alt={member.role} className="w-full h-full object-cover" />
+                      ) : (
+                        <Users className="size-10 text-gray-500" />
+                      )}
                     </div>
-                  </div>
-                </div>
-              </div>
+                    <h3 className="font-bold text-lg mb-2">{member.role}</h3>
+                    <p className="text-gray-400 text-sm">{member.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
 
-              {/* Texte présentation */}
-              <div className="order-1 md:order-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                  De l'informatique à l'automobile : une histoire de passion
-                </h2>
-                <div className="space-y-4 text-gray-300 leading-relaxed">
-                  <p>
-                    Ingénieur en cybersécurité de formation, j'ai passé des années à traquer les fraudes numériques 
-                    et à sécuriser des systèmes d'information complexes. Mais au-delà des écrans, une autre passion 
-                    m'anime depuis toujours : <strong>l'automobile</strong>.
-                  </p>
-                  <p>
-                    Tout a commencé naturellement. Mon entourage me sollicitait pour trouver des véhicules 
-                    d'occasion, vérifier des annonces, éviter les arnaques. Grâce à mon œil d'expert en 
-                    investigation numérique et mes connaissances mécaniques, j'ai réussi à dénicher des perles 
-                    rares à des prix défiant toute concurrence.
-                  </p>
-                  <p>
-                    <strong>La cybersécurité m'a appris à détecter les mensonges</strong> : un kilométrage trafiqué 
-                    laisse des traces, un historique falsifié contient des incohérences. Cette expertise, 
-                    combinée à ma passion pour la mécanique, fait de M3 Automobile une agence unique où 
-                    <strong> la rigueur technique rencontre le conseil personnalisé</strong>.
-                  </p>
-                  <p>
-                    Aujourd'hui, nous sommes une petite équipe (moi-même et des partenaires mécaniciens de confiance) 
-                    basée à L'Isle-Adam, opérant sur toute l'Île-de-France. Notre mission ? Vous accompagner dans 
-                    l'achat ou la vente de votre véhicule avec la même rigueur que j'applique dans mes missions 
-                    de cybersécurité.
-                  </p>
-                </div>
-
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link to="/contact">
-                    <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
-                      Me contacter
-                    </Button>
-                  </Link>
-                  <a href="tel:0783269802">
-                    <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                      <Phone className="size-4 mr-2" />
-                      07 83 26 98 02
-                    </Button>
-                  </a>
-                </div>
+            <div className="mt-8 text-center">
+              <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm">
+                <TrendingUp className="size-4" />
+                Nous recrutons ! Rejoignez notre équipe en expansion
               </div>
             </div>
           </div>
@@ -157,26 +265,30 @@ export default function QuiSommesNous() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Mon Parcours</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Mon Parcours Professionnel</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Une double expertise qui fait la différence dans chaque transaction
+                Une double expertise qui fait la différence
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
               <Card className="bg-white/5 border-white/10 text-white">
                 <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-500/20 p-3 rounded-lg">
+                  <div className="flex flex-col md:flex-row md:items-start gap-4">
+                    <div className="bg-blue-500/20 p-4 rounded-lg flex-shrink-0">
                       <Lock className="size-6 text-blue-400" />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-2">Ingénieur Cybersécurité</h3>
-                      <p className="text-gray-400 text-sm mb-2">TV5 Monde - Depuis 2024</p>
+                    <div className="flex-grow">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                        <h3 className="font-bold text-lg">Ingénieur Cybersécurité</h3>
+                        <span className="text-gray-400 text-sm">2024 - Aujourd'hui</span>
+                      </div>
+                      <p className="text-blue-400 text-sm mb-2">TV5 Monde - Paris</p>
                       <p className="text-gray-300 text-sm leading-relaxed">
                         Expert en détection de fraudes et sécurité des systèmes d'information. 
-                        Master en cybersécurité (Sup de Vinci). Cette expertise me permet de détecter 
-                        les arnaques automobiles et les historiques falsifiés.
+                        Master en cybersécurité (Sup de Vinci - Bac+5). Cette expertise me permet 
+                        de détecter les arnaques automobiles et les historiques falsifiés avec une 
+                        rigueur d'investigateur numérique.
                       </p>
                     </div>
                   </div>
@@ -185,17 +297,43 @@ export default function QuiSommesNous() {
 
               <Card className="bg-white/5 border-white/10 text-white">
                 <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white/10 p-3 rounded-lg">
+                  <div className="flex flex-col md:flex-row md:items-start gap-4">
+                    <div className="bg-white/10 p-4 rounded-lg flex-shrink-0">
                       <Wrench className="size-6 text-white" />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-2">Passionné d'Automobile</h3>
-                      <p className="text-gray-400 text-sm mb-2">Plusieurs années d'expérience</p>
+                    <div className="flex-grow">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                        <h3 className="font-bold text-lg">Administrateur Système & Réseau</h3>
+                        <span className="text-gray-400 text-sm">2023 - 2024</span>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-2">Crouzet - Paris / Valence / Orléans</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        Gestion d'infrastructures complexes, résolution de problèmes techniques, 
+                        gestion de projets IT. Une expérience qui a renforcé ma rigueur et ma 
+                        capacité à analyser des systèmes complexes - compétences transférables 
+                        à l'analyse technique des véhicules.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/5 border-white/10 text-white">
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:items-start gap-4">
+                    <div className="bg-purple-500/20 p-4 rounded-lg flex-shrink-0">
+                      <Star className="size-6 text-purple-400" />
+                    </div>
+                    <div className="flex-grow">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                        <h3 className="font-bold text-lg">Passionné d'Automobile</h3>
+                        <span className="text-gray-400 text-sm">Depuis toujours</span>
+                      </div>
                       <p className="text-gray-300 text-sm leading-relaxed">
                         Connaissance approfondie des moteurs (les bons et les mauvais), 
-                        expérience en achat-vente pour mon entourage, expertise dans la 
-                        vérification mécanique et l'analyse des véhicules.
+                        expérience en achat-vente pour mon entourage depuis plusieurs années, 
+                        expertise dans la vérification mécanique et l'analyse des véhicules. 
+                        Un savoir-faire qui précède la création de M3 Automobile.
                       </p>
                     </div>
                   </div>
@@ -252,7 +390,7 @@ export default function QuiSommesNous() {
                 <div className="mt-8 p-6 bg-white/5 border border-white/10 rounded-xl">
                   <p className="text-gray-300 italic">
                     "Mon expertise en cybersécurité m'apprend à ne jamais faire confiance aux apparences. 
-                    Chaque véhicule est audité comme un système informatique : preuves, vérifications, 
+                    Chaque véhicule est audité comme un système informatique : rigueur, vérifications, 
                     et rien n'est laissé au hasard."
                   </p>
                 </div>
@@ -267,12 +405,14 @@ export default function QuiSommesNous() {
                         <p className="text-gray-400">Expertise technique</p>
                         <p className="text-gray-400">Détection des fraudes</p>
                         <p className="text-gray-400">Conseil personnalisé</p>
+                        <p className="text-gray-400">Équipe dédiée</p>
                       </div>
                       <div className="bg-white/5 rounded-lg p-4">
                         <p className="text-gray-300 font-semibold mb-1">Vendeurs classiques</p>
                         <p className="text-gray-500">Approche commerciale</p>
                         <p className="text-gray-500">Pas d'analyse technique</p>
                         <p className="text-gray-500">Commission avant tout</p>
+                        <p className="text-gray-500">Interlocuteur unique</p>
                       </div>
                     </div>
                   </div>
@@ -288,7 +428,7 @@ export default function QuiSommesNous() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Notre Méthode</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Notre Méthode de Travail</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
                 Un processus rigoureux inspiré des méthodes d'investigation en cybersécurité
               </p>
@@ -320,16 +460,16 @@ export default function QuiSommesNous() {
       <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Prêt à acheter en toute sécurité ?
+            Convaincu ? Parlons de votre projet
           </h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Faites appel à un expert qui traite votre achat automobile avec la même 
-            rigueur qu'une mission de cybersécurité.
+            Faites appel à une équipe jeune mais expérimentée, qui traite votre achat automobile 
+            avec la même rigueur qu'une mission de cybersécurité.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact">
               <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-3">
-                Me contacter
+                Nous contacter
               </Button>
             </Link>
             <a href="tel:0783269802">
