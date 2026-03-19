@@ -223,7 +223,7 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Mon parcours - SANS ESPACE */}
+      {/* Mon parcours */}
       <section className="py-4 md:py-6 bg-white/5 backdrop-blur-sm border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -425,32 +425,27 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Message personnel */}
-      <section className="py-4 md:py-6 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border-y border-white/10">
+      {/* Message personnel + CTA fusionné */}
+      <section className="py-6 md:py-8 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border-t border-white/10">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full border-2 border-white/30 overflow-hidden">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-white/30 overflow-hidden">
             <img src="/photo-profil.jpg" alt="Jobb" className="w-full h-full object-cover" />
           </div>
-          <p className="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-6">
+          <p className="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-4">
             "C'était Jobb, créateur et fondateur de M3 Automobile."
           </p>
-          <p className="text-lg text-white font-semibold">
+          <p className="text-lg text-white font-semibold mb-6">
             Hâte de faire votre connaissance et de vous accompagner dans votre recherche.
           </p>
-          <div className="mt-6 flex items-center justify-center gap-2 text-gray-400">
+          <div className="flex items-center justify-center gap-2 text-gray-400 mb-8">
             <span className="text-2xl">👋</span>
             <span>À très vite !</span>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-4 md:py-6">
-        <div className="container mx-auto px-4 text-center">
+          
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Prêt à nous confier votre projet ?
           </h2>
-          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
             Une équipe passionnée et compétente vous attend. 
             Discutons de votre future voiture.
           </p>
