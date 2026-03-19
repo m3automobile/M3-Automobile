@@ -111,25 +111,27 @@ export default function QuiSommesNous() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="relative inline-block">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-white/20 overflow-hidden mx-auto shadow-2xl">
+              <div className="w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-white/20 overflow-hidden mx-auto shadow-2xl">
                 <img 
                   src="/photo-profil.jpg" 
-                  alt="Fondateur M3 Automobile" 
+                  alt="Mam III Jobb - Fondateur M3 Automobile" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white text-gray-900 rounded-xl px-6 py-3 shadow-xl whitespace-nowrap">
-                <p className="font-bold">Fondateur & Expert Automobile</p>
+              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white text-gray-900 rounded-xl px-8 py-4 shadow-xl whitespace-nowrap">
+                <p className="font-bold text-lg">Mam III Jobb</p>
+                <p className="text-sm text-gray-600">Fondateur de M3 Automobile</p>
               </div>
             </div>
             
-            <div className="mt-16">
+            <div className="mt-20">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Et une équipe en pleine expansion
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto mb-8">
-                M3 Automobile, c'est moi à la direction, accompagné de mécaniciens certifiés et de 
-                carrossiers experts. Une structure légère mais compétente, en croissance constante 
+                M3 Automobile, c'est <strong>Mam III Jobb</strong> à la tête des opérations, accompagné d'un 
+                réseau partenaire de professionnels (mécaniciens certifiés, carrossiers experts) non accessible 
+                au grand public. Une structure légère mais compétente, en croissance constante 
                 pour mieux vous servir partout en Île-de-France.
               </p>
             </div>
@@ -298,20 +300,20 @@ export default function QuiSommesNous() {
               <Card className="bg-white/5 border-white/10 text-white">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="bg-white/10 p-4 rounded-lg flex-shrink-0">
-                      <Wrench className="size-6 text-white" />
+                    <div className="bg-purple-500/20 p-4 rounded-lg flex-shrink-0">
+                      <Shield className="size-6 text-purple-400" />
                     </div>
                     <div className="flex-grow">
                       <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                        <h3 className="font-bold text-lg">Administrateur Système & Réseau</h3>
-                        <span className="text-gray-400 text-sm">2023 - 2024</span>
+                        <h3 className="font-bold text-lg">Stagiaire Cybersécurité</h3>
+                        <span className="text-gray-400 text-sm">Mai - Juin 2023</span>
                       </div>
-                      <p className="text-gray-400 text-sm mb-2">Crouzet - Paris / Valence / Orléans</p>
+                      <p className="text-purple-400 text-sm mb-2">Campus Cyber - La Défense, Paris</p>
                       <p className="text-gray-300 text-sm leading-relaxed">
-                        Gestion d'infrastructures complexes, résolution de problèmes techniques, 
-                        gestion de projets IT. Une expérience qui a renforcé ma rigueur et ma 
-                        capacité à analyser des systèmes complexes - compétences transférables 
-                        à l'analyse technique des véhicules.
+                        Projet initié par le Président de la République, le Campus Cyber est le 
+                        lieu totem de la cybersécurité en France. J'ai œuvré à étudier le processus 
+                        du patch management et la gestion de la vulnérabilité au sein de ce campus 
+                        qui rassemble DGSE, ANSSI, CNRS et les principaux acteurs du domaine.
                       </p>
                     </div>
                   </div>
@@ -396,24 +398,34 @@ export default function QuiSommesNous() {
                 </div>
               </div>
               <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-white/10 flex items-center justify-center p-8">
-                  <div className="text-center">
-                    <div className="text-6xl font-bold text-white mb-4">VS</div>
-                    <div className="grid grid-cols-2 gap-4 mt-8 text-sm">
-                      <div className="bg-white/10 rounded-lg p-4">
-                        <p className="text-white font-semibold mb-1">M3 Automobile</p>
-                        <p className="text-gray-400">Expertise technique</p>
-                        <p className="text-gray-400">Détection des fraudes</p>
-                        <p className="text-gray-400">Conseil personnalisé</p>
-                        <p className="text-gray-400">Équipe dédiée</p>
-                      </div>
-                      <div className="bg-white/5 rounded-lg p-4">
-                        <p className="text-gray-300 font-semibold mb-1">Vendeurs classiques</p>
-                        <p className="text-gray-500">Approche commerciale</p>
-                        <p className="text-gray-500">Pas d'analyse technique</p>
-                        <p className="text-gray-500">Commission avant tout</p>
-                        <p className="text-gray-500">Interlocuteur unique</p>
-                      </div>
+                <div className="bg-white/5 rounded-2xl border border-white/10 p-6 md:p-8">
+                  <div className="flex items-center justify-center gap-4 mb-6">
+                    <div className="text-center">
+                      <p className="text-white font-bold mb-1">M3 Automobile</p>
+                      <div className="w-20 h-1 bg-white/50 rounded-full"></div>
+                    </div>
+                    <span className="text-2xl text-gray-500">VS</span>
+                    <div className="text-center">
+                      <p className="text-gray-400 font-bold mb-1">Vendeurs classiques</p>
+                      <div className="w-20 h-1 bg-gray-600 rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center py-2 border-b border-white/10">
+                      <span className="text-gray-300">Expertise cybersécurité</span>
+                      <span className="text-gray-500">Approche commerciale</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2 border-b border-white/10">
+                      <span className="text-gray-300">Détection des fraudes</span>
+                      <span className="text-gray-500">Pas de vérification</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2 border-b border-white/10">
+                      <span className="text-gray-300">Conseil personnalisé</span>
+                      <span className="text-gray-500">Commission avant tout</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2">
+                      <span className="text-gray-300">Réseau de pros dédié</span>
+                      <span className="text-gray-500">Interlocuteur unique</span>
                     </div>
                   </div>
                 </div>
@@ -456,20 +468,41 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
+      {/* Message personnel */}
+      <section className="py-12 md:py-16 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border-y border-white/10">
+        <div className="container mx-auto px-4 text-center max-w-3xl">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-full border-2 border-white/30 overflow-hidden">
+            <img src="/photo-profil.jpg" alt="Jobb" className="w-full h-full object-cover" />
+          </div>
+          <p className="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-6">
+            "C'était Jobb, créateur et fondateur de M3 Automobile. 
+            Passionné par l'automobile et la cybersécurité, je mets aujourd'hui mon expertise 
+            au service de votre projet automobile."
+          </p>
+          <p className="text-lg text-white font-semibold">
+            Hâte de faire votre connaissance et de vous accompagner dans votre recherche.
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-2 text-gray-400">
+            <span className="text-2xl">👋</span>
+            <span>À très vite !</span>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Convaincu ? Parlons de votre projet
+            Prêt à nous confier votre projet ?
           </h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Faites appel à une équipe jeune mais expérimentée, qui traite votre achat automobile 
-            avec la même rigueur qu'une mission de cybersécurité.
+            Une équipe passionnée et compétente vous attend. 
+            Discutons de votre future voiture.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact">
               <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-3">
-                Nous contacter
+                Me contacter
               </Button>
             </Link>
             <a href="tel:0783269802">

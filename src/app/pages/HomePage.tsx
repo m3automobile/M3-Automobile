@@ -78,15 +78,16 @@ export default function HomePage() {
                 </div>
                 
                 {/* Section mini équipe */}
-                <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                <div className="mt-8">
                   <div className="flex items-center gap-3 mb-3">
-                    <Users className="size-5 text-white" />
+                    <Users className="size-5 text-blue-400" />
                     <span className="text-white font-semibold">Une équipe en expansion</span>
                   </div>
-                  <p className="text-gray-400 text-sm">
-                    M3 Automobile, c'est moi à la tête des opérations, accompagné de mécaniciens certifiés 
-                    et d'experts en carrosserie. Une structure légère mais compétente, en pleine croissance 
-                    pour mieux vous servir.
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    M3 Automobile, c'est <strong className="text-white">Mam III Jobb</strong> à la tête des opérations, 
+                    accompagné d'un réseau partenaire de professionnels (mécaniciens certifiés, carrossiers experts) 
+                    <strong className="text-white"> non accessible au grand public</strong>. 
+                    Une structure légère mais compétente, en pleine croissance pour mieux vous servir.
                   </p>
                 </div>
               </div>
