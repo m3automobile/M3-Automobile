@@ -44,8 +44,8 @@ export default function Layout() {
   <div className="container mx-auto px-3 md:px-6 py-4 md:py-3">
     <div className="flex items-center justify-between">
       
-      {/* SPACER GAUCHE (pour équilibrer le bouton à droite) */}
-      <div className="lg:hidden w-8 order-1"></div>
+      {/* SPACER GAUCHE - plus besoin car bouton flottant */}
+      <div className="lg:hidden w-8 order-1 opacity-0"></div>
 
       {/* Logo - CENTRÉ */}
       <Link to="/" className="flex flex-col items-center gap-1 order-2 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0">
@@ -80,48 +80,50 @@ export default function Layout() {
         </a>
       </div>
 
-      {/* BOUTON MENU - À DROITE sur mobile */}
-      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-        <SheetTrigger asChild>
-          <button
-            className="lg:hidden text-white p-1 -mr-1 order-3"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="size-7 md:size-8" /> : <Menu className="size-7 md:size-8" />}
-          </button>
-        </SheetTrigger>
-        
-        <SheetContent side="right" className="w-[300px] bg-gray-900 border-gray-700">
-          <SheetHeader>
-            <SheetTitle className="text-white text-left">Menu</SheetTitle>
-          </SheetHeader>
-          <nav className="flex flex-col gap-2 mt-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  setSheetOpen(false);
-                }}
-                className={`px-4 py-3 rounded-lg transition-colors text-base ${
-                  isActive(item.href)
-                    ? 'bg-white/10 text-white font-semibold'
-                  : 'text-gray-300 hover:bg-white/5 hover:text-white'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <a href="tel:0783269802" className="mt-4" onClick={() => setSheetOpen(false)}>
-              <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6">
-                <Phone className="size-5 mr-2" />
-                07 83 26 98 02
-              </Button>
-            </a>
-          </nav>
-        </SheetContent>
-      </Sheet>
+      {/* BOUTON MENU FLottant FIXE pour mobile */}
+      <div className="lg:hidden fixed top-4 right-4 z-[100]">
+        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+          <SheetTrigger asChild>
+            <button
+              className="bg-black/80 backdrop-blur-md text-white p-3 rounded-full shadow-lg border border-gray-700"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+            </button>
+          </SheetTrigger>
+          
+          <SheetContent side="right" className="w-[300px] bg-gray-900 border-gray-700">
+            <SheetHeader>
+              <SheetTitle className="text-white text-left">Menu</SheetTitle>
+            </SheetHeader>
+            <nav className="flex flex-col gap-2 mt-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setSheetOpen(false);
+                  }}
+                  className={`px-4 py-3 rounded-lg transition-colors text-base ${
+                    isActive(item.href)
+                      ? 'bg-white/10 text-white font-semibold'
+                    : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <a href="tel:0783269802" className="mt-4" onClick={() => setSheetOpen(false)}>
+                <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6">
+                  <Phone className="size-5 mr-2" />
+                  07 83 26 98 02
+                </Button>
+              </a>
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
     </div>
   </div>
 </header>
