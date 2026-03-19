@@ -224,7 +224,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Notre équipe */}
-      <section className="py-12 md:py-20">
+      <section className="py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -263,7 +263,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Mon parcours */}
-      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
+      <section className="py-8 md:py-12 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -347,7 +347,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Nos Valeurs */}
-      <section className="py-12 md:py-20">
+      <section className="py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -373,7 +373,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Pourquoi nous choisir */}
-      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
+      <section className="py-8 md:py-12 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -436,7 +436,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Notre méthode */}
-      <section className="py-12 md:py-20">
+      <section className="py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -469,7 +469,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Message personnel */}
-      <section className="py-12 md:py-16 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border-y border-white/10">
+      <section className="py-8 md:py-12 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border-y border-white/10">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <div className="w-16 h-16 mx-auto mb-6 rounded-full border-2 border-white/30 overflow-hidden">
             <img src="/photo-profil.jpg" alt="Jobb" className="w-full h-full object-cover" />
@@ -490,7 +490,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 md:py-20">
+      <section className="py-8 md:py-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Prêt à nous confier votre projet ?
