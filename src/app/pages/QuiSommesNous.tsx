@@ -128,7 +128,7 @@ export default function QuiSommesNous() {
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Et une équipe en pleine expansion
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+              <p className="text-gray-400 max-w-2xl mx-auto mb-4">
                 M3 Automobile, c'est <strong>Mam III Jobb</strong> à la tête des opérations, accompagné d'un 
                 réseau partenaire de professionnels (mécaniciens certifiés, carrossiers experts) non accessible 
                 au grand public. Une structure légère mais compétente, en croissance constante 
@@ -223,47 +223,8 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Notre équipe */}
-      <section className="py-2 md:py-3">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Notre équipe</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
-                Une structure légère mais compétente, en croissance constante
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {team.map((member, index) => (
-                <Card key={index} className="bg-white/5 border-white/10 text-white">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden border-2 border-white/20">
-                      {member.image ? (
-                        <img src={member.image} alt={member.role} className="w-full h-full object-cover" />
-                      ) : (
-                        <Users className="size-10 text-gray-500" />
-                      )}
-                    </div>
-                    <h3 className="font-bold text-lg mb-2">{member.role}</h3>
-                    <p className="text-gray-400 text-sm">{member.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
-              <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm">
-                <TrendingUp className="size-4" />
-                Nous recrutons ! Rejoignez notre équipe en expansion
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mon parcours */}
-      <section className="py-2 md:py-3 bg-white/5 backdrop-blur-sm">
+      {/* Mon parcours - SANS ESPACE */}
+      <section className="py-4 md:py-6 bg-white/5 backdrop-blur-sm border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -369,7 +330,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Pourquoi nous choisir */}
-      <section className="py-2 md:py-3 bg-white/5 backdrop-blur-sm">
+      <section className="py-4 md:py-6 bg-white/5 backdrop-blur-sm border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -432,7 +393,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Notre méthode */}
-      <section className="py-4 md:py-6">
+      <section className="py-4 md:py-6 border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -486,7 +447,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* CTA */}
-      <section className="py-2 md:py-3">
+      <section className="py-4 md:py-6">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Prêt à nous confier votre projet ?
