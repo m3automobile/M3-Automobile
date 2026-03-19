@@ -1,4 +1,4 @@
-import { Shield, CheckCircle2, MapPin, Gauge, Wrench, Car, Search, Handshake, ExternalLink, Phone, Mail, Construction, User, Lock, Users, ArrowRight } from 'lucide-react';
+import { Shield, CheckCircle2, MapPin, Gauge, Wrench, Car, Search, Handshake, Phone, Mail, Lock, Users, ArrowRight, User } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -6,13 +6,6 @@ import { Link } from 'react-router';
 import PremiumBackground from '../components/PremiumBackground';
 
 export default function HomePage() {
-  const differences = [
-    "Expertise cybersécurité = détection des fraudes et arnaques",
-    "Analyse technique approfondie = aucun mauvais choix",
-    "Pas de showroom coûteux = prix plus justes",
-    "Pas de démarches administratives = service clé en main"
-  ];
-
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
@@ -52,7 +45,7 @@ export default function HomePage() {
       {/* Container principal */}
       <div className="container mx-auto px-4 py-12 md:py-24 relative z-10">
         
-        {/* Qui sommes-nous - Version enrichie */}
+        {/* 1. QUI SE CACHE DERRIERE M3 - Version courte */}
         <section className="mb-20 md:mb-32">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -61,148 +54,69 @@ export default function HomePage() {
             </div>
             
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-              {/* Photo + équipe */}
+              {/* Photo + badge repositionné */}
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden mb-6">
                   <img 
                     src="/photo-profil.jpg" 
-                    alt="Fondateur M3 Automobile - Ingénieur Cybersécurité" 
+                    alt="Mam III Jobb - Fondateur M3 Automobile" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-4 -right-4 bg-white text-gray-900 rounded-xl p-4 shadow-xl">
+                {/* Badge 2025 déplacé en haut à droite avec fond translucide */}
+                <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-md text-white rounded-xl p-4 shadow-xl border border-white/20">
                   <div className="text-center">
                     <p className="text-3xl font-bold">2025</p>
-                    <p className="text-xs text-gray-600">Création</p>
+                    <p className="text-xs text-gray-300">Création</p>
                   </div>
                 </div>
+              </div>
+
+              {/* Texte présentation court */}
+              <div>
+                <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-4">
+                  <Lock className="size-4" />
+                  Mam III Jobb - Ingénieur Cybersécurité & Expert Automobile
+                </div>
                 
-                {/* Section mini équipe */}
-                <div className="mt-8">
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  M3 Automobile est né d'une double passion : la cybersécurité et l'automobile. 
+                  Ingénieur en cybersécurité chez TV5 Monde, j'ai passé des années à traquer les fraudes 
+                  numériques et à sécuriser des systèmes d'information complexes.
+                </p>
+                
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Cette expertise en investigation numérique, combinée à ma passion pour la mécanique, 
+                  fait de M3 Automobile une agence unique sur le marché de l'occasion.
+                </p>
+
+                {/* Section équipe avec encadre translucide comme avant */}
+                <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Users className="size-5 text-blue-400" />
                     <span className="text-white font-semibold">Une équipe en expansion</span>
                   </div>
                   <p className="text-gray-400 text-sm leading-relaxed">
                     M3 Automobile, c'est <strong className="text-white">Mam III Jobb</strong> à la tête des opérations, 
-                    accompagné d'un réseau partenaire de professionnels (mécaniciens certifiés, carrossiers experts) 
-                    <strong className="text-white"> non accessible au grand public</strong>. 
-                    Une structure légère mais compétente, en pleine croissance pour mieux vous servir.
+                    accompagné d'un réseau partenaire de professionnels <strong className="text-white">non accessible au grand public</strong>. 
+                    Une structure légère mais compétente.
                   </p>
                 </div>
-              </div>
 
-              {/* Texte présentation enrichi */}
-              <div>
-                <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-4">
-                  <Lock className="size-4" />
-                  Ingénieur Cybersécurité & Expert Automobile
-                </div>
-                
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  M3 Automobile est né d'une double passion : la cybersécurité et l'automobile. 
-                  Ingénieur en cybersécurité de formation, j'ai passé des années à traquer les fraudes 
-                  numériques et à sécuriser des systèmes d'information complexes pour des entreprises 
-                  comme TV5 Monde et Crouzet.
-                </p>
-                
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  Mais au-delà des écrans, une autre passion m'anime depuis toujours : <strong>l'automobile</strong>. 
-                  Mon entourage me sollicitait déjà pour trouver des véhicules d'occasion, vérifier des annonces, 
-                  éviter les arnaques. Grâce à mon œil d'expert en investigation numérique et mes connaissances 
-                  mécaniques, j'ai réussi à dénicher des perles rares à des prix défiant toute concurrence.
-                </p>
-                
-                <div className="bg-white/5 border-l-4 border-white/50 p-4 mb-6">
-                  <p className="text-gray-300 italic">
-                    "La cybersécurité m'a appris à détecter les mensonges : un kilométrage trafiqué laisse 
-                    des traces, un historique falsifié contient des incohérences. Cette expertise, combinée 
-                    à ma passion pour la mécanique, fait de M3 Automobile une agence unique."
-                  </p>
-                </div>
-                
-                <p className="text-gray-300 leading-relaxed mb-6">
-                  <strong>La boîte est jeune (créée en 2025), mais le savoir-faire ne l'est pas.</strong> 
-                  Des années d'expérience en achat-vente pour mon entourage, une expertise technique 
-                  pointue, et une méthode de travail rigoureuse héritée du monde de la cybersécurité. 
-                  Aujourd'hui, nous sommes une petite équipe basée à L'Isle-Adam, opérant sur toute 
-                  l'Île-de-France, avec un réseau de mécaniciens et carrossiers de confiance.
-                </p>
-
-                <div className="flex flex-wrap gap-4">
+                <div className="mt-8 flex flex-wrap gap-4">
                   <Link to="/qui-sommes-nous">
                     <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
                       Découvrir notre histoire
                       <ArrowRight className="size-4 ml-2" />
                     </Button>
                   </Link>
-                  <Link to="/contact">
-                    <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                      Nous contacter
-                    </Button>
-                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Pourquoi nous choisir */}
-        <section className="mb-20 md:mb-32 bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-12 border border-white/10">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Pourquoi choisir M3 Automobile ?
-              </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
-                Ce qui nous différencie : une expertise technique unique combinant cybersécurité et mécanique
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <div className="space-y-4">
-                  {differences.map((diff, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="size-6 text-white flex-shrink-0 mt-0.5" />
-                      <p className="text-gray-300 text-lg">{diff}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8 p-6 bg-white/5 border border-white/10 rounded-xl">
-                  <p className="text-gray-300 italic">
-                    "Mon expertise en cybersécurité m'apprend à ne jamais faire confiance aux apparences. 
-                    Chaque véhicule est audité comme un système informatique : rigueur, vérifications, 
-                    et rien n'est laissé au hasard."
-                  </p>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-white/10 flex items-center justify-center p-8">
-                  <div className="text-center">
-                    <div className="text-6xl font-bold text-white mb-4">VS</div>
-                    <div className="grid grid-cols-2 gap-4 mt-8 text-sm">
-                      <div className="bg-white/10 rounded-lg p-4">
-                        <p className="text-white font-semibold mb-1">M3 Automobile</p>
-                        <p className="text-gray-400">Expertise cybersécurité</p>
-                        <p className="text-gray-400">Détection des fraudes</p>
-                        <p className="text-gray-400">Analyse technique</p>
-                      </div>
-                      <div className="bg-white/5 rounded-lg p-4">
-                        <p className="text-gray-300 font-semibold mb-1">Vendeurs classiques</p>
-                        <p className="text-gray-500">Approche commerciale</p>
-                        <p className="text-gray-500">Pas de vérification</p>
-                        <p className="text-gray-500">Commission avant tout</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Nos Services Section */}
+        {/* 2. NOS SERVICES */}
         <section className="mb-20 md:mb-32">
           <div className="text-center mb-10 md:mb-16">
             <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-4">Nos Services</h3>
@@ -299,7 +213,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Nos Garanties Section */}
+        {/* NOS GARANTIES */}
         <section className="mb-20 bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-12 border border-white/10">
           <div className="text-center mb-8">
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">Nos Garanties</h3>
@@ -333,18 +247,77 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-20">
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 flex flex-col items-center text-center group hover:bg-white/10 transition-all">
+        {/* 3. POURQUOI CHOISIR M3 - Version allégée avec redirection */}
+        <section className="mb-20 md:mb-32 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-6 md:p-12 border border-white/10">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                  Pourquoi choisir M3 Automobile ?
+                </h2>
+                <p className="text-gray-300 mb-6">
+                  Une approche unique qui combine expertise cybersécurité et passion automobile 
+                  pour vous offrir un service incomparable sur le marché de l'occasion.
+                </p>
+                
+                {/* Mini VS compact */}
+                <div className="bg-white/5 rounded-xl border border-white/10 p-4 mb-6">
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <span className="text-white font-bold text-sm">M3 Automobile</span>
+                    <span className="text-gray-500">vs</span>
+                    <span className="text-gray-400 font-bold text-sm">Vendeurs classiques</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="text-gray-300">✓ Détection de fraudes</div>
+                    <div className="text-gray-500">✗ Pas de vérification</div>
+                    <div className="text-gray-300">✓ Expertise technique</div>
+                    <div className="text-gray-500">✗ Approche commerciale</div>
+                    <div className="text-gray-300">✓ Analyse approfondie</div>
+                    <div className="text-gray-500">✗ Commission avant tout</div>
+                  </div>
+                </div>
+
+                <Link to="/qui-sommes-nous">
+                  <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
+                    Découvrir toute notre différence
+                    <ArrowRight className="size-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+              
+              {/* Citation */}
+              <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+                <p className="text-gray-300 italic text-lg leading-relaxed">
+                  "Mon expertise en cybersécurité m'apprend à ne jamais faire confiance aux apparences. 
+                  Chaque véhicule est audité comme un système informatique : rigueur, vérifications, 
+                  et rien n'est laissé au hasard."
+                </p>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                    <User className="size-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold">Mam III Jobb</p>
+                    <p className="text-gray-400 text-sm">Fondateur M3 Automobile</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section - Bouton téléphone corrigé */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <a href="tel:0783269802" className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 flex flex-col items-center text-center group hover:bg-white/10 transition-all cursor-pointer">
             <Phone className="size-8 text-white mb-4 group-hover:scale-110 transition-transform" />
             <h4 className="text-white font-bold mb-2">Discutons de vive voix</h4>
-            <a href="tel:0783269802" className="text-2xl font-black text-white hover:underline uppercase tracking-tighter">07 83 26 98 02</a>
-          </div>
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 flex flex-col items-center text-center group hover:bg-white/10 transition-all">
+            <span className="text-2xl font-black text-white uppercase tracking-tighter">07 83 26 98 02</span>
+          </a>
+          <a href="mailto:m3.automobil@gmail.com" className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 flex flex-col items-center text-center group hover:bg-white/10 transition-all cursor-pointer">
             <Mail className="size-8 text-white mb-4 group-hover:scale-110 transition-transform" />
             <h4 className="text-white font-bold mb-2">Par Email</h4>
-            <a href="mailto:m3.automobil@gmail.com" className="text-lg font-medium text-white/70 hover:text-white break-all">m3.automobil@gmail.com</a>
-          </div>
+            <span className="text-lg font-medium text-white/70 group-hover:text-white break-all">m3.automobil@gmail.com</span>
+          </a>
         </div>
 
       </div>
