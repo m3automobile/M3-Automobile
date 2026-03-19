@@ -196,7 +196,7 @@ export default function QuiSommesNous() {
               </p>
 
               <div className="bg-white/10 rounded-xl p-6 my-8">
-                <h3 className="text-xl font-bold text-white mb-4">Pourquoi M3 Automobile en 2025 ?</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Pourquoi M3 Automobile en 2026 ?</h3>
                 <p>
                   Parce que le marché de l'occasion en France a besoin d'acteurs différents. Parce que les 
                   grandes enseignes vendent du volume, pas de la confiance. Parce que les particuliers méritent 
