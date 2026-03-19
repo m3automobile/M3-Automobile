@@ -176,7 +176,7 @@ export default function QuiSommesNous() {
 
               <p>
                 Pendant des années, j'ai exercé cette activité en parallèle de ma carrière dans la cybersécurité 
-                – d'abord à Campus Cyber, puis chez Crouzet, et aujourd'hui chez TV5 Monde. Chaque mission de 
+                – d'abord au Campus Cyber, puis chez Crouzet, et aujourd'hui chez TV5 Monde. Chaque mission de 
                 sécurisation de systèmes d'information m'apprenait davantage sur la détection de fraudes, 
                 l'analyse de comportements suspects, la recherche de preuves.
               </p>
@@ -205,14 +205,14 @@ export default function QuiSommesNous() {
               </div>
 
               <p>
-                <strong>La structure M3 Automobile est jeune, mais le savoir-faire ne l'est pas.</strong> 
+                <strong>La structure M3 Automobile est jeune, mais le savoir-faire ne l'est pas. </strong> 
                 C'est le fruit de années d'expérience en achat-vente, de formation continue en mécanique, 
                 et d'une expertise reconnue en cybersécurité. Quand vous travaillez avec nous, vous ne faites 
                 pas appel à un vendeur, mais à un investigateur technique passionné.
               </p>
 
               <p>
-                Aujourd'hui, nous sommes en expansion. À côté de moi, se sont greffés des mécaniciens 
+                Aujourd'hui, nous sommes en expansion. À côté de moi, se sont greffés plusieurs analystes, des mécaniciens 
                 certifiés avec qui j'ai tissé des liens de confiance, des carrossiers experts pour l'état 
                 des carrosseries, et un réseau de partenaires à travers l'Île-de-France. Nous restons une 
                 structure à taille humaine, mais une structure professionnelle avec des process rigoureux 
