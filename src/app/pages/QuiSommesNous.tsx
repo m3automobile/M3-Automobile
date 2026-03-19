@@ -432,7 +432,7 @@ export default function QuiSommesNous() {
             <img src="/photo-profil.jpg" alt="Jobb" className="w-full h-full object-cover" />
           </div>
           <p className="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-6">
-            "C'était Jobb, créateur et fondateur de M3 Automobile et expert automobile et en cybersécurité."
+            "C'était Jobb, créateur et fondateur de M3 Automobile."
           </p>
           <p className="text-lg text-white font-semibold">
             Hâte de faire votre connaissance et de vous accompagner dans votre recherche.
