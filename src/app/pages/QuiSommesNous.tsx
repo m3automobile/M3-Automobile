@@ -1,4 +1,4 @@
-import { User, Award, Heart, Shield, MapPin, Phone, Mail, Calendar, Wrench, CheckCircle2, Target, Users } from 'lucide-react';
+import { User, Award, Heart, Shield, MapPin, Phone, Mail, Calendar, Wrench, CheckCircle2, Target, Users, Search, Lock } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
@@ -7,54 +7,54 @@ import PremiumBackground from '../components/PremiumBackground';
 export default function QuiSommesNous() {
   const valeurs = [
     {
-      icon: Heart,
-      title: "Passion avant tout",
-      description: "L'automobile n'est pas juste un métier, c'est une passion que je transmets dans chaque conseil."
+      icon: Shield,
+      title: "Sécurité avant tout",
+      description: "Grâce à mon expertise en cybersécurité, je détecte les arnaques et les véhicules aux historiques douteux."
     },
     {
-      icon: Shield,
-      title: "Transparence totale",
-      description: "Pas de surprises, pas de frais cachés. Chaque véhicule est présenté avec son historique complet."
+      icon: Search,
+      title: "Investigation complète",
+      description: "Chaque véhicule est analysé comme une enquête : historique, kilométrage, état mécanique. Rien n'échappe."
     },
     {
       icon: Award,
-      title: "Exigence mécanique",
-      description: "Tous les véhicules sont contrôlés et préparés avant livraison. La qualité avant la quantité."
+      title: "Expertise technique",
+      description: "Passionné de mécanique depuis toujours, je connais les moteurs à privilégier et ceux à éviter."
     },
     {
-      icon: User,
+      icon: Heart,
       title: "Relation humaine",
-      description: "Pas de vendeur pressé ici. Je prends le temps d'écouter vos besoins et de vous conseiller."
+      description: "Un service personnalisé basé sur la confiance. Vous avez mon téléphone, même après l'achat."
     }
   ];
 
   const differences = [
+    "Expertise cybersécurité = détection des fraudes et arnaques",
     "Pas de showroom coûteux = prix plus justes",
-    "Pas de commissionnaires = conseil impartial",
-    "Pas de stock imposé = recherche personnalisée",
+    "Analyse technique approfondie = aucun mauvais choix",
     "Pas de démarches administratives = service clé en main"
   ];
 
   const etapes = [
     {
       number: "01",
-      title: "L'écoute",
-      description: "On prend le temps de discuter de votre projet, vos besoins réels, votre budget, vos contraintes."
+      title: "L'audit",
+      description: "On discute de votre projet, vos besoins, votre budget. Comme une analyse de sécurité, on évalue tous les risques."
     },
     {
       number: "02",
-      title: "La recherche",
-      description: "Je prospecte le marché pour trouver le véhicule qui correspond parfaitement à vos critères."
+      title: "L'investigation",
+      description: "Je recherche votre véhicule sur tout le marché français et vérifie chaque historique comme une enquête numérique."
     },
     {
       number: "03",
-      title: "Le contrôle",
-      description: "Vérification mécanique complète, historique, carrosserie. Rien n'est laissé au hasard."
+      title: "La vérification",
+      description: "Contrôle mécanique complet, vérification du kilométrage, analyse des pièces. La technique avant l'achat."
     },
     {
       number: "04",
       title: "La livraison",
-      description: "Véhicule préparé, nettoyé, avec tous les documents. Et surtout, un suivi après-vente."
+      description: "Véhicule préparé, nettoyé, avec tous les documents. Et un suivi après-vente digne d'un ingénieur."
     }
   ];
 
@@ -70,8 +70,8 @@ export default function QuiSommesNous() {
               Qui se cache derrière M3 Automobile ?
             </h1>
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-              Un passionné, un professionnel, et surtout quelqu'un qui croit que l'achat d'une voiture 
-              doit rester un moment de plaisir, pas une épreuve de stress.
+              Un ingénieur en cybersécurité passionné par l'automobile, qui a décidé de mettre son expertise 
+              au service de la confiance dans l'achat de véhicules d'occasion.
             </p>
           </div>
         </div>
@@ -82,18 +82,17 @@ export default function QuiSommesNous() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Photo placeholder */}
+              {/* Photo */}
               <div className="order-2 md:order-1">
                 <div className="relative">
-                  <div className="aspect-[4/5] bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden">
-                    {/* Remplacer par ta photo */}
-                    <div className="text-center p-8">
-                      <User className="size-20 text-gray-600 mx-auto mb-4" />
-                      <p className="text-gray-500 text-sm">Votre photo ici</p>
-                      <p className="text-gray-600 text-xs mt-2">Format recommandé : portrait 4:5</p>
-                    </div>
+                  <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden">
+                    <img 
+                      src="/photo-profil.jpg" 
+                      alt="Fondateur M3 Automobile" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  {/* Badge expérience */}
+                  {/* Badge */}
                   <div className="absolute -bottom-4 -right-4 bg-white text-gray-900 rounded-xl p-4 shadow-xl">
                     <div className="text-center">
                       <p className="text-3xl font-bold">2025</p>
@@ -106,23 +105,31 @@ export default function QuiSommesNous() {
               {/* Texte présentation */}
               <div className="order-1 md:order-2">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                  L'histoire de M3 Automobile
+                  De l'informatique à l'automobile : une histoire de passion
                 </h2>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
                   <p>
-                    M3 Automobile est né d'une passion simple : celle de l'automobile et du contact humain. 
-                    Après des années à observer le marché de l'occasion, j'ai constaté un manque cruel : 
-                    celui d'un interlocuteur de confiance, accessible, qui prend le temps d'écouter avant de vendre.
+                    Ingénieur en cybersécurité de formation, j'ai passé des années à traquer les fraudes numériques 
+                    et à sécuriser des systèmes d'information complexes. Mais au-delà des écrans, une autre passion 
+                    m'anime depuis toujours : <strong>l'automobile</strong>.
                   </p>
                   <p>
-                    Contrairement aux grandes enseignes qui traitent des volumes industriels, M3 Automobile 
-                    fonctionne à l'échelle humaine. Chaque client est un projet, chaque véhicule une histoire. 
-                    Je ne vends pas des voitures, j'accompagne des personnes dans un moment important de leur vie.
+                    Tout a commencé naturellement. Mon entourage me sollicitait pour trouver des véhicules 
+                    d'occasion, vérifier des annonces, éviter les arnaques. Grâce à mon œil d'expert en 
+                    investigation numérique et mes connaissances mécaniques, j'ai réussi à dénicher des perles 
+                    rares à des prix défiant toute concurrence.
                   </p>
                   <p>
-                    Basé à L'Isle-Adam, je suis présent sur tout l'Île-de-France et au-delà. Mon approche ? 
-                    La transparence totale : pas de frais cachés, pas de pression commerciale, juste des conseils 
-                    honnêtes et un service qui ne s'arrête pas à la signature du contrat.
+                    <strong>La cybersécurité m'a appris à détecter les mensonges</strong> : un kilométrage trafiqué 
+                    laisse des traces, un historique falsifié contient des incohérences. Cette expertise, 
+                    combinée à ma passion pour la mécanique, fait de M3 Automobile une agence unique où 
+                    <strong> la rigueur technique rencontre le conseil personnalisé</strong>.
+                  </p>
+                  <p>
+                    Aujourd'hui, nous sommes une petite équipe (moi-même et des partenaires mécaniciens de confiance) 
+                    basée à L'Isle-Adam, opérant sur toute l'Île-de-France. Notre mission ? Vous accompagner dans 
+                    l'achat ou la vente de votre véhicule avec la même rigueur que j'applique dans mes missions 
+                    de cybersécurité.
                   </p>
                 </div>
 
@@ -145,14 +152,68 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Nos Valeurs */}
+      {/* Mon parcours */}
       <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Mon Parcours</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Une double expertise qui fait la différence dans chaque transaction
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="bg-white/5 border-white/10 text-white">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-blue-500/20 p-3 rounded-lg">
+                      <Lock className="size-6 text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg mb-2">Ingénieur Cybersécurité</h3>
+                      <p className="text-gray-400 text-sm mb-2">TV5 Monde - Depuis 2024</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        Expert en détection de fraudes et sécurité des systèmes d'information. 
+                        Master en cybersécurité (Sup de Vinci). Cette expertise me permet de détecter 
+                        les arnaques automobiles et les historiques falsifiés.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/5 border-white/10 text-white">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-white/10 p-3 rounded-lg">
+                      <Wrench className="size-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg mb-2">Passionné d'Automobile</h3>
+                      <p className="text-gray-400 text-sm mb-2">Plusieurs années d'expérience</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        Connaissance approfondie des moteurs (les bons et les mauvais), 
+                        expérience en achat-vente pour mon entourage, expertise dans la 
+                        vérification mécanique et l'analyse des véhicules.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nos Valeurs */}
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Nos Valeurs</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Ce qui guide chacune de nos actions et fait la différence dans notre relation avec nos clients
+                Ce qui guide chacune de nos actions
               </p>
             </div>
 
@@ -171,14 +232,14 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Pourquoi nous choisir vs grandes enseignes */}
-      <section className="py-12 md:py-20">
+      {/* Pourquoi nous choisir */}
+      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                  Pourquoi choisir M3 Automobile plutôt qu'une grande enseigne ?
+                  Pourquoi choisir M3 Automobile ?
                 </h2>
                 <div className="space-y-4">
                   {differences.map((diff, index) => (
@@ -190,8 +251,9 @@ export default function QuiSommesNous() {
                 </div>
                 <div className="mt-8 p-6 bg-white/5 border border-white/10 rounded-xl">
                   <p className="text-gray-300 italic">
-                    "Chez M3 Automobile, vous n'êtes pas un numéro de dossier. Vous avez mon téléphone, 
-                    vous pouvez m'appeler même après l'achat. C'est cette relation de confiance que je construis."
+                    "Mon expertise en cybersécurité m'apprend à ne jamais faire confiance aux apparences. 
+                    Chaque véhicule est audité comme un système informatique : preuves, vérifications, 
+                    et rien n'est laissé au hasard."
                   </p>
                 </div>
               </div>
@@ -202,15 +264,15 @@ export default function QuiSommesNous() {
                     <div className="grid grid-cols-2 gap-4 mt-8 text-sm">
                       <div className="bg-white/10 rounded-lg p-4">
                         <p className="text-white font-semibold mb-1">M3 Automobile</p>
-                        <p className="text-gray-400">Relation humaine</p>
+                        <p className="text-gray-400">Expertise technique</p>
+                        <p className="text-gray-400">Détection des fraudes</p>
                         <p className="text-gray-400">Conseil personnalisé</p>
-                        <p className="text-gray-400">Prix justes</p>
                       </div>
                       <div className="bg-white/5 rounded-lg p-4">
-                        <p className="text-gray-300 font-semibold mb-1">Grandes enseignes</p>
-                        <p className="text-gray-500">Processus standardisé</p>
-                        <p className="text-gray-500">Vendeurs commissionnés</p>
-                        <p className="text-gray-500">Frais cachés</p>
+                        <p className="text-gray-300 font-semibold mb-1">Vendeurs classiques</p>
+                        <p className="text-gray-500">Approche commerciale</p>
+                        <p className="text-gray-500">Pas d'analyse technique</p>
+                        <p className="text-gray-500">Commission avant tout</p>
                       </div>
                     </div>
                   </div>
@@ -221,14 +283,14 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Notre méthode de travail */}
-      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
+      {/* Notre méthode */}
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Notre Méthode de Travail</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Notre Méthode</h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                Une approche structurée en 4 étapes pour vous garantir la meilleure expérience
+                Un processus rigoureux inspiré des méthodes d'investigation en cybersécurité
               </p>
             </div>
 
@@ -254,15 +316,15 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="py-12 md:py-20">
+      {/* CTA */}
+      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Convaincu ? Parlons de votre projet
+            Prêt à acheter en toute sécurité ?
           </h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Que vous cherchiez une voiture en stock ou un modèle spécifique, 
-            je suis là pour vous accompagner dans votre projet.
+            Faites appel à un expert qui traite votre achat automobile avec la même 
+            rigueur qu'une mission de cybersécurité.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact">
