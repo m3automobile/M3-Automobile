@@ -433,7 +433,7 @@ export default function QuiSommesNous() {
           </div>
           <p className="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-6">
             "C'était Jobb, créateur et fondateur de M3 Automobile. 
-            Passionné par l'automobile et la cybersécurité, je mets aujourd'hui mon expertise 
+            Expert automobile et en cybersécurité, je mets aujourd'hui mon expertise 
             au service de votre projet automobile."
           </p>
           <p className="text-lg text-white font-semibold">
