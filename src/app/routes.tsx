@@ -7,6 +7,7 @@ import GarantiesPage from "./pages/GarantiesPage";
 import ContactPage from "./pages/ContactPage";
 import DepotVentePage from "./pages/DepotVentePage";
 import MentionsLegales from "./pages/MentionsLegales";
+import QuiSommesNous from "./pages/QuiSommesNous";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       { path: "mandat-vente", Component: DepotVentePage },
       { path: "contact", Component: ContactPage },
       { path: "mentions-legales", Component: MentionsLegales },
+      { path: "qui-sommes-nous", Component: QuiSommesNous },
     ],
   },
 ]);

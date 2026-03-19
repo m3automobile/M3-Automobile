@@ -27,6 +27,7 @@ export default function Layout() {
     { name: 'Recherche Personnalisée', href: '/recherche-personnalisee' },
     { name: 'Garanties', href: '/garanties' },
     { name: 'Mandat de Vente', href: '/mandat-vente' },
+    { name: 'Qui sommes-nous', href: '/qui-sommes-nous' },
     { name: 'Contact', href: '/contact' },
   ];
 
