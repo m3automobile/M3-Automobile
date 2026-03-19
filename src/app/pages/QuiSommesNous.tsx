@@ -1,4 +1,4 @@
-import { User, Award, Heart, Shield, MapPin, Phone, Mail, Calendar, Wrench, CheckCircle2, Target, Users, Search, Lock, Clock, Star, TrendingUp } from 'lucide-react';
+import { User, Award, Heart, Shield, MapPin, Phone, Mail, Calendar, Wrench, CheckCircle2, Target, Users, Search, Lock, Clock, Star, TrendingUp, GraduationCap } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
@@ -151,7 +151,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* L'histoire complète */}
-      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
+      <section className="py-8 md:py-12 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
@@ -224,7 +224,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Notre équipe */}
-      <section className="py-8 md:py-12">
+      <section className="py-4 md:py-6">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -263,7 +263,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Mon parcours */}
-      <section className="py-8 md:py-12 bg-white/5 backdrop-blur-sm">
+      <section className="py-4 md:py-6 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -273,7 +273,7 @@ export default function QuiSommesNous() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <Card className="bg-white/5 border-white/10 text-white">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
@@ -323,8 +323,30 @@ export default function QuiSommesNous() {
               <Card className="bg-white/5 border-white/10 text-white">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="bg-purple-500/20 p-4 rounded-lg flex-shrink-0">
-                      <Star className="size-6 text-purple-400" />
+                    <div className="bg-green-500/20 p-4 rounded-lg flex-shrink-0">
+                      <GraduationCap className="size-6 text-green-400" />
+                    </div>
+                    <div className="flex-grow">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                        <h3 className="font-bold text-lg">Baccalauréat Général</h3>
+                        <span className="text-gray-400 text-sm">Année de diplomation</span>
+                      </div>
+                      <p className="text-green-400 text-sm mb-2">Spécialités : Mathématiques, Physique-Chimie</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        Diplôme du baccalauréat général avec spécialités en mathématiques et physique-chimie, 
+                        offrant une solide base scientifique et analytique qui m'a permis de poursuivre 
+                        des études supérieures en informatique et cybersécurité.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/5 border-white/10 text-white">
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:items-start gap-4">
+                    <div className="bg-orange-500/20 p-4 rounded-lg flex-shrink-0">
+                      <Star className="size-6 text-orange-400" />
                     </div>
                     <div className="flex-grow">
                       <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
@@ -346,34 +368,8 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Nos Valeurs */}
-      <section className="py-8 md:py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Nos Valeurs</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
-                Ce qui guide chacune de nos actions
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {valeurs.map((valeur, index) => (
-                <Card key={index} className="bg-white/5 border-white/10 text-white h-full hover:bg-white/10 transition-colors">
-                  <CardContent className="p-6">
-                    <valeur.icon className="size-10 text-white mb-4" />
-                    <h3 className="font-bold text-lg mb-2">{valeur.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{valeur.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Pourquoi nous choisir */}
-      <section className="py-8 md:py-12 bg-white/5 backdrop-blur-sm">
+      <section className="py-4 md:py-6 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -490,7 +486,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* CTA */}
-      <section className="py-8 md:py-12">
+      <section className="py-4 md:py-6">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Prêt à nous confier votre projet ?
