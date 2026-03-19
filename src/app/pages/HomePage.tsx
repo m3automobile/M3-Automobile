@@ -20,10 +20,10 @@ export default function HomePage() {
         />
         <div className="relative container mx-auto px-4 flex flex-col items-center justify-center text-center text-white">
           <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-8 text-white tracking-tight -mt-20 md:-mt-32">
-            Bienvenue chez M3 Automobile
+            Bienvenue chez M3 Automobile.
           </h2>
           <p className="text-base md:text-xl lg:text-3xl max-w-4xl text-gray-200 mb-6 md:mb-12 px-4 leading-relaxed font-medium">
-            Achat, vente et recherche personnalisée de véhicules d'occasion par un expert en cybersécurité
+            Achat, vente et recherche personnalisée de véhicules d'occasion
           </p>
           <div className="flex gap-3 md:gap-6 flex-wrap justify-center px-4">
             <Badge className="bg-white/90 text-gray-900 px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-lg font-semibold border-none hover:bg-white transition-colors">
