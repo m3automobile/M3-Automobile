@@ -107,7 +107,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Photo centrale + équipe */}
-      <section className="py-6 md:py-8">
+      <section className="py-2 md:py-4">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="relative inline-block">
@@ -124,7 +124,7 @@ export default function QuiSommesNous() {
               </div>
             </div>
             
-            <div className="mt-8">
+            <div className="mt-4">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Et une équipe en pleine expansion
               </h2>
@@ -137,7 +137,7 @@ export default function QuiSommesNous() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-4">
               {stats.map((stat, index) => (
                 <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
                   <stat.icon className="size-8 text-white mx-auto mb-3" />
