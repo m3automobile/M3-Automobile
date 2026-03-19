@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation } from 'react-router';
 import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LogoHorizontal from './LogoHorizontal.png';
 import {
   Sheet,
@@ -14,6 +14,12 @@ import {
 export default function Layout() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
+
+  // Remonter en haut de page à chaque changement de route
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
 
   const navigation = [
     { name: 'Accueil', href: '/' },
@@ -75,7 +81,7 @@ export default function Layout() {
       </div>
 
       {/* BOUTON MENU - À DROITE sur mobile */}
-      <Sheet>
+      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
         <SheetTrigger asChild>
           <button
             className="lg:hidden text-white p-1 -mr-1 order-3"
@@ -94,17 +100,20 @@ export default function Layout() {
               <Link
                 key={item.name}
                 to={item.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setSheetOpen(false);
+                }}
                 className={`px-4 py-3 rounded-lg transition-colors text-base ${
                   isActive(item.href)
                     ? 'bg-white/10 text-white font-semibold'
-                    : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                  : 'text-gray-300 hover:bg-white/5 hover:text-white'
                 }`}
               >
                 {item.name}
               </Link>
             ))}
-            <a href="tel:0783269802" className="mt-4">
+            <a href="tel:0783269802" className="mt-4" onClick={() => setSheetOpen(false)}>
               <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6">
                 <Phone className="size-5 mr-2" />
                 07 83 26 98 02

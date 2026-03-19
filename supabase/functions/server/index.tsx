@@ -31,9 +31,9 @@ app.post("/make-server-cc861502/recherche-personnalisee", async (c) => {
     
     // Validation des champs obligatoires (accepte ancien format marqueModele ou nouveau format marque+modele)
     const hasMarqueModele = body.marqueModele || (body.marque && body.modele);
-    if (!body.nom || !body.telephone || !body.email || !hasMarqueModele || !body.motorisation) {
+    if (!body.nom || !body.telephone || !body.email || !hasMarqueModele) {
       return c.json(
-        { error: "Tous les champs obligatoires doivent être remplis (nom, téléphone, email, marque, modèle et motorisation)" },
+        { error: "Tous les champs obligatoires doivent être remplis (nom, téléphone, email, marque et modèle)" },
         400
       );
     }
