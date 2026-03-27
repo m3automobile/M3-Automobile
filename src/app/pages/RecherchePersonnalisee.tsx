@@ -221,7 +221,7 @@ export default function RecherchePersonnalisee() {
                     className="w-full bg-white text-black hover:bg-white/90 py-8 text-xl font-black uppercase tracking-tighter rounded-2xl transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 shadow-xl"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Envoi en cours...' : 'Lancer la recherche →'}
+                    {isSubmitting ? 'Envoi en cours...' : 'Enregistrer la recherche →'}
                   </Button>
 
                   {submitStatus && (
