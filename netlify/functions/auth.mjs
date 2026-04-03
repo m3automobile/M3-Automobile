@@ -1,53 +1,47 @@
-const headers = {
+const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Content-Type": "application/json",
 };
 
-export const handler = async (event) => {
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 200, headers, body: "" };
+export default async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response("", { headers: corsHeaders });
   }
 
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: "Méthode non supportée" }),
-    };
+  if (req.method !== "POST") {
+    return new Response(JSON.stringify({ error: "M\u00e9thode non support\u00e9e" }), {
+      status: 405, headers: corsHeaders,
+    });
   }
 
   try {
-    const { password } = JSON.parse(event.body);
+    const { password } = await req.json();
     const adminPassword = process.env.ADMIN_PASSWORD;
 
     if (!adminPassword) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: "ADMIN_PASSWORD non configuré sur Netlify" }),
-      };
+      return new Response(JSON.stringify({ error: "ADMIN_PASSWORD non configur\u00e9 sur Netlify" }), {
+        status: 500, headers: corsHeaders,
+      });
     }
 
     if (password === adminPassword) {
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({ success: true, token: password }),
-      };
+      return new Response(JSON.stringify({ success: true, token: password }), {
+        headers: corsHeaders,
+      });
     }
 
-    return {
-      statusCode: 401,
-      headers,
-      body: JSON.stringify({ error: "Mot de passe incorrect" }),
-    };
-  } catch (error) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: "Requête invalide" }),
-    };
+    return new Response(JSON.stringify({ error: "Mot de passe incorrect" }), {
+      status: 401, headers: corsHeaders,
+    });
+  } catch {
+    return new Response(JSON.stringify({ error: "Requ\u00eate invalide" }), {
+      status: 400, headers: corsHeaders,
+    });
   }
+};
+
+export const config = {
+  path: "/api/auth",
 };
