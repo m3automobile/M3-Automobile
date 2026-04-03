@@ -39,33 +39,6 @@ export default function VehiculesPage() {
           </p>
         </div>
 
-        {/* Info Garantie Premium */}
-        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 mb-16 md:mb-24 max-w-5xl mx-auto shadow-2xl">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8 text-center md:text-left">
-            <div className="bg-white/10 p-4 rounded-full border border-white/20">
-              <Shield className="size-12 md:size-16 text-white" />
-            </div>
-            <div>
-              <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">Garantie 3 mois incluse</h2>
-              <p className="text-lg md:text-xl text-gray-400">Une tranquillité d'esprit totale sur tous nos modèles.</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors">
-              <p className="text-lg text-white font-bold mb-1">Moteur & Boîte</p>
-              <p className="text-sm text-gray-400">Couverture mécanique complète</p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors">
-              <p className="text-lg text-white font-bold mb-1">Zéro avance de frais</p>
-              <p className="text-sm text-gray-400">Gestion directe avec le garage</p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors">
-              <p className="text-lg text-white font-bold mb-1">Partout en France</p>
-              <p className="text-sm text-gray-400">Valable dans le garage de votre choix</p>
-            </div>
-          </div>
-        </div>
-
         {/* ===== SECTION VÉHICULES ===== */}
         <section className="max-w-6xl mx-auto mb-16 md:mb-24">
           <div className="text-center mb-10">
@@ -126,6 +99,33 @@ export default function VehiculesPage() {
             </div>
           )}
         </section>
+
+        {/* Info Garantie Premium */}
+        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 mb-16 md:mb-24 max-w-5xl mx-auto shadow-2xl">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8 text-center md:text-left">
+            <div className="bg-white/10 p-4 rounded-full border border-white/20">
+              <Shield className="size-12 md:size-16 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">Garantie 3 mois incluse</h2>
+              <p className="text-lg md:text-xl text-gray-400">Une tranquillité d'esprit totale sur tous nos modèles.</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors">
+              <p className="text-lg text-white font-bold mb-1">Moteur & Boîte</p>
+              <p className="text-sm text-gray-400">Couverture mécanique complète</p>
+            </div>
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors">
+              <p className="text-lg text-white font-bold mb-1">Zéro avance de frais</p>
+              <p className="text-sm text-gray-400">Gestion directe avec le garage</p>
+            </div>
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-colors">
+              <p className="text-lg text-white font-bold mb-1">Partout en France</p>
+              <p className="text-sm text-gray-400">Valable dans le garage de votre choix</p>
+            </div>
+          </div>
+        </div>
 
         {/* Plateformes externes - version compacte */}
         <section className="max-w-4xl mx-auto mb-16 md:mb-24">
