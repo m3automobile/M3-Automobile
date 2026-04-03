@@ -6,13 +6,7 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# API redirects - doivent être AVANT le catch-all
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
-# SPA catch-all - en DERNIER
+# SPA catch-all
 [[redirects]]
   from = "/*"
   to = "/index.html"
