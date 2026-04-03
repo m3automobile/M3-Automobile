@@ -4,10 +4,16 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import PremiumBackground from '../components/PremiumBackground';
+import SEO from '../components/SEO';
 
 export default function GarantiesPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <SEO
+        title="Nos Garanties Mécaniques"
+        description="Garantie mécanique 3 mois incluse sur tous nos véhicules. Valable partout en France, zéro avance de frais, kilométrage illimité. Extensions jusqu'à 24 mois."
+        keywords="garantie voiture occasion, garantie mécanique 3 mois, extension garantie automobile, garantie véhicule occasion Val d'Oise"
+      />
       <PremiumBackground />
       
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">

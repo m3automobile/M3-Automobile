@@ -48,5 +48,21 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
+  <!-- Qui sommes-nous -->
+  <url>
+    <loc>https://m3-automobile.fr/qui-sommes-nous</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Mentions Légales -->
+  <url>
+    <loc>https://m3-automobile.fr/mentions-legales</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>

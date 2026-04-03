@@ -5,6 +5,7 @@ import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
+import SEO from '../components/SEO';
 import { useState } from 'react';
 import { projectId, publicAnonKey } from '/utils/supabase/info'
 
@@ -84,6 +85,11 @@ export default function RecherchePersonnalisee() {
     <div className="relative min-h-screen overflow-x-hidden">
       <PremiumBackground />
       
+      <SEO
+        title="Recherche Personnalisée de Véhicules"
+        description="Confiez-nous la recherche de votre véhicule idéal. Investigation complète du marché, vérification anti-fraude et contrôle mécanique expert à L'Isle-Adam (95)."
+        keywords="recherche voiture personnalisée, trouver voiture occasion, chasseur automobile, recherche véhicule sur mesure, M3 Automobile recherche"
+      />
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">
         {/* Header Section */}
         <div className="text-center mb-16 md:mb-24">
@@ -221,7 +227,7 @@ export default function RecherchePersonnalisee() {
                     className="w-full bg-white text-black hover:bg-white/90 py-8 text-xl font-black uppercase tracking-tighter rounded-2xl transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50 shadow-xl"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Envoi en cours...' : 'Enregistrer la recherche →'}
+                    {isSubmitting ? 'Envoi en cours...' : 'Lancer la recherche →'}
                   </Button>
 
                   {submitStatus && (

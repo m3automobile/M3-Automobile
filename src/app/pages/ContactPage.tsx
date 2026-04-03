@@ -1,10 +1,16 @@
 import { Phone, Mail, MapPin, Instagram } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import PremiumBackground from '../components/PremiumBackground';
+import SEO from '../components/SEO';
 
 export default function ContactPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <SEO
+        title="Contactez-nous"
+        description="Contactez M3 Automobile à L'Isle-Adam (95290). Téléphone : 07 83 26 98 02. Email : m3.automobil@gmail.com. Nous répondons rapidement à toutes vos demandes."
+        keywords="contact M3 Automobile, garage L'Isle-Adam contact, téléphone garage occasion 95, M3 Automobile L'Isle-Adam"
+      />
       <PremiumBackground />
       
       <div className="relative z-10 container mx-auto px-4 py-10 md:py-16">

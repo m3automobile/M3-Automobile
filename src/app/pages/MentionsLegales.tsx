@@ -1,10 +1,16 @@
 import { FileText, Shield, Info, Globe, Mail, Phone, Landmark } from 'lucide-react';
 import { Card } from '../components/ui/card';
 import PremiumBackground from '../components/PremiumBackground';
+import SEO from '../components/SEO';
 
 export default function MentionsLegales() {
   return (
     <div className="relative min-h-screen overflow-x-hidden text-white">
+      <SEO
+        title="Mentions Légales"
+        description="Mentions légales de M3 Automobile, SASU au capital de 500€. SIRET : 100 150 168 00019. Siège social : L'Isle-Adam (95290)."
+        keywords="mentions légales M3 Automobile, SIRET M3 Automobile, informations légales garage L'Isle-Adam"
+      />
       <PremiumBackground />
       
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">

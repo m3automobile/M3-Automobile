@@ -4,10 +4,17 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Link } from 'react-router';
 import PremiumBackground from '../components/PremiumBackground';
+import SEO from '../components/SEO';
 
 export default function HomePage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <SEO
+        title="Achat & Vente de Véhicules d'Occasion Garantis"
+        description="M3 Automobile à L'Isle-Adam (95290) : achat, vente et recherche personnalisée de véhicules d'occasion. Garantie 3 mois, expert en détection de fraudes, service clé en main."
+        keywords="garage voiture occasion L'Isle-Adam, vente voiture occasion Val d'Oise, garage 95290, voiture occasion garantie, recherche voiture personnalisée, M3 Automobile, détection fraude automobile"
+        canonicalPath="/"
+      />
       <PremiumBackground />
 
       {/* Hero Section */}
@@ -20,10 +27,10 @@ export default function HomePage() {
         />
         <div className="relative container mx-auto px-4 flex flex-col items-center justify-center text-center text-white">
           <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-8 text-white tracking-tight -mt-20 md:-mt-32">
-            Bienvenue chez M3 Automobile.
+            Bienvenue chez M3 Automobile
           </h2>
           <p className="text-base md:text-xl lg:text-3xl max-w-4xl text-gray-200 mb-6 md:mb-12 px-4 leading-relaxed font-medium">
-            Achat, vente et recherche personnalisée de véhicules d'occasion
+            Achat, vente et recherche personnalisée de véhicules d'occasion par un expert en cybersécurité
           </p>
           <div className="flex gap-3 md:gap-6 flex-wrap justify-center px-4">
             <Badge className="bg-white/90 text-gray-900 px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-lg font-semibold border-none hover:bg-white transition-colors">
@@ -45,6 +52,77 @@ export default function HomePage() {
       {/* Container principal */}
       <div className="container mx-auto px-4 py-12 md:py-24 relative z-10">
         
+        {/* 1. QUI SE CACHE DERRIERE M3 - Version courte */}
+        <section className="mb-20 md:mb-32">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Qui se cache derrière M3 Automobile ?</h2>
+              <div className="w-20 h-1 bg-white/50 mx-auto rounded-full"></div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+              {/* Photo + badge repositionné */}
+              <div className="relative">
+                <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden mb-6">
+                  <img 
+                    src="/photo-profil.jpg" 
+                    alt="Mam III Jobb - Fondateur M3 Automobile" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Badge 2025 déplacé en haut à droite avec fond translucide */}
+                <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-md text-white rounded-xl p-4 shadow-xl border border-white/20">
+                  <div className="text-center">
+                    <p className="text-3xl font-bold">2025</p>
+                    <p className="text-xs text-gray-300">Création</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Texte présentation court */}
+              <div>
+                <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-4">
+                  <Lock className="size-4" />
+                  Mam III Jobb - Ingénieur Cybersécurité & Expert Automobile
+                </div>
+                
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  M3 Automobile est né d'une double passion : la cybersécurité et l'automobile. 
+                  Ingénieur en cybersécurité chez TV5 Monde, j'ai passé des années à traquer les fraudes 
+                  numériques et à sécuriser des systèmes d'information complexes.
+                </p>
+                
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Cette expertise en investigation numérique, combinée à ma passion pour la mécanique, 
+                  fait de M3 Automobile une agence unique sur le marché de l'occasion.
+                </p>
+
+                {/* Section équipe avec encadre translucide comme avant */}
+                <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Users className="size-5 text-blue-400" />
+                    <span className="text-white font-semibold">Une équipe en expansion</span>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    M3 Automobile, c'est <strong className="text-white">Mam III Jobb</strong> à la tête des opérations, 
+                    accompagné d'un réseau partenaire de professionnels <strong className="text-white">non accessible au grand public</strong>. 
+                    Une structure légère mais compétente.
+                  </p>
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link to="/qui-sommes-nous">
+                    <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
+                      Découvrir notre histoire
+                      <ArrowRight className="size-4 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 2. NOS SERVICES */}
         <section className="mb-20 md:mb-32">
           <div className="text-center mb-10 md:mb-16">
@@ -139,77 +217,6 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </Link>
-          </div>
-        </section>
-
-         {/* 1. QUI SE CACHE DERRIERE M3 - Version courte */}
-        <section className="mb-20 md:mb-32">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Qui se cache derrière M3 Automobile ?</h2>
-              <div className="w-20 h-1 bg-white/50 mx-auto rounded-full"></div>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-              {/* Photo + badge repositionné */}
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden mb-6">
-                  <img 
-                    src="/photo-profil.jpg" 
-                    alt="Mam III Jobb - Fondateur M3 Automobile" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* Badge 2025 déplacé en haut à droite avec fond translucide */}
-                <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-md text-white rounded-xl p-4 shadow-xl border border-white/20">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold">2025</p>
-                    <p className="text-xs text-gray-300">Création</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Texte présentation court */}
-              <div>
-                <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-4">
-                  <Lock className="size-4" />
-                  Mam III Jobb - Ingénieur Cybersécurité & Expert Automobile
-                </div>
-                
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  M3 Automobile est né d'une double passion : la cybersécurité et l'automobile. 
-                  Ingénieur en cybersécurité chez TV5 Monde, j'ai passé des années à traquer les fraudes 
-                  numériques et à sécuriser des systèmes d'information complexes.
-                </p>
-                
-                <p className="text-gray-300 leading-relaxed mb-6">
-                  Cette expertise en investigation numérique, combinée à ma passion pour la mécanique, 
-                  fait de M3 Automobile une agence unique sur le marché de l'occasion.
-                </p>
-
-                {/* Section équipe avec encadre translucide comme avant */}
-                <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Users className="size-5 text-blue-400" />
-                    <span className="text-white font-semibold">Une équipe en expansion</span>
-                  </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    M3 Automobile, c'est <strong className="text-white">Mam III Jobb</strong> à la tête des opérations, 
-                    accompagné d'un réseau partenaire de professionnels <strong className="text-white">non accessible au grand public</strong>. 
-                    Une structure légère mais compétente.
-                  </p>
-                </div>
-
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link to="/qui-sommes-nous">
-                    <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
-                      Découvrir notre histoire
-                      <ArrowRight className="size-4 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 

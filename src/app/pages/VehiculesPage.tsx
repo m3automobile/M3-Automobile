@@ -1,17 +1,35 @@
-import { ExternalLink, Shield, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, Shield, CheckCircle2, Car } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Link } from 'react-router';
 import PremiumBackground from '../components/PremiumBackground';
+import SEO from '../components/SEO';
+import VehiculeCard from '../components/VehiculeCard';
+import { vehicules } from '../data/vehicules';
+import { useState } from 'react';
 import logoCentrale from './Logolacentrale.png';
 import logoLeboncoin from './Logoleboncoin.png';
 
 export default function VehiculesPage() {
+  const [filtre, setFiltre] = useState<'tous' | 'en_vente' | 'vendu'>('tous');
+
+  const vehiculesFiltres = filtre === 'tous'
+    ? vehicules
+    : vehicules.filter(v => v.statut === filtre);
+
+  const nbEnVente = vehicules.filter(v => v.statut === 'en_vente').length;
+  const nbVendus = vehicules.filter(v => v.statut === 'vendu').length;
+
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <SEO
+        title="Nos Véhicules d'Occasion Garantis"
+        description="Découvrez notre sélection de véhicules d'occasion rigoureusement contrôlés à L'Isle-Adam (95). Garantie 3 mois incluse, historique vérifié, prix transparents."
+        keywords="voiture occasion garantie, véhicule occasion L'Isle-Adam, voiture occasion 95, achat voiture Val d'Oise, M3 Automobile véhicules"
+      />
       <PremiumBackground />
-      
+
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">
         {/* Hero Section */}
         <div className="text-center mb-12 md:mb-20">
@@ -48,73 +66,117 @@ export default function VehiculesPage() {
           </div>
         </div>
 
-        {/* Plateformes de Vente */}
-        <div className="max-w-6xl mx-auto mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-10 md:mb-16">Consultez Notre Stock</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {/* La Centrale */}
-            <a 
-              href="https://www.lacentrale.fr" 
-              target="_blank" 
+        {/* ===== SECTION VÉHICULES ===== */}
+        <section className="max-w-6xl mx-auto mb-16 md:mb-24">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Notre Stock</h2>
+            <p className="text-gray-400 text-lg">
+              {nbEnVente} véhicule{nbEnVente > 1 ? 's' : ''} disponible{nbEnVente > 1 ? 's' : ''} · {nbVendus} vendu{nbVendus > 1 ? 's' : ''}
+            </p>
+          </div>
+
+          {/* Filtres */}
+          <div className="flex justify-center gap-3 mb-10">
+            <button
+              onClick={() => setFiltre('tous')}
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
+                filtre === 'tous'
+                  ? 'bg-white text-gray-900'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/10'
+              }`}
+            >
+              Tous ({vehicules.length})
+            </button>
+            <button
+              onClick={() => setFiltre('en_vente')}
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
+                filtre === 'en_vente'
+                  ? 'bg-green-500 text-white'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/10'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <Car className="size-4" />
+                En vente ({nbEnVente})
+              </span>
+            </button>
+            <button
+              onClick={() => setFiltre('vendu')}
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
+                filtre === 'vendu'
+                  ? 'bg-red-500/80 text-white'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20 border border-white/10'
+              }`}
+            >
+              Vendus ({nbVendus})
+            </button>
+          </div>
+
+          {/* Grille de véhicules */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {vehiculesFiltres.map((vehicule) => (
+              <VehiculeCard key={vehicule.id} vehicule={vehicule} />
+            ))}
+          </div>
+
+          {vehiculesFiltres.length === 0 && (
+            <div className="text-center py-16">
+              <Car className="size-16 text-gray-600 mx-auto mb-4" />
+              <p className="text-gray-400 text-lg">Aucun véhicule dans cette catégorie pour le moment.</p>
+            </div>
+          )}
+        </section>
+
+        {/* Plateformes externes - version compacte */}
+        <section className="max-w-4xl mx-auto mb-16 md:mb-24">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Retrouvez-nous aussi sur</h2>
+            <p className="text-gray-400">Nos annonces complètes avec toutes les photos</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a
+              href="https://www.leboncoin.fr"
+              target="_blank"
               rel="noopener noreferrer"
               className="group"
             >
-              <Card className="border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer h-full overflow-hidden shadow-xl">
-                <CardContent className="pt-12 pb-12 text-center px-6">
-                  <div className="bg-white rounded-2xl p-6 mb-8 mx-auto w-fit flex items-center justify-center h-32 md:h-40 shadow-inner group-hover:scale-105 transition-transform duration-300">
-                    <img
-                      src={logoCentrale}
-                      alt="La Centrale"
-                      className="max-h-20 md:max-h-24 w-auto object-contain"
-                    />
-                  </div>
-                  <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">La Centrale</h3>
-                  <p className="text-base md:text-xl text-gray-300 mb-8 leading-relaxed px-4">
-                    Retrouvez nos annonces avec photos HD, historique complet et caractéristiques techniques détaillées.
-                  </p>
-                  <div className="inline-flex items-center justify-center gap-3 text-white bg-white/10 px-8 py-4 rounded-xl group-hover:bg-white group-hover:text-black transition-all text-lg font-bold">
-                    <span>Voir le stock</span>
-                    <ExternalLink className="size-6" />
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex items-center gap-5 hover:bg-white/10 hover:border-white/20 transition-all">
+                <div className="bg-white rounded-xl p-3 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <img src={logoLeboncoin} alt="Leboncoin" className="h-10 w-auto object-contain" />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-lg font-bold text-white">Leboncoin</h3>
+                  <p className="text-sm text-gray-400">Toutes nos annonces en ligne</p>
+                </div>
+                <ExternalLink className="size-5 text-gray-500 group-hover:text-white transition-colors" />
+              </div>
             </a>
 
-            {/* Leboncoin */}
-            <a 
-              href="https://www.leboncoin.fr" 
-              target="_blank" 
+            <a
+              href="https://www.lacentrale.fr"
+              target="_blank"
               rel="noopener noreferrer"
               className="group"
             >
-              <Card className="border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer h-full overflow-hidden shadow-xl text-white">
-                <CardContent className="pt-12 pb-12 text-center px-6">
-                  <div className="bg-white rounded-2xl p-6 mb-8 mx-auto w-fit flex items-center justify-center h-32 md:h-40 shadow-inner group-hover:scale-105 transition-transform duration-300">
-                    <img
-                      src={logoLeboncoin}
-                      alt="Leboncoin"
-                      className="max-h-20 md:max-h-24 w-auto object-contain"
-                    />
-                  </div>
-                  <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">Leboncoin</h3>
-                  <p className="text-base md:text-xl text-gray-300 mb-8 leading-relaxed px-4">
-                    Consultez toutes nos offres en direct sur la plateforme préférée des français.
-                  </p>
-                  <div className="inline-flex items-center justify-center gap-3 text-white bg-white/10 px-8 py-4 rounded-xl group-hover:bg-white group-hover:text-black transition-all text-lg font-bold">
-                    <span>Voir les annonces</span>
-                    <ExternalLink className="size-6" />
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex items-center gap-5 hover:bg-white/10 hover:border-white/20 transition-all">
+                <div className="bg-white rounded-xl p-3 flex-shrink-0 group-hover:scale-105 transition-transform">
+                  <img src={logoCentrale} alt="La Centrale" className="h-10 w-auto object-contain" />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-lg font-bold text-white">La Centrale</h3>
+                  <p className="text-sm text-gray-400">Photos HD & historique complet</p>
+                </div>
+                <ExternalLink className="size-5 text-gray-500 group-hover:text-white transition-colors" />
+              </div>
             </a>
           </div>
-        </div>
+        </section>
 
-        {/* Engagements Qualité - Style Corrigé */}
+        {/* Engagements Qualité */}
         <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-16 border border-white/10 max-w-6xl mx-auto shadow-2xl">
           <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-12 md:mb-16">Nos Engagements Qualité</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {[
               { title: "Véhicules contrôlés", desc: "Contrôle technique à jour et vérification mécanique complète avant mise en vente." },
@@ -123,7 +185,7 @@ export default function VehiculesPage() {
               { title: "Service complet", desc: "Gestion de la carte grise, garantie mécanique et solutions de financement." }
             ].map((item, index) => (
               <div key={index} className="flex gap-5">
-                <div className="bg-white/10 backdrop-blur-sm rounded-full size-12 md:size-16 flex items-center justify-center flex-shrink-0 border border-white-20 shadow-lg">
+                <div className="bg-white/10 backdrop-blur-sm rounded-full size-12 md:size-16 flex items-center justify-center flex-shrink-0 border border-white/20 shadow-lg">
                   <CheckCircle2 className="size-6 md:size-10 text-white" />
                 </div>
                 <div>
@@ -135,12 +197,12 @@ export default function VehiculesPage() {
           </div>
         </div>
 
-        {/* CTA - VERSION CORRIGÉE CENTRAGE */}
+        {/* CTA */}
         <div className="flex flex-col items-center justify-center text-center mt-20 mb-10 overflow-hidden">
           <p className="text-lg md:text-2xl text-gray-300 mb-8 px-4 font-medium">
             Vous ne trouvez pas votre bonheur dans notre stock ?
           </p>
-          
+
           <div className="flex justify-center w-full px-10">
             <Link to="/recherche-personnalisee" className="inline-block">
               <button className="bg-white text-gray-900 px-6 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold rounded-2xl shadow-xl hover:bg-gray-100 transition-all whitespace-nowrap">
@@ -148,7 +210,6 @@ export default function VehiculesPage() {
               </button>
             </Link>
           </div>
-
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
-import { User, Award, Heart, Shield, MapPin, Phone, Mail, Calendar, Wrench, CheckCircle2, Target, Users, Search, Lock, Clock, Star, TrendingUp, GraduationCap } from 'lucide-react';
+import { User, Award, Heart, Shield, MapPin, Phone, Mail, Calendar, Wrench, CheckCircle2, Target, Users, Search, Lock, Clock, Star, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Link } from 'react-router';
 import PremiumBackground from '../components/PremiumBackground';
+import SEO from '../components/SEO';
 
 export default function QuiSommesNous() {
   const valeurs = [
@@ -44,7 +45,7 @@ export default function QuiSommesNous() {
     {
       number: "02",
       title: "L'investigation",
-      description: "Nous recherchons votre véhicule sur tout le marché français, allemand, belge ect et vérifions chaque historique comme une enquête numérique."
+      description: "Nous recherchons votre véhicule sur tout le marché français et vérifions chaque historique comme une enquête numérique."
     },
     {
       number: "03",
@@ -54,7 +55,7 @@ export default function QuiSommesNous() {
     {
       number: "04",
       title: "La livraison",
-      description: "Véhicule préparé, nettoyé, avec tous les documents. Et surtout, un vrai suivi et service après-vente ."
+      description: "Véhicule préparé, nettoyé, avec tous les documents. Et surtout, un suivi après-vente digne d'une structure professionnelle."
     }
   ];
 
@@ -85,6 +86,11 @@ export default function QuiSommesNous() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <SEO
+        title="Qui Sommes-Nous - Notre Histoire"
+        description="Découvrez l'histoire de M3 Automobile. Fondée par un ingénieur en cybersécurité passionné d'automobile. Expertise en détection de fraudes et mécanique à L'Isle-Adam."
+        keywords="M3 Automobile histoire, qui sommes nous, garage automobile L'Isle-Adam, expert cybersécurité automobile, Mam III Jobb"
+      />
       <PremiumBackground />
 
       {/* Hero Section */}
@@ -107,7 +113,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Photo centrale + équipe */}
-      <section className="py-0">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="relative inline-block">
@@ -124,11 +130,11 @@ export default function QuiSommesNous() {
               </div>
             </div>
             
-            <div className="mt-0">
+            <div className="mt-20">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Et une équipe en pleine expansion
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto mb-4">
+              <p className="text-gray-400 max-w-2xl mx-auto mb-8">
                 M3 Automobile, c'est <strong>Mam III Jobb</strong> à la tête des opérations, accompagné d'un 
                 réseau partenaire de professionnels (mécaniciens certifiés, carrossiers experts) non accessible 
                 au grand public. Une structure légère mais compétente, en croissance constante 
@@ -137,7 +143,7 @@ export default function QuiSommesNous() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-0">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
               {stats.map((stat, index) => (
                 <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
                   <stat.icon className="size-8 text-white mx-auto mb-3" />
@@ -151,7 +157,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* L'histoire complète */}
-      <section className="py-4 md:py-6 bg-white/5 backdrop-blur-sm">
+      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
@@ -176,7 +182,7 @@ export default function QuiSommesNous() {
 
               <p>
                 Pendant des années, j'ai exercé cette activité en parallèle de ma carrière dans la cybersécurité 
-                – d'abord au Campus Cyber, puis chez Crouzet, et aujourd'hui chez TV5 Monde. Chaque mission de 
+                – d'abord à Campus Cyber, puis chez Crouzet, et aujourd'hui chez TV5 Monde. Chaque mission de 
                 sécurisation de systèmes d'information m'apprenait davantage sur la détection de fraudes, 
                 l'analyse de comportements suspects, la recherche de preuves.
               </p>
@@ -196,7 +202,7 @@ export default function QuiSommesNous() {
               </p>
 
               <div className="bg-white/10 rounded-xl p-6 my-8">
-                <h3 className="text-xl font-bold text-white mb-4">Pourquoi M3 Automobile en 2026 ?</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Pourquoi M3 Automobile en 2025 ?</h3>
                 <p>
                   Parce que le marché de l'occasion en France a besoin d'acteurs différents. Parce que les 
                   grandes enseignes vendent du volume, pas de la confiance. Parce que les particuliers méritent 
@@ -205,14 +211,14 @@ export default function QuiSommesNous() {
               </div>
 
               <p>
-                <strong>La structure M3 Automobile est jeune, mais le savoir-faire ne l'est pas. </strong> 
-                C'est le fruit d'années d'expérience en achat-vente, de formation continue en mécanique, 
+                <strong>La structure M3 Automobile est jeune, mais le savoir-faire ne l'est pas.</strong> 
+                C'est le fruit de années d'expérience en achat-vente, de formation continue en mécanique, 
                 et d'une expertise reconnue en cybersécurité. Quand vous travaillez avec nous, vous ne faites 
                 pas appel à un vendeur, mais à un investigateur technique passionné.
               </p>
 
               <p>
-                Aujourd'hui, nous sommes en expansion. À côté de moi, se sont greffés plusieurs analystes, des mécaniciens 
+                Aujourd'hui, nous sommes en expansion. À côté de moi, se sont greffés des mécaniciens 
                 certifiés avec qui j'ai tissé des liens de confiance, des carrossiers experts pour l'état 
                 des carrosseries, et un réseau de partenaires à travers l'Île-de-France. Nous restons une 
                 structure à taille humaine, mais une structure professionnelle avec des process rigoureux 
@@ -223,8 +229,47 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
+      {/* Notre équipe */}
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Notre équipe</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Une structure légère mais compétente, en croissance constante
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {team.map((member, index) => (
+                <Card key={index} className="bg-white/5 border-white/10 text-white">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden border-2 border-white/20">
+                      {member.image ? (
+                        <img src={member.image} alt={member.role} className="w-full h-full object-cover" />
+                      ) : (
+                        <Users className="size-10 text-gray-500" />
+                      )}
+                    </div>
+                    <h3 className="font-bold text-lg mb-2">{member.role}</h3>
+                    <p className="text-gray-400 text-sm">{member.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="mt-8 text-center">
+              <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm">
+                <TrendingUp className="size-4" />
+                Nous recrutons ! Rejoignez notre équipe en expansion
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mon parcours */}
-      <section className="py-4 md:py-6 bg-white/5 backdrop-blur-sm border-t border-white/10">
+      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -234,7 +279,7 @@ export default function QuiSommesNous() {
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               <Card className="bg-white/5 border-white/10 text-white">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
@@ -284,30 +329,8 @@ export default function QuiSommesNous() {
               <Card className="bg-white/5 border-white/10 text-white">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="bg-green-500/20 p-4 rounded-lg flex-shrink-0">
-                      <GraduationCap className="size-6 text-green-400" />
-                    </div>
-                    <div className="flex-grow">
-                      <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                        <h3 className="font-bold text-lg">Baccalauréat Général</h3>
-                        <span className="text-gray-400 text-sm">Année de diplomation</span>
-                      </div>
-                      <p className="text-green-400 text-sm mb-2">Spécialités : Mathématiques, Physique-Chimie</p>
-                      <p className="text-gray-300 text-sm leading-relaxed">
-                        Diplôme du baccalauréat général avec spécialités en mathématiques et physique-chimie, 
-                        offrant une solide base scientifique et analytique qui m'a permis de poursuivre 
-                        des études supérieures en informatique et cybersécurité.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white/5 border-white/10 text-white">
-                <CardContent className="p-6">
-                  <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className="bg-orange-500/20 p-4 rounded-lg flex-shrink-0">
-                      <Star className="size-6 text-orange-400" />
+                    <div className="bg-purple-500/20 p-4 rounded-lg flex-shrink-0">
+                      <Star className="size-6 text-purple-400" />
                     </div>
                     <div className="flex-grow">
                       <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
@@ -316,7 +339,7 @@ export default function QuiSommesNous() {
                       </div>
                       <p className="text-gray-300 text-sm leading-relaxed">
                         Connaissance approfondie des moteurs (les bons et les mauvais), 
-                        expérience en achat-vente depuis plusieurs années, 
+                        expérience en achat-vente pour mon entourage depuis plusieurs années, 
                         expertise dans la vérification mécanique et l'analyse des véhicules. 
                         Un savoir-faire qui précède la création de M3 Automobile.
                       </p>
@@ -329,8 +352,34 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
+      {/* Nos Valeurs */}
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Nos Valeurs</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Ce qui guide chacune de nos actions
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {valeurs.map((valeur, index) => (
+                <Card key={index} className="bg-white/5 border-white/10 text-white h-full hover:bg-white/10 transition-colors">
+                  <CardContent className="p-6">
+                    <valeur.icon className="size-10 text-white mb-4" />
+                    <h3 className="font-bold text-lg mb-2">{valeur.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{valeur.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pourquoi nous choisir */}
-      <section className="py-4 md:py-6 bg-white/5 backdrop-blur-sm border-t border-white/10">
+      <section className="py-12 md:py-20 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -374,7 +423,7 @@ export default function QuiSommesNous() {
                     </div>
                     <div className="flex justify-between items-center py-2 border-b border-white/10">
                       <span className="text-gray-300">Détection des fraudes</span>
-                      <span className="text-gray-500">Pas toujours de vérification</span>
+                      <span className="text-gray-500">Pas de vérification</span>
                     </div>
                     <div className="flex justify-between items-center py-2 border-b border-white/10">
                       <span className="text-gray-300">Conseil personnalisé</span>
@@ -393,7 +442,7 @@ export default function QuiSommesNous() {
       </section>
 
       {/* Notre méthode */}
-      <section className="py-4 md:py-6 border-t border-white/10">
+      <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -425,38 +474,45 @@ export default function QuiSommesNous() {
         </div>
       </section>
 
-      {/* Message personnel + CTA fusionné */}
-      <section className="py-6 md:py-8 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border-t border-white/10">
+      {/* Message personnel */}
+      <section className="py-12 md:py-16 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border-y border-white/10">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-white/30 overflow-hidden">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-full border-2 border-white/30 overflow-hidden">
             <img src="/photo-profil.jpg" alt="Jobb" className="w-full h-full object-cover" />
           </div>
-          <p className="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-4">
-            "C'était Jobb, créateur et fondateur de M3 Automobile."
+          <p className="text-xl md:text-2xl text-gray-300 italic leading-relaxed mb-6">
+            "C'était Jobb, créateur et fondateur de M3 Automobile. 
+            Passionné par l'automobile et la cybersécurité, je mets aujourd'hui mon expertise 
+            au service de votre projet automobile."
           </p>
-          <p className="text-lg text-white font-semibold mb-6">
+          <p className="text-lg text-white font-semibold">
             Hâte de faire votre connaissance et de vous accompagner dans votre recherche.
           </p>
-          <div className="flex items-center justify-center gap-2 text-gray-400 mb-8">
+          <div className="mt-6 flex items-center justify-center gap-2 text-gray-400">
             <span className="text-2xl">👋</span>
             <span>À très vite !</span>
           </div>
-          
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Prêt à nous confier votre projet ?
           </h2>
-          <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
             Une équipe passionnée et compétente vous attend. 
             Discutons de votre future voiture.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact">
               <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-3">
-                Nous contacter
+                Me contacter
               </Button>
             </Link>
             <a href="tel:0783269802">
-              <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-3">
+              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-3">
                 <Phone className="size-4 mr-2" />
                 07 83 26 98 02
               </Button>

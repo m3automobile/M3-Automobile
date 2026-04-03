@@ -3,10 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../co
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
+import SEO from '../components/SEO';
 
 export default function DepotVentePage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <SEO
+        title="Mandat de Vente - Vendez Votre Véhicule Facilement"
+        description="Confiez la vente de votre véhicule à M3 Automobile. Estimation gratuite, photos pro, diffusion multi-plateformes, paiement sécurisé. Zéro frais si pas de vente."
+        keywords="mandat vente voiture, dépôt vente automobile, vendre voiture occasion, vente véhicule particulier, M3 Automobile mandat"
+      />
       <PremiumBackground />
       
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-24">
