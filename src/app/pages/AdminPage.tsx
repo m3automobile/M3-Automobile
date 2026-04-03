@@ -1,7 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Lock, LogOut, Plus, Pencil, Trash2, Eye, Car, Check, X, Save, ChevronDown, ChevronUp, RefreshCw } from 'lucide-react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { Lock, LogOut, Plus, Pencil, Trash2, Eye, Car, Check, X, Save, ChevronDown, ChevronUp, RefreshCw, Upload, ImageIcon, GripVertical } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
+
+const IMAGES_API = '/api/images';
 
 interface Vehicule {
   id: string;
@@ -142,21 +144,108 @@ function VehiculeForm({
   onSave,
   onCancel,
   loading,
+  token,
 }: {
   vehicule?: Vehicule;
   onSave: (data: any) => void;
   onCancel: () => void;
   loading: boolean;
+  token: string;
 }) {
   const [form, setForm] = useState<any>(vehicule || { ...emptyVehicule });
   const [pointsForts, setPointsForts] = useState(form.pointsForts?.join('\n') || '');
   const [equipements, setEquipements] = useState(form.equipements?.join('\n') || '');
   const [images, setImages] = useState(form.images?.join('\n') || '');
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const isEditing = !!vehicule;
 
   const handleChange = (field: string, value: any) => {
     setForm((prev: any) => ({ ...prev, [field]: value }));
+  };
+
+  // Compress and convert image to WebP, return base64
+  const compressImage = (file: File): Promise<{ filename: string; data: string }> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 1600;
+          const MAX_HEIGHT = 1200;
+          let { width, height } = img;
+          if (width > MAX_WIDTH) { height = (height * MAX_WIDTH) / width; width = MAX_WIDTH; }
+          if (height > MAX_HEIGHT) { width = (width * MAX_HEIGHT) / height; height = MAX_HEIGHT; }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d')!;
+          ctx.drawImage(img, 0, 0, width, height);
+          const dataUrl = canvas.toDataURL('image/webp', 0.8);
+          const base64 = dataUrl.split(',')[1];
+          const filename = file.name.replace(/\.[^.]+$/, '.webp');
+          resolve({ filename, data: base64 });
+        };
+        img.src = e.target?.result as string;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  // Upload photos to server
+  const handlePhotoUpload = async (files: File[]) => {
+    // Determine vehicle ID
+    const vehiculeId = form.id || (form.marque && form.modele
+      ? `${form.marque}-${form.modele}`.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-' + form.annee
+      : '');
+
+    if (!vehiculeId) {
+      alert('Remplissez au moins Marque, Modèle et Année avant d\'uploader des photos');
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const compressedImages = [];
+      for (let i = 0; i < files.length; i++) {
+        setUploadProgress(`Compression ${i + 1}/${files.length}...`);
+        const compressed = await compressImage(files[i]);
+        compressedImages.push(compressed);
+      }
+
+      setUploadProgress(`Upload de ${compressedImages.length} photo(s)...`);
+
+      const res = await fetch(IMAGES_API + '/' + vehiculeId, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          vehiculeId,
+          images: compressedImages,
+        }),
+      });
+
+      if (res.ok) {
+        const result = await res.json();
+        // Add new paths to existing images
+        const currentImages = images.split('\n').filter((s: string) => s.trim());
+        const allImages = [...currentImages, ...result.uploaded];
+        setImages(allImages.join('\n'));
+        setUploadProgress('');
+      } else {
+        const err = await res.json();
+        alert('Erreur upload: ' + (err.error || 'Erreur inconnue'));
+      }
+    } catch (err: any) {
+      alert('Erreur: ' + err.message);
+    } finally {
+      setUploading(false);
+      setUploadProgress('');
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -305,10 +394,75 @@ function VehiculeForm({
           <textarea className={textareaClass} rows={3} value={equipements} onChange={(e) => setEquipements(e.target.value)} placeholder="Climatisation&#10;Bluetooth&#10;GPS" />
         </div>
 
-        {/* Images - un chemin par ligne */}
+        {/* Photos section */}
         <div>
-          <label className={labelClass}>Images (un chemin par ligne, ex: /images/vehicules/dossier/photo.webp)</label>
-          <textarea className={textareaClass} rows={4} value={images} onChange={(e) => setImages(e.target.value)} placeholder="/images/vehicules/mon-vehicule/photo1.webp&#10;/images/vehicules/mon-vehicule/photo2.webp" />
+          <label className={labelClass}>Photos du véhicule</label>
+
+          {/* Upload zone */}
+          <div
+            className="border-2 border-dashed border-white/20 rounded-xl p-6 text-center hover:border-white/40 transition-colors cursor-pointer mb-4"
+            onClick={() => fileInputRef.current?.click()}
+            onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add('border-white/50', 'bg-white/5'); }}
+            onDragLeave={(e) => { e.currentTarget.classList.remove('border-white/50', 'bg-white/5'); }}
+            onDrop={async (e) => {
+              e.preventDefault();
+              e.currentTarget.classList.remove('border-white/50', 'bg-white/5');
+              const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+              if (files.length > 0) await handlePhotoUpload(files);
+            }}
+          >
+            <Upload className="size-8 text-gray-400 mx-auto mb-2" />
+            <p className="text-gray-400 text-sm">
+              {uploading ? uploadProgress : 'Glissez vos photos ici ou cliquez pour sélectionner'}
+            </p>
+            <p className="text-gray-500 text-xs mt-1">JPG, PNG ou WebP — compression automatique</p>
+          </div>
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple
+            accept="image/*"
+            className="hidden"
+            onChange={async (e) => {
+              const files = Array.from(e.target.files || []);
+              if (files.length > 0) await handlePhotoUpload(files);
+              e.target.value = '';
+            }}
+          />
+
+          {/* Photo previews */}
+          {images.trim() && (
+            <div className="grid grid-cols-4 md:grid-cols-6 gap-2 mb-4">
+              {images.split('\n').filter((s: string) => s.trim()).map((imgPath: string, idx: number) => (
+                <div key={idx} className="relative group aspect-square rounded-lg overflow-hidden bg-white/5 border border-white/10">
+                  <img src={imgPath} alt="" className="w-full h-full object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const list = images.split('\n').filter((s: string) => s.trim());
+                      list.splice(idx, 1);
+                      setImages(list.join('\n'));
+                    }}
+                    className="absolute top-1 right-1 bg-red-500/80 hover:bg-red-500 text-white rounded-full size-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <X className="size-3" />
+                  </button>
+                  {idx === 0 && (
+                    <span className="absolute bottom-1 left-1 bg-green-500/80 text-white text-[10px] px-1.5 py-0.5 rounded">
+                      Vitrine
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Fallback textarea for manual paths */}
+          <details className="text-xs">
+            <summary className="text-gray-500 cursor-pointer hover:text-gray-300">Modifier les chemins manuellement</summary>
+            <textarea className={textareaClass + ' mt-2'} rows={3} value={images} onChange={(e) => setImages(e.target.value)} placeholder="/images/vehicules/dossier/photo.webp" />
+          </details>
         </div>
 
         {/* Boutons */}
@@ -534,6 +688,7 @@ export default function AdminPage() {
               onSave={saveVehicule}
               onCancel={() => { setShowForm(false); setEditingVehicule(undefined); }}
               loading={loading}
+              token={token}
             />
           </div>
         )}
