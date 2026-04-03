@@ -7,6 +7,7 @@ import {
 import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
 import SEO from '../components/SEO';
+import VehiculeJsonLd from '../components/VehiculeJsonLd';
 import { vehicules } from '../data/vehicules';
 
 export default function VehiculeDetailPage() {
@@ -49,6 +50,7 @@ export default function VehiculeDetailPage() {
         keywords={`${vehicule.marque} ${vehicule.modele} occasion, ${vehicule.marque} occasion L'Isle-Adam, voiture occasion ${vehicule.energie.toLowerCase()} ${vehicule.annee}`}
         canonicalPath={`/vehicules/${vehicule.id}`}
       />
+      <VehiculeJsonLd vehicule={vehicule} />
       <PremiumBackground />
 
       <div className="relative z-10 container mx-auto px-4 py-8 md:py-16">
@@ -134,7 +136,7 @@ export default function VehiculeDetailPage() {
                         : 'border-transparent opacity-50 hover:opacity-80'
                     }`}
                   >
-                    <img src={img} alt={`Miniature ${i + 1}`} className="w-full h-full object-cover" />
+                    <img src={img} alt={`Miniature ${i + 1}`} loading="lazy" className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>

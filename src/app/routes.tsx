@@ -9,6 +9,7 @@ import DepotVentePage from "./pages/DepotVentePage";
 import MentionsLegales from "./pages/MentionsLegales";
 import QuiSommesNous from "./pages/QuiSommesNous";
 import VehiculeDetailPage from "./pages/VehiculeDetailPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
       { path: "contact", Component: ContactPage },
       { path: "mentions-legales", Component: MentionsLegales },
       { path: "qui-sommes-nous", Component: QuiSommesNous },
+      { path: "*", Component: NotFoundPage },
     ],
   },
 ]);

@@ -3,6 +3,7 @@ import { Phone, Mail, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState, useEffect } from 'react';
 import LogoHorizontal from './LogoHorizontal.png';
+import WhatsAppButton from './WhatsAppButton';
 import {
   Sheet,
   SheetContent,
@@ -131,6 +132,9 @@ export default function Layout() {
       <main className="overflow-x-hidden pt-20 md:pt-24">
         <Outlet />
       </main>
+
+      {/* WhatsApp flottant */}
+      <WhatsAppButton />
 
       {/* Footer */}
       <footer className="bg-black/50 backdrop-blur-md text-white py-8 md:py-12 mt-12 md:mt-20 border-t border-gray-800">

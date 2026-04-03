@@ -5,6 +5,8 @@ import { Badge } from '../components/ui/badge';
 import { Link } from 'react-router';
 import PremiumBackground from '../components/PremiumBackground';
 import SEO from '../components/SEO';
+import VehiculeCard from '../components/VehiculeCard';
+import { vehicules } from '../data/vehicules';
 
 export default function HomePage() {
   return (
@@ -216,6 +218,29 @@ export default function HomePage() {
                   </ul>
                 </CardContent>
               </Card>
+            </Link>
+          </div>
+        </section>
+
+        {/* VEHICULES EN VENTE - Mise en avant */}
+        <section className="mb-20 md:mb-32">
+          <div className="text-center mb-10 md:mb-16">
+            <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-4">Nos Vehicules Disponibles</h3>
+            <p className="text-sm md:text-lg lg:text-xl text-gray-400">Decouvrez notre selection rigoureusement controlee et garantie</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-10">
+            {vehicules.filter(v => v.statut === 'en_vente').slice(0, 3).map((vehicule) => (
+              <VehiculeCard key={vehicule.id} vehicule={vehicule} />
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link to="/vehicules">
+              <Button className="bg-white hover:bg-gray-100 text-gray-900 font-bold px-8 py-3 text-base">
+                Voir tous nos vehicules
+                <ArrowRight className="size-4 ml-2" />
+              </Button>
             </Link>
           </div>
         </section>
