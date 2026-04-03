@@ -8,6 +8,7 @@ import ContactPage from "./pages/ContactPage";
 import DepotVentePage from "./pages/DepotVentePage";
 import MentionsLegales from "./pages/MentionsLegales";
 import QuiSommesNous from "./pages/QuiSommesNous";
+import VehiculeDetailPage from "./pages/VehiculeDetailPage";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: HomePage },
       { path: "vehicules", Component: VehiculesPage },
+      { path: "vehicules/:id", Component: VehiculeDetailPage },
       { path: "recherche-personnalisee", Component: RecherchePersonnalisee },
       { path: "garanties", Component: GarantiesPage },
       { path: "mandat-vente", Component: DepotVentePage },

@@ -1,6 +1,7 @@
 import { Car, Fuel, Gauge, Calendar, ExternalLink, CheckCircle2, Shield } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
+import { Link } from 'react-router';
 import type { Vehicule } from '../data/vehicules';
 
 interface VehiculeCardProps {
@@ -11,6 +12,7 @@ export default function VehiculeCard({ vehicule }: VehiculeCardProps) {
   const isVendu = vehicule.statut === 'vendu';
 
   return (
+    <Link to={`/vehicules/${vehicule.id}`} className="block">
     <Card className={`border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden hover:border-white/20 transition-all group ${isVendu ? 'opacity-75' : ''}`}>
       {/* Image */}
       <div className="relative h-52 md:h-60 overflow-hidden">
@@ -92,25 +94,19 @@ export default function VehiculeCard({ vehicule }: VehiculeCardProps) {
           )}
         </div>
 
-        {/* Lien leboncoin */}
-        {!isVendu && vehicule.lienLeboncoin && (
-          <a
-            href={vehicule.lienLeboncoin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 rounded-xl transition-colors text-sm"
-          >
-            Voir l'annonce complète
+        {/* Lien vers la fiche */}
+        {!isVendu ? (
+          <div className="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 rounded-xl transition-colors text-sm">
+            Voir les details
             <ExternalLink className="size-4" />
-          </a>
-        )}
-
-        {isVendu && (
+          </div>
+        ) : (
           <div className="text-center py-2 text-gray-500 text-sm font-medium border border-white/10 rounded-xl bg-white/5">
-            Ce véhicule a trouvé preneur
+            Ce vehicule a trouve preneur
           </div>
         )}
       </CardContent>
     </Card>
+    </Link>
   );
 }

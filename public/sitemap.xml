@@ -65,4 +65,36 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Fiches véhicules -->
+  <url>
+    <loc>https://m3-automobile.fr/vehicules/audi-a3-tdi-110-2015</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://m3-automobile.fr/vehicules/citroen-c3-hdi-exclusive-2011</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://m3-automobile.fr/vehicules/peugeot-208-vti-120-2011</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://m3-automobile.fr/vehicules/renault-clio-iii-dci-2007</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://m3-automobile.fr/vehicules/peugeot-308-hdi-110-2009</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
