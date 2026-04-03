@@ -8,10 +8,11 @@ import { Badge } from '../components/ui/badge';
 import PremiumBackground from '../components/PremiumBackground';
 import SEO from '../components/SEO';
 import VehiculeJsonLd from '../components/VehiculeJsonLd';
-import { vehicules } from '../data/vehicules';
+import { useVehicules } from '../hooks/useVehicules';
 
 export default function VehiculeDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { vehicules } = useVehicules();
   const vehicule = vehicules.find(v => v.id === id);
   const [currentImage, setCurrentImage] = useState(0);
 

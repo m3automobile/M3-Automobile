@@ -6,9 +6,11 @@ import { Link } from 'react-router';
 import PremiumBackground from '../components/PremiumBackground';
 import SEO from '../components/SEO';
 import VehiculeCard from '../components/VehiculeCard';
-import { vehicules } from '../data/vehicules';
+import { useVehicules } from '../hooks/useVehicules';
 
 export default function HomePage() {
+  const { vehicules } = useVehicules();
+
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <SEO

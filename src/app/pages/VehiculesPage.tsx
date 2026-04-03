@@ -6,12 +6,13 @@ import { Link } from 'react-router';
 import PremiumBackground from '../components/PremiumBackground';
 import SEO from '../components/SEO';
 import VehiculeCard from '../components/VehiculeCard';
-import { vehicules } from '../data/vehicules';
+import { useVehicules } from '../hooks/useVehicules';
 import { useState } from 'react';
 import logoCentrale from './Logolacentrale.png';
 import logoLeboncoin from './Logoleboncoin.png';
 
 export default function VehiculesPage() {
+  const { vehicules } = useVehicules();
   const [filtre, setFiltre] = useState<'tous' | 'en_vente' | 'vendu'>('tous');
 
   const vehiculesFiltres = filtre === 'tous'

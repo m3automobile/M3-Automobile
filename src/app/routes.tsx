@@ -10,6 +10,7 @@ import MentionsLegales from "./pages/MentionsLegales";
 import QuiSommesNous from "./pages/QuiSommesNous";
 import VehiculeDetailPage from "./pages/VehiculeDetailPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import AdminPage from "./pages/AdminPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,5 +28,10 @@ export const router = createBrowserRouter([
       { path: "qui-sommes-nous", Component: QuiSommesNous },
       { path: "*", Component: NotFoundPage },
     ],
+  },
+  // Admin page - outside Layout (no header/footer)
+  {
+    path: "/admin",
+    Component: AdminPage,
   },
 ]);
