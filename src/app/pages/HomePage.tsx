@@ -85,6 +85,9 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+
+        {/* Dégradé de transition en bas du hero — fondu vers le reste de la page */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 md:h-60 bg-gradient-to-b from-transparent to-[#060B12] z-10" />
       </section>
 
       {/* Container principal */}
