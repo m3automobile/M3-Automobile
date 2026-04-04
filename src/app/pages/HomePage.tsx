@@ -35,7 +35,7 @@ export default function HomePage() {
         {/* Gradient overlay - plus opaque à gauche pour lisibilité du texte */}
         {/* Mobile: gradient vertical pour voir la voiture en haut, Desktop: gradient horizontal */}
         {/* Mobile: gradient vertical léger. Desktop: gradient horizontal avec gauche semi-opaque */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060B12]/30 via-[#060B12]/40 to-[#060B12]/70 md:bg-gradient-to-r md:from-[#060B12]/80 md:via-[#060B12]/60 md:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060B12]/70 via-[#060B12]/75 to-[#060B12]/85 md:bg-gradient-to-r md:from-[#060B12]/80 md:via-[#060B12]/60 md:to-transparent" />
 
         {/* Contenu - Aligné à GAUCHE */}
         <div className="relative container mx-auto px-6 md:px-12 lg:px-16">
@@ -53,14 +53,14 @@ export default function HomePage() {
           </div>
 
           {/* Typographie géante empilée */}
-          <h1 className="text-[3rem] md:text-[5rem] lg:text-[6.5rem] font-black tracking-tighter leading-[0.85] mb-3 md:mb-4">
+          <h1 className="text-[3rem] md:text-[5rem] lg:text-[6.5rem] font-black tracking-tighter leading-[0.85] mb-3 md:mb-4" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}>
             <span className="block text-white">M3</span>
             <span className="block text-[#8B2D3A]">AUTO</span>
             <span className="block text-white">MOBILE</span>
           </h1>
 
           {/* Sous-titre */}
-          <p className="text-gray-400 text-base md:text-lg max-w-lg mb-3 md:mb-4 leading-relaxed">
+          <p className="text-gray-200 md:text-gray-400 text-base md:text-lg max-w-lg mb-3 md:mb-4 leading-relaxed" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}>
             Véhicules d'occasion contrôlés et garantis. Votre tranquillité, notre priorité.
           </p>
 
