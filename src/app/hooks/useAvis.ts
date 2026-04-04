@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export interface Avis {
   id: string;
@@ -10,36 +10,33 @@ export interface Avis {
   visible: boolean;
 }
 
-const API_URL = '/data/avis.json';
+const API_URL = '/api/avis';
 
 export function useAvis() {
   const [avis, setAvis] = useState<Avis[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    let cancelled = false;
-
-    async function fetchAvis() {
-      try {
-        const res = await fetch(API_URL);
-        if (res.ok) {
-          const data = await res.json();
-          if (!cancelled) {
-            setAvis(data);
-          }
-        }
-      } catch {
-        console.log('Erreur lors du chargement des avis');
-        setError('Impossible de charger les avis');
-      } finally {
-        if (!cancelled) setLoading(false);
+  const fetchAvis = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(API_URL);
+      if (res.ok) {
+        const data = await res.json();
+        // Côté public : on n'affiche que les avis visibles
+        setAvis(data.filter((a: Avis) => a.visible));
+        setError(null);
       }
+    } catch {
+      setError('Impossible de charger les avis');
+    } finally {
+      setLoading(false);
     }
-
-    fetchAvis();
-    return () => { cancelled = true; };
   }, []);
 
-  return { avis, loading, error };
+  useEffect(() => {
+    fetchAvis();
+  }, [fetchAvis]);
+
+  return { avis, loading, error, refetch: fetchAvis };
 }

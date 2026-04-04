@@ -34,7 +34,8 @@ interface Vehicule {
 
 const API_URL = '/api/vehicules';
 const AUTH_URL = '/api/auth';
-const AVIS_DATA_URL = '/data/avis.json';
+
+const AVIS_API_URL = '/api/avis';
 
 interface Avis {
   id: string;
@@ -554,29 +555,16 @@ export default function AdminPage() {
     }
   }, []);
 
-  // Fetch reviews
+  // Fetch reviews from Netlify API
   const fetchAvis = useCallback(async () => {
     try {
-      const res = await fetch(AVIS_DATA_URL);
+      const res = await fetch(AVIS_API_URL);
       if (res.ok) {
         const data = await res.json();
-        // Merge with localStorage edits
-        const savedAvis = localStorage.getItem('avis_edits');
-        if (savedAvis) {
-          const edits = JSON.parse(savedAvis);
-          const merged = data.map((a: Avis) => ({ ...a, ...edits[a.id] }));
-          setAvis(merged);
-        } else {
-          setAvis(data);
-        }
+        setAvis(data);
       }
     } catch {
       console.log('Erreur lors du chargement des avis');
-      const savedAvis = localStorage.getItem('avis_edits');
-      if (savedAvis) {
-        const edits = JSON.parse(savedAvis);
-        setAvis(Object.values(edits) as Avis[]);
-      }
     }
   }, []);
 
@@ -662,47 +650,51 @@ export default function AdminPage() {
     }
   };
 
-  // Save avis (create or update)
+  // Save avis (create or update) via Netlify API
   const saveAvis = async (data: any) => {
     try {
-      const savedAvis = localStorage.getItem('avis_edits') || '{}';
-      const edits = JSON.parse(savedAvis);
-
       if (!data.id) {
-        data.id = Date.now().toString();
+        data.id = `avis-${Date.now()}`;
       }
 
-      edits[data.id] = data;
-      localStorage.setItem('avis_edits', JSON.stringify(edits));
+      const res = await fetch(AVIS_API_URL, {
+        method: 'POST',
+        headers: authHeaders,
+        body: JSON.stringify(data)
+      });
 
-      const newAvis = avis.map(a => a.id === data.id ? data : a);
-      if (!avis.some(a => a.id === data.id)) {
-        newAvis.push(data);
+      if (res.ok) {
+        showMessage('success', editingAvis ? 'Avis mis à jour !' : 'Avis ajouté !');
+        setShowAvisForm(false);
+        setEditingAvis(undefined);
+        fetchAvis();
+      } else {
+        const err = await res.json();
+        showMessage('error', err.error || 'Erreur lors de la sauvegarde');
       }
-      setAvis(newAvis);
-
-      showMessage('success', editingAvis ? 'Avis mis à jour !' : 'Avis ajouté !');
-      setShowAvisForm(false);
-      setEditingAvis(undefined);
     } catch {
       showMessage('error', 'Erreur lors de la sauvegarde de l\'avis');
     }
   };
 
-  // Delete avis
+  // Delete avis via Netlify API
   const deleteAvis = async (avisSupprime: Avis) => {
     if (!confirm(`Supprimer définitivement l'avis de "${avisSupprime.nom}" ?`)) return;
 
     try {
-      const savedAvis = localStorage.getItem('avis_edits') || '{}';
-      const edits = JSON.parse(savedAvis);
-      delete edits[avisSupprime.id];
-      localStorage.setItem('avis_edits', JSON.stringify(edits));
+      const res = await fetch(`${AVIS_API_URL}?id=${avisSupprime.id}`, {
+        method: 'DELETE',
+        headers: authHeaders,
+      });
 
-      setAvis((prev) => prev.filter((a) => a.id !== avisSupprime.id));
-      showMessage('success', 'Avis supprimé');
+      if (res.ok) {
+        setAvis((prev) => prev.filter((a) => a.id !== avisSupprime.id));
+        showMessage('success', 'Avis supprimé');
+      } else {
+        showMessage('error', 'Erreur lors de la suppression');
+      }
     } catch {
-      showMessage('error', 'Erreur lors de la suppression');
+      showMessage('error', 'Erreur de connexion');
     }
   };
 
@@ -941,8 +933,7 @@ export default function AdminPage() {
               )}
             </div>
 
-            {/* Note about localStorage */}
-            <p className="text-xs text-gray-500 mb-4">Pour publier les modifications, mettez à jour le fichier <code className="bg-white/5 px-2 py-1 rounded">avis.json</code> en production.</p>
+            {/* Les avis sont stockés directement dans Supabase — modifications instantanées */}
 
             {/* Avis Form */}
             {showAvisForm && (
