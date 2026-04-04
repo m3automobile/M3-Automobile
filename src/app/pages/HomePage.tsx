@@ -38,10 +38,17 @@ export default function HomePage() {
 
         {/* Contenu - Aligné à GAUCHE */}
         <div className="relative container mx-auto px-6 md:px-12 lg:px-16">
-          {/* Badge localisation */}
-          <div className="inline-flex items-center gap-2 bg-[#8B2D3A]/10 border border-[#8B2D3A]/30 text-[#8B2D3A] px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase mb-8 md:mb-10">
-            <span className="w-2 h-2 bg-[#8B2D3A] rounded-full animate-pulse" />
-            L'Isle-Adam · Val d'Oise · Île-de-France
+          {/* Badge localisation — effet glow animé */}
+          <div className="group relative inline-flex items-center gap-2 bg-[#8B2D3A]/10 border border-[#8B2D3A]/30 text-[#8B2D3A] px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase mb-8 md:mb-10 animate-[shimmer_3s_ease-in-out_infinite]">
+            {/* Halo glow derrière le badge */}
+            <span className="absolute inset-0 rounded-full bg-[#8B2D3A]/20 blur-md animate-pulse" />
+            <span className="relative flex items-center gap-2">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8B2D3A] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#8B2D3A]" />
+              </span>
+              L'Isle-Adam · Val d'Oise · Île-de-France
+            </span>
           </div>
 
           {/* Typographie géante empilée */}
