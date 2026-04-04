@@ -26,6 +26,7 @@ export default function Layout() {
     { name: 'Accueil', href: '/' },
     { name: 'Nos Véhicules', href: '/vehicules' },
     { name: 'Recherche Personnalisée', href: '/recherche-personnalisee' },
+    { name: 'Prendre RDV', href: '/rendez-vous' },
     { name: 'Garanties', href: '/garanties' },
     { name: 'Mandat de Vente', href: '/mandat-vente' },
     { name: 'Qui sommes-nous', href: '/qui-sommes-nous' },
@@ -40,9 +41,9 @@ export default function Layout() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-[#060B12] via-[#0A1019] to-[#060B12] overflow-x-hidden">
       {/* Header FIXE - toujours visible */}
-      <header className="bg-black/80 backdrop-blur-md shadow-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-700">
+      <header className="bg-[#060B12]/90 backdrop-blur-md shadow-lg fixed top-0 left-0 right-0 z-50 border-b border-white/10">
   <div className="container mx-auto px-3 md:px-6 py-4 md:py-3">
     <div className="flex items-center justify-between">
       
@@ -75,7 +76,7 @@ export default function Layout() {
       {/* Bouton téléphone Desktop */}
       <div className="hidden lg:flex gap-3 order-4">
         <a href="tel:0783269802">
-          <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-4 py-2 text-sm shadow-lg">
+          <Button className="bg-transparent border border-[#8B2D3A] text-[#8B2D3A] hover:bg-[#8B2D3A] hover:text-white font-semibold px-4 py-2 text-sm shadow-lg transition-all">
             <Phone className="size-4 mr-2" />
             07 83 26 98 02
           </Button>
@@ -93,7 +94,7 @@ export default function Layout() {
           </button>
         </SheetTrigger>
         
-        <SheetContent side="right" className="w-[300px] bg-gray-900 border-gray-700">
+        <SheetContent side="right" className="w-[300px] bg-[#0A1019] border-white/10">
           <SheetHeader>
             <SheetTitle className="text-white text-left">Menu</SheetTitle>
           </SheetHeader>
@@ -116,7 +117,7 @@ export default function Layout() {
               </Link>
             ))}
             <a href="tel:0783269802" className="mt-4" onClick={() => setSheetOpen(false)}>
-              <Button className="w-full bg-white hover:bg-gray-100 text-gray-900 font-semibold py-6">
+              <Button className="w-full bg-[#8B2D3A] hover:bg-[#A63D4D] text-white font-semibold py-6">
                 <Phone className="size-5 mr-2" />
                 07 83 26 98 02
               </Button>
@@ -137,7 +138,7 @@ export default function Layout() {
       <WhatsAppButton />
 
       {/* Footer */}
-      <footer className="bg-black/50 backdrop-blur-md text-white py-8 md:py-12 mt-12 md:mt-20 border-t border-gray-800">
+      <footer className="bg-[#040810]/80 backdrop-blur-md text-white py-8 md:py-12 mt-12 md:mt-20 border-t border-white/10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
             <div>
@@ -176,6 +177,9 @@ export default function Layout() {
               <p>Tous droits réservés. Roulez l'esprit libre.</p>
               <Link to="/mentions-legales" className="hover:text-white underline underline-offset-4 transition-colors">
                 Mentions Légales
+              </Link>
+              <Link to="/politique-de-confidentialite" className="hover:text-white underline underline-offset-4 transition-colors">
+                Politique de Confidentialité
               </Link>
             </div>
           </div>

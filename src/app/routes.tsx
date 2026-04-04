@@ -7,8 +7,10 @@ import GarantiesPage from "./pages/GarantiesPage";
 import ContactPage from "./pages/ContactPage";
 import DepotVentePage from "./pages/DepotVentePage";
 import MentionsLegales from "./pages/MentionsLegales";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import QuiSommesNous from "./pages/QuiSommesNous";
 import VehiculeDetailPage from "./pages/VehiculeDetailPage";
+import RendezVousPage from "./pages/RendezVousPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AdminPage from "./pages/AdminPage";
 
@@ -21,10 +23,12 @@ export const router = createBrowserRouter([
       { path: "vehicules", Component: VehiculesPage },
       { path: "vehicules/:id", Component: VehiculeDetailPage },
       { path: "recherche-personnalisee", Component: RecherchePersonnalisee },
+      { path: "rendez-vous", Component: RendezVousPage },
       { path: "garanties", Component: GarantiesPage },
       { path: "mandat-vente", Component: DepotVentePage },
       { path: "contact", Component: ContactPage },
       { path: "mentions-legales", Component: MentionsLegales },
+      { path: "politique-de-confidentialite", Component: PolitiqueConfidentialite },
       { path: "qui-sommes-nous", Component: QuiSommesNous },
       { path: "*", Component: NotFoundPage },
     ],

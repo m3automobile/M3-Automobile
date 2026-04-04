@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Lock, LogOut, Plus, Pencil, Trash2, Eye, Car, Check, X, Save, ChevronDown, ChevronUp, RefreshCw, Upload, ImageIcon, GripVertical } from 'lucide-react';
+import { Lock, LogOut, Plus, Pencil, Trash2, Eye, Car, Check, X, Save, ChevronDown, ChevronUp, RefreshCw, Upload, ImageIcon, GripVertical, Star } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 
@@ -34,6 +34,26 @@ interface Vehicule {
 
 const API_URL = '/api/vehicules';
 const AUTH_URL = '/api/auth';
+const AVIS_DATA_URL = '/data/avis.json';
+
+interface Avis {
+  id: string;
+  nom: string;
+  note: number;
+  texte: string;
+  vehicule: string;
+  date: string;
+  visible: boolean;
+}
+
+const emptyAvis: Omit<Avis, 'id'> = {
+  nom: '',
+  note: 5,
+  texte: '',
+  vehicule: '',
+  date: new Date().toISOString().split('T')[0],
+  visible: true,
+};
 
 const emptyVehicule: Omit<Vehicule, 'id'> = {
   marque: '',
@@ -484,11 +504,15 @@ function VehiculeForm({
 export default function AdminPage() {
   const [token, setToken] = useState<string | null>(sessionStorage.getItem('admin_token'));
   const [vehicules, setVehicules] = useState<Vehicule[]>([]);
+  const [avis, setAvis] = useState<Avis[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [editingVehicule, setEditingVehicule] = useState<Vehicule | undefined>();
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [showAvisForm, setShowAvisForm] = useState(false);
+  const [editingAvis, setEditingAvis] = useState<Avis | undefined>();
+  const [expandedAvisId, setExpandedAvisId] = useState<string | null>(null);
 
   const authHeaders = {
     'Content-Type': 'application/json',
@@ -530,9 +554,38 @@ export default function AdminPage() {
     }
   }, []);
 
+  // Fetch reviews
+  const fetchAvis = useCallback(async () => {
+    try {
+      const res = await fetch(AVIS_DATA_URL);
+      if (res.ok) {
+        const data = await res.json();
+        // Merge with localStorage edits
+        const savedAvis = localStorage.getItem('avis_edits');
+        if (savedAvis) {
+          const edits = JSON.parse(savedAvis);
+          const merged = data.map((a: Avis) => ({ ...a, ...edits[a.id] }));
+          setAvis(merged);
+        } else {
+          setAvis(data);
+        }
+      }
+    } catch {
+      console.log('Erreur lors du chargement des avis');
+      const savedAvis = localStorage.getItem('avis_edits');
+      if (savedAvis) {
+        const edits = JSON.parse(savedAvis);
+        setAvis(Object.values(edits) as Avis[]);
+      }
+    }
+  }, []);
+
   useEffect(() => {
-    if (token) fetchVehicules();
-  }, [token, fetchVehicules]);
+    if (token) {
+      fetchVehicules();
+      fetchAvis();
+    }
+  }, [token, fetchVehicules, fetchAvis]);
 
   // Toggle vehicle status
   const toggleStatus = async (vehicule: Vehicule) => {
@@ -607,6 +660,56 @@ export default function AdminPage() {
     } catch {
       showMessage('error', 'Erreur de connexion');
     }
+  };
+
+  // Save avis (create or update)
+  const saveAvis = async (data: any) => {
+    try {
+      const savedAvis = localStorage.getItem('avis_edits') || '{}';
+      const edits = JSON.parse(savedAvis);
+
+      if (!data.id) {
+        data.id = Date.now().toString();
+      }
+
+      edits[data.id] = data;
+      localStorage.setItem('avis_edits', JSON.stringify(edits));
+
+      const newAvis = avis.map(a => a.id === data.id ? data : a);
+      if (!avis.some(a => a.id === data.id)) {
+        newAvis.push(data);
+      }
+      setAvis(newAvis);
+
+      showMessage('success', editingAvis ? 'Avis mis à jour !' : 'Avis ajouté !');
+      setShowAvisForm(false);
+      setEditingAvis(undefined);
+    } catch {
+      showMessage('error', 'Erreur lors de la sauvegarde de l\'avis');
+    }
+  };
+
+  // Delete avis
+  const deleteAvis = async (avisSupprime: Avis) => {
+    if (!confirm(`Supprimer définitivement l'avis de "${avisSupprime.nom}" ?`)) return;
+
+    try {
+      const savedAvis = localStorage.getItem('avis_edits') || '{}';
+      const edits = JSON.parse(savedAvis);
+      delete edits[avisSupprime.id];
+      localStorage.setItem('avis_edits', JSON.stringify(edits));
+
+      setAvis((prev) => prev.filter((a) => a.id !== avisSupprime.id));
+      showMessage('success', 'Avis supprimé');
+    } catch {
+      showMessage('error', 'Erreur lors de la suppression');
+    }
+  };
+
+  // Toggle avis visibility
+  const toggleAvisVisibility = (avisSupprime: Avis) => {
+    const updated = { ...avisSupprime, visible: !avisSupprime.visible };
+    saveAvis(updated);
   };
 
   // Logout
@@ -821,7 +924,225 @@ export default function AdminPage() {
             </div>
           ))}
         </div>
+
+        {/* REVIEWS SECTION */}
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold mb-4">Avis Clients ({avis.length})</h2>
+              {!showAvisForm && (
+                <Button
+                  onClick={() => { setEditingAvis(undefined); setShowAvisForm(true); }}
+                  className="bg-white hover:bg-gray-100 text-gray-900 font-semibold"
+                >
+                  <Plus className="size-4 mr-2" />
+                  Ajouter un avis
+                </Button>
+              )}
+            </div>
+
+            {/* Note about localStorage */}
+            <p className="text-xs text-gray-500 mb-4">Pour publier les modifications, mettez à jour le fichier <code className="bg-white/5 px-2 py-1 rounded">avis.json</code> en production.</p>
+
+            {/* Avis Form */}
+            {showAvisForm && (
+              <div className="mb-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                <AvisForm
+                  avis={editingAvis}
+                  onSave={saveAvis}
+                  onCancel={() => { setShowAvisForm(false); setEditingAvis(undefined); }}
+                />
+              </div>
+            )}
+
+            {/* Avis List */}
+            <div className="space-y-3">
+              {avis.length === 0 && (
+                <p className="text-gray-400 text-center py-8">Aucun avis pour le moment</p>
+              )}
+
+              {avis.map((a) => (
+                <div key={a.id} className="bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+                  {/* Avis row */}
+                  <div className="p-4 flex items-start gap-4">
+                    {/* Rating */}
+                    <div className="flex gap-0.5 mt-1 flex-shrink-0">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`size-4 ${i < a.note ? 'fill-[#F59E0B] text-[#F59E0B]' : 'text-gray-600'}`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Info */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-semibold text-white">{a.nom}</span>
+                        <Badge className={a.visible ? 'bg-green-500/90 text-white text-xs' : 'bg-gray-500/90 text-white text-xs'}>
+                          {a.visible ? 'VISIBLE' : 'MASQUÉ'}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-gray-400">{a.vehicule} · {new Date(a.date).toLocaleDateString('fr-FR')}</p>
+                      {expandedAvisId !== a.id && (
+                        <p className="text-sm text-gray-300 mt-2 line-clamp-2">{a.texte}</p>
+                      )}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      {/* Toggle visibility */}
+                      <Button
+                        onClick={() => toggleAvisVisibility(a)}
+                        size="sm"
+                        className={a.visible
+                          ? 'bg-green-500/20 hover:bg-green-500/30 text-green-400 border border-green-500/30'
+                          : 'bg-gray-500/20 hover:bg-gray-500/30 text-gray-400 border border-gray-500/30'
+                        }
+                      >
+                        <Eye className="size-4" />
+                      </Button>
+
+                      {/* Edit */}
+                      <Button
+                        onClick={() => { setEditingAvis(a); setShowAvisForm(true); }}
+                        size="sm"
+                        variant="outline"
+                        className="border-white/20 text-white hover:bg-white/10"
+                      >
+                        <Pencil className="size-4" />
+                      </Button>
+
+                      {/* Expand */}
+                      <Button
+                        onClick={() => setExpandedAvisId(expandedAvisId === a.id ? null : a.id)}
+                        size="sm"
+                        variant="outline"
+                        className="border-white/20 text-white hover:bg-white/10"
+                      >
+                        {expandedAvisId === a.id ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
+                      </Button>
+
+                      {/* Delete */}
+                      <Button
+                        onClick={() => deleteAvis(a)}
+                        size="sm"
+                        variant="outline"
+                        className="border-red-500/30 text-red-400 hover:bg-red-500/10"
+                      >
+                        <Trash2 className="size-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Expanded details */}
+                  {expandedAvisId === a.id && (
+                    <div className="border-t border-white/10 p-4 bg-white/[0.02]">
+                      <p className="text-sm text-gray-300 mb-3">{a.texte}</p>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                        <div><span className="text-gray-500">ID:</span> <span className="text-gray-300">{a.id}</span></div>
+                        <div><span className="text-gray-500">Note:</span> <span className="text-gray-300">{a.note}/5</span></div>
+                        <div><span className="text-gray-500">Date:</span> <span className="text-gray-300">{a.date}</span></div>
+                        <div><span className="text-gray-500">Véhicule:</span> <span className="text-gray-300">{a.vehicule}</span></div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </main>
     </div>
+  );
+}
+
+// ==================== AVIS FORM COMPONENT ====================
+function AvisForm({
+  avis,
+  onSave,
+  onCancel,
+}: {
+  avis?: Avis;
+  onSave: (data: Avis) => void;
+  onCancel: () => void;
+}) {
+  const [form, setForm] = useState<Avis>(avis || { ...emptyAvis, id: Date.now().toString() });
+
+  const isEditing = !!avis;
+
+  const handleChange = (field: string, value: any) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.nom.trim() || !form.texte.trim() || !form.vehicule.trim()) {
+      alert('Remplissez tous les champs');
+      return;
+    }
+    onSave(form);
+  };
+
+  const labelClass = 'text-sm text-gray-400 block mb-2 font-semibold';
+  const inputClass = 'w-full h-10 bg-white/5 border border-white/10 rounded-lg px-3 text-white placeholder-gray-500 focus:border-white/30 focus:outline-none text-sm';
+  const textareaClass = 'w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white placeholder-gray-500 focus:border-white/30 focus:outline-none text-sm';
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className={labelClass}>Nom du client</label>
+          <input type="text" className={inputClass} value={form.nom} onChange={(e) => handleChange('nom', e.target.value)} placeholder="Sophie L." />
+        </div>
+        <div>
+          <label className={labelClass}>Note (1-5)</label>
+          <select className={inputClass} value={form.note} onChange={(e) => handleChange('note', parseInt(e.target.value))}>
+            <option value="1">1 - Très mauvais</option>
+            <option value="2">2 - Mauvais</option>
+            <option value="3">3 - Acceptable</option>
+            <option value="4">4 - Bon</option>
+            <option value="5">5 - Excellent</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className={labelClass}>Véhicule acheté</label>
+          <input type="text" className={inputClass} value={form.vehicule} onChange={(e) => handleChange('vehicule', e.target.value)} placeholder="Audi A3 Sportback" />
+        </div>
+        <div>
+          <label className={labelClass}>Date</label>
+          <input type="date" className={inputClass} value={form.date} onChange={(e) => handleChange('date', e.target.value)} />
+        </div>
+      </div>
+
+      <div>
+        <label className={labelClass}>Texte de l'avis</label>
+        <textarea className={textareaClass} rows={4} value={form.texte} onChange={(e) => handleChange('texte', e.target.value)} placeholder="Écrivez votre avis..." />
+      </div>
+
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          id="visible"
+          checked={form.visible}
+          onChange={(e) => handleChange('visible', e.target.checked)}
+          className="w-4 h-4 rounded border border-white/20 bg-white/5 cursor-pointer"
+        />
+        <label htmlFor="visible" className="text-sm text-gray-400 cursor-pointer">Visible sur le site</label>
+      </div>
+
+      <div className="flex gap-3 pt-2">
+        <Button type="submit" className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
+          <Save className="size-4 mr-2" />
+          {isEditing ? 'Mettre à jour l\'avis' : 'Ajouter l\'avis'}
+        </Button>
+        <Button type="button" onClick={onCancel} variant="outline" className="border-white/20 text-white hover:bg-white/10">
+          Annuler
+        </Button>
+      </div>
+    </form>
   );
 }

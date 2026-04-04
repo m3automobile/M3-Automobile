@@ -98,12 +98,12 @@ export default function VehiculeCard({ vehicule }: VehiculeCardProps) {
         {/* Lien vers la fiche */}
         {!isVendu ? (
           <div className="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 rounded-xl transition-colors text-sm">
-            Voir les details
+            Voir les détails
             <ExternalLink className="size-4" />
           </div>
         ) : (
           <div className="text-center py-2 text-gray-500 text-sm font-medium border border-white/10 rounded-xl bg-white/5">
-            Ce vehicule a trouve preneur
+            Ce véhicule a trouvé preneur
           </div>
         )}
       </CardContent>

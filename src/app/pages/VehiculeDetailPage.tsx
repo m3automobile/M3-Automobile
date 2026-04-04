@@ -22,11 +22,11 @@ export default function VehiculeDetailPage() {
         <PremiumBackground />
         <div className="relative z-10 container mx-auto px-4 py-24 text-center">
           <Car className="size-20 text-gray-600 mx-auto mb-6" />
-          <h1 className="text-3xl font-bold text-white mb-4">Vehicule introuvable</h1>
-          <p className="text-gray-400 mb-8">Ce vehicule n'existe pas ou a ete retire de notre catalogue.</p>
+          <h1 className="text-3xl font-bold text-white mb-4">Véhicule introuvable</h1>
+          <p className="text-gray-400 mb-8">Ce véhicule n'existe pas ou a été retiré de notre catalogue.</p>
           <Link to="/vehicules" className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors">
             <ArrowLeft className="size-4" />
-            Retour aux vehicules
+            Retour aux véhicules
           </Link>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function VehiculeDetailPage() {
           className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6 md:mb-10 text-sm"
         >
           <ArrowLeft className="size-4" />
-          Retour aux vehicules
+          Retour aux véhicules
         </Link>
 
         {/* Layout principal */}
@@ -207,9 +207,17 @@ export default function VehiculeDetailPage() {
 
               {isVendu && (
                 <div className="text-center py-3 text-gray-500 text-sm font-medium border border-white/10 rounded-xl bg-white/5">
-                  Ce vehicule a trouve preneur
+                  Ce véhicule a trouvé preneur
                 </div>
               )}
+
+              {/* CTA Essai routier */}
+              <Link
+                to="/rendez-vous"
+                className="flex items-center justify-center gap-2 w-full mt-3 bg-white/10 hover:bg-white/20 text-white font-bold py-4 rounded-xl transition-colors text-base border border-white/10"
+              >
+                Prendre RDV pour un essai
+              </Link>
 
               {/* Contact rapide */}
               <a
@@ -229,7 +237,7 @@ export default function VehiculeDetailPage() {
                 <div className="flex items-center justify-between py-3 border-b border-white/5">
                   <div className="flex items-center gap-3 text-gray-400">
                     <Calendar className="size-4" />
-                    <span className="text-sm">Annee</span>
+                    <span className="text-sm">Année</span>
                   </div>
                   <span className="text-white font-medium">{vehicule.annee}</span>
                 </div>
@@ -245,7 +253,7 @@ export default function VehiculeDetailPage() {
                 <div className="flex items-center justify-between py-3 border-b border-white/5">
                   <div className="flex items-center gap-3 text-gray-400">
                     <Gauge className="size-4" />
-                    <span className="text-sm">Kilometrage</span>
+                    <span className="text-sm">Kilométrage</span>
                   </div>
                   <span className="text-white font-medium">{vehicule.kilometrage.toLocaleString('fr-FR')} km</span>
                 </div>
@@ -325,7 +333,7 @@ export default function VehiculeDetailPage() {
                 <h3 className="text-lg font-bold text-white">Garantie 3 mois incluse</h3>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Couverture moteur & boite de vitesses. Zero avance de frais. Valable dans le garage de votre choix, partout en France.
+                Couverture moteur & boite de vitesses. Zéro avance de frais. Valable dans le garage de votre choix, partout en France.
               </p>
               <Link
                 to="/garanties"

@@ -1,4 +1,4 @@
-import { ExternalLink, Shield, CheckCircle2, Car } from 'lucide-react';
+import { ExternalLink, Shield, CheckCircle2, Car, Search } from 'lucide-react';
 import { Card, CardContent } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -42,12 +42,10 @@ export default function VehiculesPage() {
 
         {/* ===== SECTION VÉHICULES ===== */}
         <section className="max-w-6xl mx-auto mb-16 md:mb-24">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Notre Stock</h2>
-            <p className="text-gray-400 text-lg">
-              {nbEnVente} véhicule{nbEnVente > 1 ? 's' : ''} disponible{nbEnVente > 1 ? 's' : ''} · {nbVendus} vendu{nbVendus > 1 ? 's' : ''}
-            </p>
-          </div>
+          {/* Compteur */}
+          <p className="text-center text-gray-400 text-base mb-4">
+            {nbEnVente} véhicule{nbEnVente > 1 ? 's' : ''} disponible{nbEnVente > 1 ? 's' : ''} · {nbVendus} vendu{nbVendus > 1 ? 's' : ''}
+          </p>
 
           {/* Filtres */}
           <div className="flex justify-center gap-3 mb-10">
@@ -86,12 +84,83 @@ export default function VehiculesPage() {
             </button>
           </div>
 
-          {/* Grille de véhicules */}
+          {/* Grille véhicules EN VENTE + carte CTA */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {vehiculesFiltres.map((vehicule) => (
+            {vehiculesFiltres.filter(v => v.statut === 'en_vente').map((vehicule) => (
               <VehiculeCard key={vehicule.id} vehicule={vehicule} />
             ))}
+
+            {/* Carte "annonce" recherche perso — entre en vente et vendus */}
+            <Link to="/recherche-personnalisee" className="block group">
+              <Card className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden hover:border-white/20 transition-all h-full">
+                {/* Zone "photo" avec ? */}
+                <div className="relative h-52 md:h-60 overflow-hidden bg-gradient-to-br from-white/5 to-white/[0.02] flex items-center justify-center">
+                  <span className="text-[8rem] md:text-[10rem] font-black text-white/10 group-hover:text-white/20 transition-colors select-none leading-none">?</span>
+                  <div className="absolute top-3 left-3">
+                    <Badge className="bg-white/90 text-gray-900 border-none font-bold text-sm px-3 py-1">
+                      RECHERCHE
+                    </Badge>
+                  </div>
+                  <div className="absolute top-3 right-3">
+                    <Badge className="bg-white/90 text-gray-900 border-none text-xs px-2 py-1">
+                      <Search className="size-3 mr-1" />
+                      Sur mesure
+                    </Badge>
+                  </div>
+                  <div className="absolute bottom-3 left-3">
+                    <p className="text-2xl md:text-3xl font-black text-white/60">On s'en charge</p>
+                  </div>
+                </div>
+
+                <CardContent className="p-5">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-1">Pas trouvé votre bonheur ?</h3>
+                  <p className="text-sm text-gray-400 mb-4">On a peut-être ce qu'il vous faut chez un de nos confrères</p>
+
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <div className="flex items-center gap-2 text-gray-300 text-sm">
+                      <Car className="size-4 text-white/50 flex-shrink-0" />
+                      <span>Toutes marques</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-300 text-sm">
+                      <Search className="size-4 text-white/50 flex-shrink-0" />
+                      <span>Tout budget</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5 mb-4">
+                    <div className="flex items-start gap-2 text-gray-400 text-xs">
+                      <CheckCircle2 className="size-3.5 text-white/50 mt-0.5 flex-shrink-0" />
+                      <span>Accès à notre réseau de confrères pros</span>
+                    </div>
+                    <div className="flex items-start gap-2 text-gray-400 text-xs">
+                      <CheckCircle2 className="size-3.5 text-white/50 mt-0.5 flex-shrink-0" />
+                      <span>Véhicule vérifié avant livraison</span>
+                    </div>
+                    <div className="flex items-start gap-2 text-gray-400 text-xs">
+                      <CheckCircle2 className="size-3.5 text-white/50 mt-0.5 flex-shrink-0" />
+                      <span>Accompagnement de A à Z</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 rounded-xl transition-colors text-sm group-hover:scale-[1.02]">
+                    Lancer une recherche →
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
+
+          {/* Grille véhicules VENDUS — après la carte CTA */}
+          {vehiculesFiltres.filter(v => v.statut === 'vendu').length > 0 && (
+            <div className="mt-12 md:mt-16">
+              <h3 className="text-xl md:text-2xl font-bold text-white/60 mb-6">Déjà vendus</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {vehiculesFiltres.filter(v => v.statut === 'vendu').map((vehicule) => (
+                  <VehiculeCard key={vehicule.id} vehicule={vehicule} />
+                ))}
+              </div>
+            </div>
+          )}
 
           {vehiculesFiltres.length === 0 && (
             <div className="text-center py-16">
@@ -198,20 +267,6 @@ export default function VehiculesPage() {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="flex flex-col items-center justify-center text-center mt-20 mb-10 overflow-hidden">
-          <p className="text-lg md:text-2xl text-gray-300 mb-8 px-4 font-medium">
-            Vous ne trouvez pas votre bonheur dans notre stock ?
-          </p>
-
-          <div className="flex justify-center w-full px-10">
-            <Link to="/recherche-personnalisee" className="inline-block">
-              <button className="bg-white text-gray-900 px-6 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold rounded-2xl shadow-xl hover:bg-gray-100 transition-all whitespace-nowrap">
-                Essayez notre recherche personnalisée →
-              </button>
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );

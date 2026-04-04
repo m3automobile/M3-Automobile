@@ -1,4 +1,4 @@
-import { Shield, CheckCircle2, MapPin, Gauge, Wrench, Car, Search, Handshake, Phone, Mail, Lock, Users, ArrowRight, User } from 'lucide-react';
+import { Shield, CheckCircle2, MapPin, Gauge, Wrench, Car, Search, Handshake, Phone, Mail, Lock, Users, ArrowRight, User, Star } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -7,9 +7,11 @@ import PremiumBackground from '../components/PremiumBackground';
 import SEO from '../components/SEO';
 import VehiculeCard from '../components/VehiculeCard';
 import { useVehicules } from '../hooks/useVehicules';
+import { useAvis } from '../hooks/useAvis';
 
 export default function HomePage() {
   const { vehicules } = useVehicules();
+  const { avis } = useAvis();
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
@@ -21,113 +23,66 @@ export default function HomePage() {
       />
       <PremiumBackground />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1771775751121-3091d79073d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXIlMjB1cmJhbiUyMGNpdHklMjBlbGVnYW50fGVufDF8fHx8MTc3MjY0NDYzNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral')`
+      {/* Hero Section - Structure inspirée convoyeur-arb */}
+      <section className="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
+        {/* Background image - voiture subtile côté droit */}
+        <div
+          className="absolute inset-0 bg-cover bg-right-bottom"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1920&q=80')`
           }}
         />
-        <div className="relative container mx-auto px-4 flex flex-col items-center justify-center text-center text-white">
-          <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-8 text-white tracking-tight -mt-20 md:-mt-32">
-            Bienvenue chez M3 Automobile
-          </h2>
-          <p className="text-base md:text-xl lg:text-3xl max-w-4xl text-gray-200 mb-6 md:mb-12 px-4 leading-relaxed font-medium">
-            Achat, vente et recherche personnalisée de véhicules d'occasion par un expert en cybersécurité
+        {/* Gradient overlay - plus opaque à gauche pour lisibilité du texte */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#060B12] via-[#060B12]/95 to-[#060B12]/40" />
+
+        {/* Contenu - Aligné à GAUCHE */}
+        <div className="relative container mx-auto px-6 md:px-12 lg:px-16">
+          {/* Badge localisation */}
+          <div className="inline-flex items-center gap-2 bg-[#8B2D3A]/10 border border-[#8B2D3A]/30 text-[#8B2D3A] px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase mb-8 md:mb-10">
+            <span className="w-2 h-2 bg-[#8B2D3A] rounded-full animate-pulse" />
+            L'Isle-Adam · Val d'Oise · Île-de-France
+          </div>
+
+          {/* Typographie géante empilée */}
+          <h1 className="text-[3.5rem] md:text-[7rem] lg:text-[9rem] font-black tracking-tighter leading-[0.85] mb-6 md:mb-10">
+            <span className="block text-white">M3</span>
+            <span className="block text-[#8B2D3A]">AUTO</span>
+            <span className="block text-white">MOBILE</span>
+          </h1>
+
+          {/* Sous-titre */}
+          <p className="text-gray-400 text-base md:text-xl max-w-lg mb-6 md:mb-8 leading-relaxed">
+            Véhicules d'occasion contrôlés et garantis. Votre tranquillité, notre priorité.
           </p>
-          <div className="flex gap-3 md:gap-6 flex-wrap justify-center px-4">
-            <Badge className="bg-white/90 text-gray-900 px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-lg font-semibold border-none hover:bg-white transition-colors">
-              <Lock className="size-4 md:size-6 mr-2" />
-              <span className="whitespace-nowrap">Expert en détection de fraudes</span>
-            </Badge>
-            <Badge className="bg-white/90 text-gray-900 px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg font-semibold border-none hover:bg-white transition-colors">
-              <Shield className="size-4 md:size-6 mr-2" />
-              <span className="whitespace-nowrap">Garantie 3 mois (extension possible)</span>
-            </Badge>
-            <Badge className="bg-white/90 text-gray-900 px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg font-semibold border-none hover:bg-white transition-colors">
-              <Search className="size-4 md:size-6 mr-2" />
-              <span className="whitespace-nowrap">Recherche sur mesure</span>
-            </Badge>
+
+          {/* Badge de confiance */}
+          <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-2 rounded-full text-xs md:text-sm font-medium tracking-wide uppercase mb-8 md:mb-10">
+            <CheckCircle2 className="size-4 text-green-400" />
+            Garantie 3 mois incluse sur tous nos véhicules
+          </div>
+
+          {/* Boutons CTA */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a href="tel:0783269802">
+              <Button className="bg-[#8B2D3A] hover:bg-[#A63D4D] text-white font-bold px-8 py-6 text-base w-full sm:w-auto">
+                <Phone className="size-5 mr-2" />
+                Appeler maintenant
+              </Button>
+            </a>
+            <Link to="/vehicules">
+              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 font-semibold px-8 py-6 text-base w-full sm:w-auto transition-all">
+                Voir nos véhicules
+                <ArrowRight className="size-4 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Container principal */}
       <div className="container mx-auto px-4 py-12 md:py-24 relative z-10">
-        
-        {/* 1. QUI SE CACHE DERRIERE M3 - Version courte */}
-        <section className="mb-20 md:mb-32">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Qui se cache derrière M3 Automobile ?</h2>
-              <div className="w-20 h-1 bg-white/50 mx-auto rounded-full"></div>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-              {/* Photo + badge repositionné */}
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden mb-6">
-                  <img 
-                    src="/photo-profil.jpg" 
-                    alt="Mam III Jobb - Fondateur M3 Automobile" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* Badge 2025 déplacé en haut à droite avec fond translucide */}
-                <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-md text-white rounded-xl p-4 shadow-xl border border-white/20">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold">2025</p>
-                    <p className="text-xs text-gray-300">Création</p>
-                  </div>
-                </div>
-              </div>
 
-              {/* Texte présentation court */}
-              <div>
-                <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-4">
-                  <Lock className="size-4" />
-                  Mam III Jobb - Ingénieur Cybersécurité & Expert Automobile
-                </div>
-                
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  M3 Automobile est né d'une double passion : la cybersécurité et l'automobile. 
-                  Ingénieur en cybersécurité chez TV5 Monde, j'ai passé des années à traquer les fraudes 
-                  numériques et à sécuriser des systèmes d'information complexes.
-                </p>
-                
-                <p className="text-gray-300 leading-relaxed mb-6">
-                  Cette expertise en investigation numérique, combinée à ma passion pour la mécanique, 
-                  fait de M3 Automobile une agence unique sur le marché de l'occasion.
-                </p>
-
-                {/* Section équipe avec encadre translucide comme avant */}
-                <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Users className="size-5 text-blue-400" />
-                    <span className="text-white font-semibold">Une équipe en expansion</span>
-                  </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    M3 Automobile, c'est <strong className="text-white">Mam III Jobb</strong> à la tête des opérations, 
-                    accompagné d'un réseau partenaire de professionnels <strong className="text-white">non accessible au grand public</strong>. 
-                    Une structure légère mais compétente.
-                  </p>
-                </div>
-
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link to="/qui-sommes-nous">
-                    <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
-                      Découvrir notre histoire
-                      <ArrowRight className="size-4 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 2. NOS SERVICES */}
+        {/* 1. NOS SERVICES */}
         <section className="mb-20 md:mb-32">
           <div className="text-center mb-10 md:mb-16">
             <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-4">Nos Services</h3>
@@ -224,11 +179,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* VEHICULES EN VENTE - Mise en avant */}
+        {/* 2. VEHICULES EN VENTE */}
         <section className="mb-20 md:mb-32">
           <div className="text-center mb-10 md:mb-16">
-            <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-4">Nos Vehicules Disponibles</h3>
-            <p className="text-sm md:text-lg lg:text-xl text-gray-400">Decouvrez notre selection rigoureusement controlee et garantie</p>
+            <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-4">Nos Véhicules Disponibles</h3>
+            <p className="text-sm md:text-lg lg:text-xl text-gray-400">Découvrez notre sélection rigoureusement contrôlée et garantie</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-10">
@@ -240,10 +195,116 @@ export default function HomePage() {
           <div className="text-center">
             <Link to="/vehicules">
               <Button className="bg-white hover:bg-gray-100 text-gray-900 font-bold px-8 py-3 text-base">
-                Voir tous nos vehicules
+                Voir tous nos véhicules
                 <ArrowRight className="size-4 ml-2" />
               </Button>
             </Link>
+          </div>
+        </section>
+
+        {/* 2.5. CE QUE NOS CLIENTS DISENT */}
+        <section className="mb-20 md:mb-32">
+          <div className="text-center mb-10 md:mb-16">
+            <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white mb-4">Ce que nos clients disent de nous</h3>
+            <p className="text-sm md:text-lg lg:text-xl text-gray-400">Découvrez les témoignages de nos clients satisfaits</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            {avis.filter(a => a.visible).map((review) => (
+              <Card key={review.id} className="border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-all text-white h-full flex flex-col">
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <CardTitle className="text-lg">{review.nom}</CardTitle>
+                      <CardDescription className="text-gray-400 text-sm mt-1">{review.vehicule}</CardDescription>
+                    </div>
+                    <div className="flex gap-0.5 ml-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`size-4 ${i < review.note ? 'fill-[#F59E0B] text-[#F59E0B]' : 'text-gray-600'}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="flex-1 flex flex-col">
+                  <p className="text-gray-300 text-sm mb-4 flex-1">{review.texte}</p>
+                  <p className="text-gray-500 text-xs">{new Date(review.date).toLocaleDateString('fr-FR')}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* 3. QUI SE CACHE DERRIERE M3 */}
+        <section className="mb-20 md:mb-32">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Qui se cache derrière M3 Automobile ?</h2>
+              <div className="w-20 h-1 bg-white/50 mx-auto rounded-full"></div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+              {/* Photo + badge repositionné */}
+              <div className="relative">
+                <div className="aspect-[4/5] rounded-2xl border border-white/10 overflow-hidden mb-6">
+                  <img
+                    src="/photo-profil.jpg"
+                    alt="Mam III Jobb - Fondateur M3 Automobile"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Badge 2025 déplacé en haut à droite avec fond translucide */}
+                <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-md text-white rounded-xl p-4 shadow-xl border border-white/20">
+                  <div className="text-center">
+                    <p className="text-3xl font-bold">2025</p>
+                    <p className="text-xs text-gray-300">Création</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Texte présentation court */}
+              <div>
+                <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-4">
+                  <Lock className="size-4" />
+                  Mam III Jobb - Ingénieur Cybersécurité & Expert Automobile
+                </div>
+
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  M3 Automobile est né d'une double passion : la cybersécurité et l'automobile.
+                  Ingénieur en cybersécurité chez TV5 Monde, j'ai passé des années à traquer les fraudes
+                  numériques et à sécuriser des systèmes d'information complexes.
+                </p>
+
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Cette expertise en investigation numérique, combinée à ma passion pour la mécanique,
+                  fait de M3 Automobile une agence unique sur le marché de l'occasion.
+                </p>
+
+                {/* Section équipe avec encadre translucide comme avant */}
+                <div className="mt-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Users className="size-5 text-blue-400" />
+                    <span className="text-white font-semibold">Une équipe en expansion</span>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    M3 Automobile, c'est <strong className="text-white">Mam III Jobb</strong> à la tête des opérations,
+                    accompagné d'un réseau partenaire de professionnels <strong className="text-white">non accessible au grand public</strong>.
+                    Une structure légère mais compétente.
+                  </p>
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link to="/qui-sommes-nous">
+                    <Button className="bg-white hover:bg-gray-100 text-gray-900 font-semibold">
+                      Découvrir notre histoire
+                      <ArrowRight className="size-4 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
