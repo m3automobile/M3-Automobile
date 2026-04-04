@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "nom": "Sophie L.",
+    "note": 5,
+    "texte": "Excellent service ! Mam III a trouvé exactement la voiture que je cherchais en moins d'une semaine. Véhicule impeccable, toutes les vérifications ont été faites. Je recommande à 100%.",
+    "vehicule": "Audi A3 Sportback",
+    "date": "2025-11-15",
+    "visible": true
+  },
+  {
+    "id": "2",
+    "nom": "Karim B.",
+    "note": 5,
+    "texte": "Très professionnel et transparent. Le contrôle technique, l'historique, tout était nickel. Rien à cacher, on sent la rigueur. Merci M3 !",
+    "vehicule": "Peugeot 208",
+    "date": "2025-12-03",
+    "visible": true
+  },
+  {
+    "id": "3",
+    "nom": "Marie-Claire D.",
+    "note": 5,
+    "texte": "Je recommande vivement M3 Automobile. Mon fils a acheté sa première voiture ici et tout s'est passé dans les règles. Garantie incluse, pas de mauvaise surprise.",
+    "vehicule": "Renault Clio III",
+    "date": "2026-01-20",
+    "visible": true
+  },
+  {
+    "id": "4",
+    "nom": "Thomas R.",
+    "note": 4,
+    "texte": "Bon rapport qualité-prix et un suivi sérieux. La recherche personnalisée m'a fait gagner un temps fou. Seul petit bémol : le délai un peu long, mais le résultat en valait la peine.",
+    "vehicule": "Citroën C3",
+    "date": "2026-02-10",
+    "visible": true
+  }
+]
