@@ -159,4 +159,62 @@ app.get("/make-server-cc861502/recherches", async (c) => {
   }
 });
 
+// ===== AVIS CLIENTS =====
+
+// GET - Récupérer tous les avis
+app.get("/make-server-cc861502/avis", async (c) => {
+  try {
+    const avisList = await kv.getByPrefix("avis_");
+    // Trier par date décroissante
+    avisList.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return c.json(avisList);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des avis:", error);
+    return c.json({ error: "Erreur lors de la récupération des avis" }, 500);
+  }
+});
+
+// POST - Ajouter ou modifier un avis
+app.post("/make-server-cc861502/avis", async (c) => {
+  try {
+    const body = await c.req.json();
+
+    if (!body.nom || !body.texte || !body.note) {
+      return c.json({ error: "Nom, texte et note sont obligatoires" }, 400);
+    }
+
+    const avisId = body.id || `avis_${Date.now()}`;
+    const avisData = {
+      id: avisId,
+      nom: body.nom,
+      note: body.note,
+      texte: body.texte,
+      vehicule: body.vehicule || '',
+      date: body.date || new Date().toISOString().split('T')[0],
+      visible: body.visible !== undefined ? body.visible : true
+    };
+
+    await kv.set(avisId, avisData);
+    console.log(`Avis enregistré: ${avisId}`);
+
+    return c.json({ success: true, avis: avisData });
+  } catch (error) {
+    console.error("Erreur lors de l'enregistrement de l'avis:", error);
+    return c.json({ error: "Erreur lors de l'enregistrement de l'avis" }, 500);
+  }
+});
+
+// DELETE - Supprimer un avis
+app.delete("/make-server-cc861502/avis/:id", async (c) => {
+  try {
+    const avisId = c.req.param("id");
+    await kv.del(avisId);
+    console.log(`Avis supprimé: ${avisId}`);
+    return c.json({ success: true });
+  } catch (error) {
+    console.error("Erreur lors de la suppression de l'avis:", error);
+    return c.json({ error: "Erreur lors de la suppression" }, 500);
+  }
+});
+
 Deno.serve(app.fetch);
