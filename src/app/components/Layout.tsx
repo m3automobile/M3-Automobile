@@ -52,7 +52,7 @@ export default function Layout() {
 
       {/* Logo - CENTRÉ */}
       <Link to="/" className="flex flex-col items-center gap-1 order-2 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0">
-        <img src={LogoHorizontal} className="h-14 md:h-14 lg:h-16 object-contain mix-blend-screen" alt="M3 Automobile" />
+        <img src={LogoHorizontal} className="h-14 md:h-14 lg:h-16 object-contain" alt="M3 Automobile" />
         <p className="text-[10px] text-gray-400 italic hidden md:block">Le bon sens automobile.</p>
       </Link>
 
@@ -143,7 +143,7 @@ export default function Layout() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
             <div>
               <div className="mb-4">
-                <img src={LogoHorizontal} className="h-10 md:h-14 lg:h-16 object-contain mix-blend-screen" alt="M3 Automobile" />
+                <img src={LogoHorizontal} className="h-10 md:h-14 lg:h-16 object-contain " alt="M3 Automobile" />
               </div>
               <p className="text-gray-400">Votre partenaire de confiance pour l'achat de véhicules d'occasion avec garantie.</p>
             </div>
