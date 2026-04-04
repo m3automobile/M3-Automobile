@@ -24,7 +24,7 @@ export default function HomePage() {
       <PremiumBackground />
 
       {/* Hero Section - Structure inspirée convoyeur-arb */}
-      <section className="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-start overflow-hidden pt-24 md:pt-20">
         {/* Background image - voiture subtile côté droit */}
         <div
           className="absolute inset-0 bg-cover bg-right-bottom"
@@ -34,12 +34,13 @@ export default function HomePage() {
         />
         {/* Gradient overlay - plus opaque à gauche pour lisibilité du texte */}
         {/* Mobile: gradient vertical pour voir la voiture en haut, Desktop: gradient horizontal */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060B12]/30 via-[#060B12]/60 to-[#060B12] md:bg-gradient-to-r md:from-[#060B12] md:via-[#060B12]/90 md:to-[#060B12]/30" />
+        {/* Mobile: gradient vertical léger. Desktop: gradient horizontal avec gauche semi-opaque */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060B12]/30 via-[#060B12]/40 to-[#060B12]/70 md:bg-gradient-to-r md:from-[#060B12]/80 md:via-[#060B12]/60 md:to-transparent" />
 
         {/* Contenu - Aligné à GAUCHE */}
-        <div className="relative container mx-auto px-6 md:px-12 lg:px-16 pt-20 md:pt-0">
+        <div className="relative container mx-auto px-6 md:px-12 lg:px-16">
           {/* Badge localisation — effet glow animé */}
-          <div className="group relative inline-flex items-center gap-2 bg-[#8B2D3A]/10 border border-[#8B2D3A]/30 text-[#8B2D3A] px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase mb-8 md:mb-10 animate-[shimmer_3s_ease-in-out_infinite]">
+          <div className="group relative inline-flex items-center gap-2 bg-[#8B2D3A]/10 border border-[#8B2D3A]/30 text-[#8B2D3A] px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase mb-4 md:mb-6">
             {/* Halo glow derrière le badge */}
             <span className="absolute inset-0 rounded-full bg-[#8B2D3A]/20 blur-md animate-pulse" />
             <span className="relative flex items-center gap-2">
@@ -52,19 +53,19 @@ export default function HomePage() {
           </div>
 
           {/* Typographie géante empilée */}
-          <h1 className="text-[3.5rem] md:text-[7rem] lg:text-[9rem] font-black tracking-tighter leading-[0.85] mb-6 md:mb-10">
+          <h1 className="text-[3rem] md:text-[5rem] lg:text-[6.5rem] font-black tracking-tighter leading-[0.85] mb-3 md:mb-4">
             <span className="block text-white">M3</span>
             <span className="block text-[#8B2D3A]">AUTO</span>
             <span className="block text-white">MOBILE</span>
           </h1>
 
           {/* Sous-titre */}
-          <p className="text-gray-400 text-base md:text-xl max-w-lg mb-6 md:mb-8 leading-relaxed">
+          <p className="text-gray-400 text-base md:text-lg max-w-lg mb-3 md:mb-4 leading-relaxed">
             Véhicules d'occasion contrôlés et garantis. Votre tranquillité, notre priorité.
           </p>
 
           {/* Badge de confiance */}
-          <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-2 rounded-full text-xs md:text-sm font-medium tracking-wide uppercase mb-8 md:mb-10">
+          <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 px-4 py-2 rounded-full text-xs md:text-sm font-medium tracking-wide uppercase mb-3 md:mb-4">
             <CheckCircle2 className="size-4 text-green-400" />
             Garantie 3 mois incluse sur tous nos véhicules
           </div>
@@ -86,8 +87,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Dégradé de transition en bas du hero — fondu vers le reste de la page */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 md:h-60 bg-gradient-to-b from-transparent to-[#060B12] z-10" />
       </section>
 
       {/* Container principal */}
