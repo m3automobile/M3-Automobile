@@ -43,7 +43,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#060B12] via-[#0A1019] to-[#060B12] overflow-x-hidden">
       {/* Header FIXE - toujours visible */}
-      <header className="bg-[#060B12]/90 backdrop-blur-md shadow-lg fixed top-0 left-0 right-0 z-50 border-b border-white/10">
+      <header className="bg-[#060B12] shadow-lg fixed top-0 left-0 right-0 z-50">
   <div className="container mx-auto px-3 md:px-6 py-4 md:py-3">
     <div className="flex items-center justify-between">
       
@@ -52,7 +52,7 @@ export default function Layout() {
 
       {/* Logo - CENTRÉ */}
       <Link to="/" className="flex flex-col items-center gap-1 order-2 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0">
-        <img src={LogoHorizontal} className="h-14 md:h-14 lg:h-16 object-contain mix-blend-lighten" alt="M3 Automobile" />
+        <img src={LogoHorizontal} className="h-14 md:h-14 lg:h-16 object-contain mix-blend-screen" alt="M3 Automobile" />
         <p className="text-[10px] text-gray-400 italic hidden md:block">Le bon sens automobile.</p>
       </Link>
 
@@ -143,7 +143,7 @@ export default function Layout() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
             <div>
               <div className="mb-4">
-                <img src={LogoHorizontal} className="h-10 md:h-14 lg:h-16 object-contain mix-blend-lighten" alt="M3 Automobile" />
+                <img src={LogoHorizontal} className="h-10 md:h-14 lg:h-16 object-contain mix-blend-screen" alt="M3 Automobile" />
               </div>
               <p className="text-gray-400">Votre partenaire de confiance pour l'achat de véhicules d'occasion avec garantie.</p>
             </div>
