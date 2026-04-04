@@ -43,7 +43,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#060B12] via-[#0A1019] to-[#060B12] overflow-x-hidden">
       {/* Header FIXE - toujours visible */}
-      <header className="bg-[#060B12] fixed top-0 left-0 right-0 z-50">
+      <header className="bg-[#060B12]/50 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
   <div className="container mx-auto px-3 md:px-6 py-4 md:py-3">
     <div className="flex items-center justify-between">
       
