@@ -34,10 +34,10 @@ export default function HomePage() {
         />
         {/* Gradient overlay - plus opaque à gauche pour lisibilité du texte */}
         {/* Mobile: gradient vertical pour voir la voiture en haut, Desktop: gradient horizontal */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060B12] via-[#060B12]/60 to-[#060B12] md:bg-gradient-to-r md:from-[#060B12] md:via-[#060B12]/95 md:to-[#060B12]/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060B12]/30 via-[#060B12]/60 to-[#060B12] md:bg-gradient-to-r md:from-[#060B12] md:via-[#060B12]/90 md:to-[#060B12]/30" />
 
         {/* Contenu - Aligné à GAUCHE */}
-        <div className="relative container mx-auto px-6 md:px-12 lg:px-16">
+        <div className="relative container mx-auto px-6 md:px-12 lg:px-16 pt-20 md:pt-0">
           {/* Badge localisation — effet glow animé */}
           <div className="group relative inline-flex items-center gap-2 bg-[#8B2D3A]/10 border border-[#8B2D3A]/30 text-[#8B2D3A] px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase mb-8 md:mb-10 animate-[shimmer_3s_ease-in-out_infinite]">
             {/* Halo glow derrière le badge */}
