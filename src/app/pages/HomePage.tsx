@@ -33,7 +33,8 @@ export default function HomePage() {
           }}
         />
         {/* Gradient overlay - plus opaque à gauche pour lisibilité du texte */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#060B12] via-[#060B12]/95 to-[#060B12]/40" />
+        {/* Mobile: gradient vertical pour voir la voiture en haut, Desktop: gradient horizontal */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060B12]/40 via-[#060B12]/80 to-[#060B12] md:bg-gradient-to-r md:from-[#060B12] md:via-[#060B12]/95 md:to-[#060B12]/40" />
 
         {/* Contenu - Aligné à GAUCHE */}
         <div className="relative container mx-auto px-6 md:px-12 lg:px-16">

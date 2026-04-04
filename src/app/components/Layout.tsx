@@ -52,7 +52,7 @@ export default function Layout() {
 
       {/* Logo - CENTRÉ */}
       <Link to="/" className="flex flex-col items-center gap-1 order-2 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:translate-x-0">
-        <img src={LogoHorizontal} className="h-14 md:h-14 lg:h-16 object-contain" alt="M3 Automobile" />
+        <img src={LogoHorizontal} className="h-14 md:h-14 lg:h-16 object-contain mix-blend-lighten" alt="M3 Automobile" />
         <p className="text-[10px] text-gray-400 italic hidden md:block">Le bon sens automobile.</p>
       </Link>
 
@@ -76,7 +76,7 @@ export default function Layout() {
       {/* Bouton téléphone Desktop */}
       <div className="hidden lg:flex gap-3 order-4">
         <a href="tel:0783269802">
-          <Button className="bg-transparent border border-[#8B2D3A] text-[#8B2D3A] hover:bg-[#8B2D3A] hover:text-white font-semibold px-4 py-2 text-sm shadow-lg transition-all">
+          <Button className="bg-[#8B2D3A] hover:bg-[#A63D4D] text-white font-semibold px-4 py-2 text-sm shadow-lg transition-all">
             <Phone className="size-4 mr-2" />
             07 83 26 98 02
           </Button>
@@ -143,7 +143,7 @@ export default function Layout() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
             <div>
               <div className="mb-4">
-                <img src={LogoHorizontal} className="h-10 md:h-14 lg:h-16 object-contain" alt="M3 Automobile" />
+                <img src={LogoHorizontal} className="h-10 md:h-14 lg:h-16 object-contain mix-blend-lighten" alt="M3 Automobile" />
               </div>
               <p className="text-gray-400">Votre partenaire de confiance pour l'achat de véhicules d'occasion avec garantie.</p>
             </div>

@@ -66,33 +66,19 @@ export default function RendezVousPage() {
           nomComplet: '', telephone: '', email: '', vehicule: '', dateSouhaitee: '', creneauHoraire: '', message: ''
         });
       } else {
-        // Fallback to mailto if API fails
-        fallbackToMailto();
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Une erreur est survenue. Appelez-nous directement au 07 83 26 98 02.'
+        });
       }
     } catch (error) {
-      // Fallback to mailto on network error
-      fallbackToMailto();
+      setSubmitStatus({
+        type: 'error',
+        message: 'Impossible d\'envoyer votre demande. Appelez-nous directement au 07 83 26 98 02.'
+      });
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const fallbackToMailto = () => {
-    const mailtoBody = encodeURIComponent(
-      `Demande de rendez-vous pour un essai routier\n\n` +
-      `Nom complet: ${formData.nomComplet}\n` +
-      `Téléphone: ${formData.telephone}\n` +
-      `Email: ${formData.email}\n` +
-      `Véhicule souhaité: ${formData.vehicule}\n` +
-      `Date souhaitée: ${formData.dateSouhaitee}\n` +
-      `Créneau horaire: ${formData.creneauHoraire}\n` +
-      `Message: ${formData.message}`
-    );
-    window.location.href = `mailto:m3.automobil@gmail.com?subject=Demande%20de%20rendez-vous%20essai&body=${mailtoBody}`;
-    setSubmitStatus({
-      type: 'success',
-      message: 'Redirection vers votre email en cours. Complétez et envoyez le message.'
-    });
   };
 
   return (

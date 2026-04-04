@@ -92,7 +92,7 @@ export default function VehiculesPage() {
 
             {/* Carte "annonce" recherche perso — entre en vente et vendus */}
             <Link to="/recherche-personnalisee" className="block group">
-              <Card className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden hover:border-white/20 transition-all h-full">
+              <Card className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden hover:border-white/20 transition-all h-full flex flex-col">
                 {/* Zone "photo" avec ? */}
                 <div className="relative h-52 md:h-60 overflow-hidden bg-gradient-to-br from-white/5 to-white/[0.02] flex items-center justify-center">
                   <span className="text-[8rem] md:text-[10rem] font-black text-white/10 group-hover:text-white/20 transition-colors select-none leading-none">?</span>
@@ -103,8 +103,8 @@ export default function VehiculesPage() {
                   </div>
                   <div className="absolute top-3 right-3">
                     <Badge className="bg-white/90 text-gray-900 border-none text-xs px-2 py-1">
-                      <Search className="size-3 mr-1" />
-                      Sur mesure
+                      <Shield className="size-3 mr-1" />
+                      Garantie 3 mois
                     </Badge>
                   </div>
                   <div className="absolute bottom-3 left-3">
@@ -112,7 +112,7 @@ export default function VehiculesPage() {
                   </div>
                 </div>
 
-                <CardContent className="p-5">
+                <CardContent className="p-5 flex flex-col flex-grow">
                   <h3 className="text-lg md:text-xl font-bold text-white mb-1">Pas trouvé votre bonheur ?</h3>
                   <p className="text-sm text-gray-400 mb-4">On a peut-être ce qu'il vous faut chez un de nos confrères</p>
 
@@ -142,8 +142,10 @@ export default function VehiculesPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 rounded-xl transition-colors text-sm group-hover:scale-[1.02]">
-                    Lancer une recherche →
+                  <div className="mt-auto">
+                    <div className="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 rounded-xl transition-colors text-sm group-hover:scale-[1.02]">
+                      Lancer une recherche →
+                    </div>
                   </div>
                 </CardContent>
               </Card>
