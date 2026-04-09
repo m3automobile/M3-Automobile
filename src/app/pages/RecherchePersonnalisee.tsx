@@ -1,4 +1,4 @@
-import { Search, CheckCircle2, Phone, Mail, Clock, ArrowRight, Car, Sparkles } from 'lucide-react';
+import { Search, CheckCircle2, Phone, Mail, Clock, ArrowRight, Car, Sparkles, AlertTriangle, CalendarDays } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -18,11 +18,13 @@ export default function RecherchePersonnalisee() {
     kilometrageMax: '',
     budgetMax: '',
     criteres: '',
+    dateDebut: '',
     nom: '',
     telephone: '',
     email: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const today = new Date().toISOString().split('T')[0];
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -39,8 +41,6 @@ export default function RecherchePersonnalisee() {
 
     // Les champs obligatoires sont déjà gérés par l'attribut HTML 'required'
     // On envoie directement les données au serveur
-    console.log('Données envoyées:', formData);
-
     try {
       const response = await fetch(
         `https://${projectId}.supabase.co/functions/v1/make-server-cc861502/recherche-personnalisee`,
@@ -63,7 +63,7 @@ export default function RecherchePersonnalisee() {
         });
         setFormData({
           marque: '', modele: '', motorisation: '', anneeMin: '', kilometrageMax: '', budgetMax: '',
-          criteres: '', nom: '', telephone: '', email: ''
+          criteres: '', dateDebut: '', nom: '', telephone: '', email: ''
         });
       } else {
         setSubmitStatus({
@@ -200,26 +200,53 @@ export default function RecherchePersonnalisee() {
                     />
                   </div>
 
+                  <div className="space-y-2">
+                    <label className="text-white/90 text-sm font-bold uppercase tracking-widest ml-1 text-xs flex items-center gap-2">
+                      <CalendarDays className="size-4" /> Date souhaitée de début de recherche *
+                    </label>
+                    <input
+                      type="date"
+                      name="dateDebut"
+                      value={formData.dateDebut}
+                      onChange={handleChange}
+                      min={today}
+                      required
+                      className="w-full h-12 bg-white/5 border border-white/10 text-white rounded-xl px-4 focus:border-white/40 focus:bg-white/10 transition-all outline-none cursor-pointer [color-scheme:dark]"
+                    />
+                  </div>
+
                   <div className="bg-white/5 rounded-2xl p-6 border border-white/10 space-y-4">
                     <h4 className="text-white font-bold mb-4 flex items-center gap-2">
                       <Sparkles className="size-4" /> Vos Coordonnées
                     </h4>
-                    <Input 
-                      placeholder="Nom Complet *" 
+                    <Input
+                      placeholder="Nom Complet *"
                       className="bg-transparent border-white/10 text-white focus:border-white/40 rounded-lg"
                       name="nom" value={formData.nom} onChange={handleChange} required
                     />
                     <div className="grid md:grid-cols-2 gap-4">
-                      <Input 
-                        type="tel" placeholder="Téléphone *" 
+                      <Input
+                        type="tel" placeholder="Téléphone *"
+                        pattern="^(?:(?:\+33|0033|0)\s*[1-9])(?:[\s.-]*\d{2}){4}$"
+                        title="Numéro de téléphone français (ex: 06 12 34 56 78)"
                         className="bg-transparent border-white/10 text-white focus:border-white/40 rounded-lg"
                         name="telephone" value={formData.telephone} onChange={handleChange} required
                       />
-                      <Input 
-                        type="email" placeholder="Email *" 
+                      <Input
+                        type="email" placeholder="Email *"
                         className="bg-transparent border-white/10 text-white focus:border-white/40 rounded-lg"
                         name="email" value={formData.email} onChange={handleChange} required
                       />
+                    </div>
+                  </div>
+
+                  <div className="bg-amber-500/10 rounded-2xl p-5 border border-amber-500/30">
+                    <div className="flex gap-3">
+                      <AlertTriangle className="size-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                      <p className="text-amber-200/90 text-sm leading-relaxed">
+                        En validant ce formulaire, vous vous engagez à disposer du budget indiqué au moment de la livraison du véhicule.
+                        Aucun paiement en plusieurs fois n'est proposé. Pour plus de détails, voir les conditions sur le mandat de recherche que vous recevrez par mail.
+                      </p>
                     </div>
                   </div>
 

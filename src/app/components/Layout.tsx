@@ -14,7 +14,6 @@ import {
 
 export default function Layout() {
   const location = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
 
   // Remonter en haut de page à chaque changement de route
@@ -88,9 +87,9 @@ export default function Layout() {
         <SheetTrigger asChild>
           <button
             className="lg:hidden text-white p-1 -mr-1 order-3"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Ouvrir le menu"
           >
-            {mobileMenuOpen ? <X className="size-7 md:size-8" /> : <Menu className="size-7 md:size-8" />}
+            {sheetOpen ? <X className="size-7 md:size-8" /> : <Menu className="size-7 md:size-8" />}
           </button>
         </SheetTrigger>
         
@@ -103,10 +102,7 @@ export default function Layout() {
               <Link
                 key={item.name}
                 to={item.href}
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  setSheetOpen(false);
-                }}
+                onClick={() => setSheetOpen(false)}
                 className={`px-4 py-3 rounded-lg transition-colors text-base ${
                   isActive(item.href)
                     ? 'bg-white/10 text-white font-semibold'
