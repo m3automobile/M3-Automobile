@@ -59,6 +59,7 @@ app.post("/make-server-cc861502/recherche-personnalisee", async (c) => {
       budgetMin: body.budgetMin,
       budgetMax: body.budgetMax,
       criteres: body.criteres,
+      dateDebut: body.dateDebut || '',
       statut: "nouveau"
     };
     
@@ -97,6 +98,7 @@ app.post("/make-server-cc861502/recherche-personnalisee", async (c) => {
               ${body.kilometrageMax ? `<li><strong>Kilométrage maximum:</strong> ${body.kilometrageMax} km</li>` : ''}
               ${body.budgetMin ? `<li><strong>Budget minimum:</strong> ${body.budgetMin} €</li>` : ''}
               ${body.budgetMax ? `<li><strong>Budget maximum:</strong> ${body.budgetMax} €</li>` : ''}
+              ${body.dateDebut ? `<li><strong>Date souhaitée de début:</strong> ${body.dateDebut}</li>` : ''}
               ${body.criteres ? `<li><strong>Critères spécifiques:</strong> ${body.criteres}</li>` : ''}
             </ul>
             
